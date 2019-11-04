@@ -1,0 +1,6 @@
+15:44 30/10/2019
+
+Sobre o Break Line Remover | By Dante Marinho
+Esta aplicação remove os espaços ENTER de um texto, deixando todo o texto em uma única linha. Isto pode ser útil, por exemplo, para quando se quer copiar texto de um PDF, que por vezes ao colar, esse texto apresenta quebras de linha onde deveria ter um texto seguido.
+
+Ao pressionar ENTER, o texto é automaticamente copiado para a área de transferência (clipboard).

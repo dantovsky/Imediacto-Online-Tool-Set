@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="boot.css">
+    <title>HTML List Generator | HTML Converter to convert text to HTML</title>
+    <style>
+        textarea,
+        input {
+            width: 100%;
+        }
+
+        .boot .custom-tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .boot .custom-tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%;
+            left: 50%;
+            margin-left: -75px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-transform: initial;
+        }
+
+        .boot .custom-tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .boot .custom-tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .boot .show-tooltip {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boot">
+        <div class="container-fluid">
+            <h2>About the HTML List Generator</h2>
+            <p>
+                <strong>HTML List Generator</strong> is a <strong>HTML converter online tool</strong> that
+                <strong>converts text to html list</strong>. Using this tool will
+                help you convert some text list and transform it to a unordered or ordered HTML list.
+            </p>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <h3>Input (insert plain text)</h3>
+                    <textarea id="input" class="materialize-textarea" rows="7"
+                        placeholder="Insert a plain text here to convert it to a HTML list."></textarea>
+                </div>
+            </div>
+            <p class="help-text">Options:</p>
+            <div class="row">
+                <div class="col-md-5 col-sm-12 mb-3">
+                    <h3>Input text options</h3>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="radio1" name="text-origin" value="lines" class="custom-control-input"
+                            checked>
+                        <label class="custom-control-label" for="radio1">From lines</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="radio2" name="text-origin" value="commas" class="custom-control-input">
+                        <label class="custom-control-label" for="radio2">Separeted by commas</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="radio3" name="text-origin" value="semicolons"
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="radio3">Separeted by semicolons</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="radio4" name="text-origin" value="spaces" class="custom-control-input">
+                        <label class="custom-control-label" for="radio4">Separeted by space</label>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-12">
+                    <h3>Output List type options</h3>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="radio5" name="list-type" value="unordered" class="custom-control-input"
+                            checked>
+                        <label class="custom-control-label" for="radio5">Unordered list</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="radio6" name="list-type" value="ordered" class="custom-control-input">
+                        <label class="custom-control-label" for="radio6">Ordered list</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <button class="btn btn-success" onclick="convertToList()"
+                        area-label="Button to convert text to HTML list">Convert to list</button>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <h3>Output (HTML list)</h3>
+                    <textarea id="output" rows="7"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="custom-tooltip">
+                        <button class="btn btn-secondary" onclick="copyToClipboard()" onmouseout="tooltipFunction()"
+                            area-label="Copy the output to clipboard">
+                            <span id="myTooltip" class="tooltiptext">Copy to clipboard</span>
+                            Copy to clipboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="notes">
+                Send me your feedback about the <strong>HTML List Generator</strong> and let me know if you have some
+                specific need, then I can implement this new feature to you and improve this <strong>text
+                    tools</strong>. Also, let me know if you have some need about other different <strong>text
+                    tool</strong> or <strong>coding tool set</strong>.
+            </div>
+        </div>
+    </div>
+    <script>
+        function convertToList() {
+
+            var input = document.getElementById('input').value;
+            var textOrigin = document.querySelector('input[name="text-origin"]:checked').value;
+            var listType = document.querySelector('input[name="list-type"]:checked').value;
+
+            var separator = '';
+            if (textOrigin == 'lines') {
+                separator = '\n';
+            } else if (textOrigin == 'commas') {
+                separator = ',';
+            } else if (textOrigin == 'semicolons') {
+                separator = ';';
+            } else if (textOrigin == 'spaces') {
+                separator = ' ';
+            }
+
+            if (listType == 'unordered') {
+                listType = 'ul';
+            } else {
+                listType = 'ol';
+            }
+
+            var lines = input.split(separator);
+
+            output = `<${listType}>\n`;
+            lines.forEach(e => {
+                output += `    <li>${e.trim()}</li>\n`
+            });
+            output += `</${listType}>`
+            document.getElementById('output').value = output;
+            copyToClipboard();
+            showTooltip();
+        }
+
+        function copyToClipboard() {
+            var copyText = document.getElementById("output");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+
+            var tooltip = document.getElementById("myTooltip");
+            tooltip.innerHTML = "Copied to clipboard";
+            // tooltip.innerHTML = "Copied: " + copyText.value;
+        }
+
+        function tooltipFunction() {
+            var tooltip = document.getElementById("myTooltip");
+            tooltip.innerHTML = "Copy to clipboard";
+        }
+
+        function showTooltip() {
+            var tooltip = document.getElementById("myTooltip");
+            tooltip.innerHTML = "Was copied to clipboard";
+            tooltip.classList.add('show-tooltip');
+            setTimeout(() => {
+                tooltip.classList.remove('show-tooltip');
+            }, 3000);
+        }
+
+        // https://stackoverflow.com/questions/3547035/javascript-getting-html-form-values
+        // https://stackoverflow.com/questions/9618504/how-to-get-the-selected-radio-button-s-value
+        // https://getbootstrap.com/docs/4.3/components/forms/
+    </script>
+</body>
+
+</html>
