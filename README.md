@@ -1,6 +1,6 @@
 # Imediacto Online Tool Set
 
-This is a project to develop a very useful basic tool set (e.g. text tools, HTML) to help programmers or newbies in web development or programming.
+This is a project to develop a very useful **basic tool set** (e.g. **text tools**, **texto to HTML converter**, **list transformations**, **code generators**) to help programmers or newbies in web development or programming.
 
 
 ## Online Free Tool Website
