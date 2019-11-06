@@ -1,0 +1,126 @@
+/* body {
+    padding: 20px;
+    padding-top: 8px;
+}
+
+p {
+    display: block;
+    width: 90%;
+    margin-bottom: 15px;
+} */
+
+.boot input,
+.boot textarea {
+    display: block;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.boot button {
+    padding: 5px;
+    text-transform: uppercase;
+}
+
+.boot .custom-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.boot .custom-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-transform: initial;
+}
+
+.boot .custom-tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.boot .custom-tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.boot .btn {
+    text-transform: unset !important;
+    font-family: Arial !important
+}
+
+.boot .help-text {
+    font-size:1.45em;
+    color:#b5b5b5
+}
+.boot textarea {
+	box-shadow: 1px 1px 4px 0px #999999 !important;
+}
+.boot .hidden {
+    visibility: hidden !important;
+    opacity: 0;
+}
+
+.boot .show {
+    visibility: visible !important;
+    opacity: 1;
+}
+
+.boot .none {
+    display: none !important;
+}
+
+.boot .block {
+    display: block! important;
+}
+
+.boot .inline-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#check {
+    background: url('https://www.imediacto.com/wp-content/uploads/2019/11/check.png');
+    width: 24px;
+    height: 24px;
+}
+/* listing posts horizontal (small photo) */
+@media only screen and (min-width: 1160px), screen and (max-width: 980px) and (min-width: 860px) {
+    .category article {
+        clear: both;
+    }
+    .category article p {
+        width: 97%;
+    }
+    .category .et_pb_post .entry-featured-image-url {
+        display: inline-block;
+        position: relative;
+        margin-bottom: 30px;
+        float: left;
+        width: 360px;
+        margin-right: 15px;
+    }
+    .category h2.entry-title {
+        font-size: 20px;
+    }
+}

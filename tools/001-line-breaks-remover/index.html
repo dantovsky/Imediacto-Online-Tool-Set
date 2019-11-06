@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<meta name="description"
+		content="Esta aplicação remove os espaços ENTER de um texto, deixando todo o texto em uma única linha. Isto pode ser útil, por exemplo, para quando se quer copiar texto de um PDF.">
+	<meta name="keywords" content="remove, break, line, text, html">
+	<meta name="author" content="Dante Marinho">
+	<title>Break Line Remover | Remove Break Lines Online and Transform Text</title>
+	<link rel="stylesheet" href="../shared/css/boot.min.css">
+	<link rel="stylesheet" href="../shared/css/styles.css">
+</head>
+
+<body>
+	<div class="boot">
+		<h1>Line Breaks Remover | Remove Line Breaks Online</h1>
+		<div class="row mb-3">
+			<div class="col-sm-12">
+				<h2>Removing line breaks from a text</h2>
+				<p>
+					<strong>Remove line breaks</strong> from a text with this <strong>online text tool</strong>, leaving
+					all
+					text on a single line. This can be useful, for example, when you want to copy text from a PDF, which
+					when
+					pasting, this text has line breaks where it should have followed the text.
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 mb-3">
+				<h3>Input text</h3>
+				<input type="text" id="input" onClick="this.select();">
+			</div>
+			<div class="col-sm-12">
+				<button id="btn-remove-lines" class="btn btn-success" onclick="applyRemovingLines()">Remove line
+					breaks</button>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col-sm-12 mb-3">
+				<h3>Output text</h3>
+				<textarea id="textarea" id="" cols="30" rows="10"></textarea>
+			</div>
+			<div class="col-sm-12">
+				<div class="inline-flex">
+					<button class="btn btn-success mr-3" onclick="copyToClipboard()"
+						area-label="Copy the output to clipboard">
+						Copy to clipboard
+					</button>
+					<div id="check" class="none">
+						<!-- <img src="../shared/img/check.png" alt="Image check (action applyed)"> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		// Listener to remove break lines
+		document.getElementById("input").addEventListener("keypress", function (e) {
+			var key = e.which || e.keyCode;
+			if (key === 13) { // 13 is enter
+				applyRemovingLines()
+			}
+		});
+
+		function applyRemovingLines() {
+			console.log('Texto com break lines removidos e copiado para o clipboard.')
+			input = document.getElementById('input').value;
+			textarea = document.getElementById('textarea');
+			input = input.replace(/ +(?= )/g, '').trim();
+			textarea.value = input;
+			copyToClipboard()
+		}
+
+		function copyToClipboard() {
+			var copyText = document.getElementById("textarea");
+			copyText.select();
+			copyText.setSelectionRange(0, 99999);
+			document.execCommand("copy");
+
+			var check = document.getElementById("check");
+			check.classList.remove('none');
+			setTimeout(() => {
+				check.classList.add('none')
+			}, 3000);
+		}
+	</script>
+
+</body>
+
+</html>
