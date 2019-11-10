@@ -20,7 +20,7 @@ Everyone who desire contribute to this project is welcome to:
 
 
 ### HTML List Generator | Convert Text to HTML
-- https://www.imediacto.com/tools/html-converter/html-list-generator-convert-text-to-html/
+- https://www.imediacto.com/tools/html-tools/html-list-generator-convert-text-to-html/
 
 ### Line Breaks Remover | Remove Line Breaks Online
 - https://www.imediacto.com/tools/text-tools/remove-line-breaks-online/
