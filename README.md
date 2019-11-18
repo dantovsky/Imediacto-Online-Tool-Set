@@ -19,8 +19,8 @@ Everyone who desire contribute to this project is welcome to:
 ## Online Tools Available
 
 
-### HTML List Generator | Convert Text to HTML
+### HTML List Generator - Convert Text to HTML
 - https://www.imediacto.com/tools/html-tools/html-list-generator-convert-text-to-html/
 
-### Line Breaks Remover | Remove Line Breaks Online
+### Remove Line Breaks Online - Line Breaks Remover
 - https://www.imediacto.com/tools/text-tools/remove-line-breaks-online/
