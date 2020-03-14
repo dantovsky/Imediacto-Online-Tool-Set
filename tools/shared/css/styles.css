@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap');
+
+/* font-family: 'Open Sans', sans-serif;
+font-family: 'Ubuntu', sans-serif; */
+
 /* body {
     padding: 20px;
     padding-top: 8px;
@@ -8,6 +13,85 @@ p {
     width: 90%;
     margin-bottom: 15px;
 } */
+* {
+    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Ubuntu', sans-serif; */
+}
+/* ****************************
+		POSTS (TOOLS)
+******************************* */
+.notes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around !important;
+    margin-top: 50px;
+}
+.notes .image {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    background-color: #dedede;
+    background-image: url('https://www.imediacto.com/wp-content/uploads/2015/01/Dante-com-a-viola-2.jpg');
+    background-size: cover;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+/* .notes .imagem:after {
+    content: "Dante Marinho";
+    position: relative;
+    bottom: -50px;
+    left: 0;
+    font-size: 12px;
+} */
+.notes .message{
+    background: #dedede;
+    /*line-height: 1.6em; */ 
+    border-radius: 7px;
+    height: auto;
+    padding: 25px;
+    position: relative;
+    margin-left: 25px;
+    width: min-content;
+    flex-grow: 1;
+    transition: all .8s ease;
+}
+/* Triangulo */
+.notes .message:after{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    /*Faz seta "apontar para baixo. Definir o valor como 'top' fará ela "apontar para cima" */
+    /*Aqui entra a cor da "aba" do balão */
+    border-right: 20px solid #dedede;
+    left: -18px;
+    top: 18px;
+}
+
+@media screen and (max-width: 680px) {
+    .notes {
+        flex-direction: column;
+    }
+    .notes .image {
+        align-self: center;
+    }
+    .notes .message {
+        width: unset;
+        margin-top: 30px;
+        margin-left: auto;
+    }
+    .notes .message:after {
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 20px solid #dedede;
+        top: -35px;
+        left: calc(50% - 15px);
+    }
+}
+
+/* ******** */
 
 .boot input,
 .boot textarea {
@@ -72,6 +156,13 @@ p {
     font-size:1.45em;
     color:#b5b5b5
 }
+
+.boot span.help-text {
+    color: #8c52ff;
+    font-size: initial;
+    display: block;
+}
+
 .boot textarea {
 	box-shadow: 1px 1px 4px 0px #999999 !important;
 }

@@ -26,22 +26,23 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12 mb-3">
-				<h3>Input text</h3>
-				<input type="text" id="input" onClick="this.select();">
+				<h3>Input your text</h3>
+				<textarea id="input" class="materialize-textarea" rows="7" onClick="this.select();" placeholder="Insert a plain text here to convert it to a HTML list."></textarea>
+				<span class="help-text">Just press Ctrl + Enter to remove line breaks.</span>
 			</div>
 			<div class="col-sm-12">
-				<button id="btn-remove-lines" class="btn btn-success" onclick="applyRemovingLines()">Remove line breaks</button>
+				<button id="btn-remove-lines" class="btn btn-success" onclick="applyRemovingLines()" area-label="Button to remove line breaks from text">Remove line breaks</button>
 			</div>
 		</div>
 
 		<div class="row mb-3">
 			<div class="col-sm-12 mb-3">
 				<h3>Output text</h3>
-				<textarea id="textarea" id="" cols="30" rows="10"></textarea>
+				<textarea id="output" id="" cols="30" rows="10"></textarea>
 			</div>
 			<div class="col-sm-12">
 				<div class="inline-flex">
-					<button class="btn btn-success mr-3" onclick="copyToClipboard()"
+					<button class="btn btn-secondary mr-2" onclick="copyToClipboard()"
 						area-label="Copy the output to clipboard">
 						Copy to clipboard
 					</button>
@@ -52,44 +53,50 @@
 			</div>
 		</div>
 		<div class="notes">
-			<p>
-				Send me your feedback about this tool to help to <strong>remove line breaks online</strong> and let me know if you have some specific need, then I can implement this new feature to you and improve this <strong>text tool</strong>. Also, let me know if you have some need about other different <strong>text tool</strong> or <strong>coding tool set</strong>.
-			</p>
-			<p>
-				You can learn about how this online tool works or contribute improving the line breaks remover by programming some new feature or fixing bugs. Fot that, go to Github on <a href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/001-line-breaks-remover" target="_blank">Github >> Remove Line Breaks Online</a> and make a pull request. Thanks a lot!
-			</p>
+			<div class="image"></div>
+            <div class="message">
+				<p>
+					Send me your feedback about this tool to help to <strong>remove line breaks online</strong> and let me know if you have some specific need, then I can implement this new feature to you and improve this <strong>text tool</strong>. Also, let me know if you have some need about other different <strong>text tool</strong> or <strong>coding tool set</strong>.
+				</p> 
+				<p>
+					You can learn about how this online tool works or contribute improving the line breaks remover by programming some new feature or fixing bugs. For that, go to Github on <a href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/001-remove-line-breaks-online" target="_blank" rel="noopener noreferrer">Github &gt;&gt; Remove Line Breaks Online</a> and make a pull request. Thanks a lot!
+				</p> 
+			</div>
+		</div>
 		</div>
 	</div>
 	<script>
 		// Listener to remove break lines
-		document.getElementById("input").addEventListener("keypress", function (e) {
-			var key = e.which || e.keyCode;
-			if (key === 13) { // 13 is enter
-				applyRemovingLines()
+		document.onkeyup = function (e) {
+			if (e.ctrlKey && e.which === 13) {
+				applyRemovingLines();
 			}
-		});
+		}
 
 		function applyRemovingLines() {
-			console.log('Texto com break lines removidos e copiado para o clipboard.')
-			input = document.getElementById('input').value;
-			textarea = document.getElementById('textarea');
-			input = input.replace(/ +(?= )/g, '').trim();
-			textarea.value = input;
-			copyToClipboard()
+			let input = document.getElementById('input').value;
+			let output = document.getElementById('output');
+			input = input.replace(/\s+/g, ' ').trim();
+			output.value = input;
+			copyToClipboard();
 		}
 
 		function copyToClipboard() {
-			var copyText = document.getElementById("textarea");
+			let copyText = document.getElementById("output");
 			copyText.select();
 			copyText.setSelectionRange(0, 99999);
 			document.execCommand("copy");
 
-			var check = document.getElementById("check");
+			let check = document.getElementById("check");
 			check.classList.remove('none');
 			setTimeout(() => {
-				check.classList.add('none')
+				check.classList.add('none');
 			}, 3000);
 		}
+
+		// Help links:
+		// https://stackoverflow.com/questions/10965433/regex-replace-multi-line-breaks-with-single-in-javascript
+		// https://medium.com/@melwinalm/crcreating-keyboard-shortcuts-in-javascripteating-keyboard-shortcuts-in-javascript-763ca19beb9e
 	</script>
 
 </body>
