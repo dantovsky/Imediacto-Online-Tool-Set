@@ -18,11 +18,11 @@ Everyone who desire contribute to this project is welcome to:
 
 ## Online Tools Available
 
-### HTML List Generator - Convert Text to HTML  
+- HTML List Generator - Convert Text to HTML  
 https://www.imediacto.com/tools/html-tools/html-list-generator-convert-text-to-html
 
-### Remove Line Breaks Online - Line Breaks Remover  
+- Remove Line Breaks Online - Line Breaks Remover  
 https://www.imediacto.com/tools/text-tools/remove-line-breaks-online
 
-### CSV to JSON Converter  
+- CSV to JSON Converter  
 https://www.imediacto.com/tools/text-tools/csv-to-json-converter
