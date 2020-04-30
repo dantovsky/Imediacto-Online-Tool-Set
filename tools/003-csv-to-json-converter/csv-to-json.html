@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../shared/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>CSV to JSON Converter</title>
+    <style>
+        .boot #file {
+            display: none;
+        }
+
+        .boot #holder:hover {
+            background-color: rgb(248, 248, 248);
+        }
+
+        .boot label.input-drag-drop {
+            width: 100%;
+            border: 2px solid #8c52ff !important;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            transition: all .5s ease;
+            padding: 1px;
+            border-radius: 4px;
+        }
+
+        .boot .file-name {
+            padding: 7px 10px;
+            color: #4d5866;
+        }
+
+        .boot .text-browse {
+            background-color: #8c52ff;
+            color: #fff;
+            padding: 7px 18px;
+            border-radius: 4px;
+        }
+
+        .boot .input-hover {
+            background-color: rgb(145, 224, 147);
+        }
+
+        .boot .input-drop {
+            background-color: rgb(145, 224, 147);
+        }
+
+        .boot .input-error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb !important;
+        }
+
+        .boot .display-flex-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .boot .display-flex-row .textarea {
+            width: 48.5%;
+        }
+
+        .boot .icon-apply {
+            width: 1.5%;
+            padding-top: 15px;
+            /* background-color: lightpink; */
+        }
+
+        .boot .icon-apply i {
+            font-size: larger;
+            cursor: pointer;
+            /* background-color: lightseagreen; */
+            width: 100%;
+            text-align: center;
+        }
+
+        .boot .icon-apply i:first-child {
+            color: green;
+            margin-bottom: 10px;
+        }
+
+        .boot .icon-apply i:last-child {
+            color: #f00018;
+        }
+
+        .boot .div-btn {
+            cursor: pointer;
+            color: #8c52ff;
+        }
+
+        @media screen and (max-width: 980px) {
+            .boot .display-flex-col-980-down {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .boot .display-flex-row .textarea {
+                width: 100%;
+            }
+
+            .boot .icon-apply {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 680px) {
+            .boot .display-flex-col-680-down {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+            }
+
+            .boot .hidden-680-down {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boot">
+        <div class="container">
+            <h2>About the CSV to JSON Converter</h2>
+            <p>
+                <strong>CSV to JSON Converter</strong> is a online tool that converts a given text in CSV format to JSON
+                format. You can chose a "file.csv" or put directly the text in CSV format (separated by commas) in the
+                first input text area.
+            </p>
+
+            <h3>Select your CSV file or type in the first box area</h3>
+            <!-- Div to Drag and Drop CSV file -->
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="file" onchange="changeFileNameBoxOnInput(event)"
+                    accept=".csv">
+                <label id="holder" class="input-drag-drop" for="file">
+                    <div id="file-name" class="file-name text-truncate">Select CSV file or drag and drop here...</div>
+                    <div class="text-browse"><i class="fa fa-search"></i> <span class="hidden-680-down">Browse</span></div>
+                </label>
+            </div>
+            <div class="display-flex-row display-flex-col-980-down">
+                <div class="textarea">
+                    <!-- Input textarea -->
+                    <textarea name="area-csv" id="area-csv" cols="30" rows="12"
+                        placeholder="Type here your text in comma separated format"></textarea>
+                    <button class="btn btn-success mt-2 mb-2" onclick="stringCSVtoJSON();"
+                        aria-label="Button to convert CSV to JSON">
+                        <i class="fa fa-chevron-right"></i>
+                        Convert to JSON
+                    </button>
+                </div>
+                <div class="icon-apply">
+                    <i class="fa fa-chevron-right" onclick="stringCSVtoJSON()"
+                        aria-label="Icon button to convert CSV to JSON" title="Button to convert CSV to JSON"></i>
+                    <i class="fa fa-close" onclick="clearAreas()" aria-label="Icon button to clear data"
+                        title="Button to clear data"></i>
+                </div>
+                <div class="textarea">
+                    <!-- Output textarea -->
+                    <textarea name="output" id="output" cols="30" rows="12"></textarea>
+                    <div class="inline-flex mt-2">
+                        <div id="btn-download" class="div-btn mr-3" onclick="downloadJSON('json')"
+                            title="Download as JSON" aria-label="Button to download the output JSON">
+                            <i class="fa fa-download"></i> JSON
+                        </div>
+                        <div id="btn-download" class="div-btn mr-3" onclick="downloadJSON('txt')"
+                            title="Download as TXT" aria-label="Button to download the output JSON">
+                            <i class="fa fa-download"></i> TXT
+                        </div>
+                        <div class="inline-flex">
+                            <div class="div-btn mr-2" onclick="copyToClipboard()" title="Copy output to clipboard"
+                                area-label="Button to copy the JSON to clipboard">
+                                <i class="fa fa-copy"></i>
+                                Copy to clipboard
+                            </div>
+                            <div id="check" class="none"
+                                style="width: 18px; height: 18px; background-size: contain; margin-bottom: 4px;">
+                                <!-- <img src="../shared/img/check.png" alt="Image check (action applyed)"> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2>What is CSV format file?</h2>
+            <p>The CSV (comma-separated values) is a text file delimited by lines where each line is delimited by
+                commas. Usually, the first line of the CSV is the header for the data of the remaining lines.</p>
+            <p>CSV format can be read by plain text editors, as it is plain text, in fact. Programs like LibreOffice
+                Calc and Microsoft Office Excel read this format, organizing them between columns and rows.</p>
+
+            <h2>What is JSON format file?</h2>
+            <p>JSON (JavaScript Object Notation), is a compact text format used for simple and fast data exchange
+                between systems, where its main purpose is the use of key-value pairs.</p>
+            <p>Therefore, CSV and JSON are widely used data formats and we constantly need to <strong>convert CSV to
+                    JSON</strong> or
+                convert from JSON to CSV.</p>
+
+            <div class="notes">
+                <div class="image"></div>
+                <div class="message">
+                    <p>
+                        Give me your feedback about the <strong>CSV to JSON Converter</strong> and let me know if you
+                        have
+                        some specific need or if you found some error in this tool, then I can implement this new
+                        feature to you and improve or fix this <strong>text
+                            tool</strong>. Also, let me know if you have some need about other different <strong>JSON
+                            tool converter</strong> or <strong>coding tool set</strong>.
+                    </p>
+                    <!-- <p>
+                        You can learn about how this online tool works or contribute improving the HTML List Generator
+                        by programming some new feature or fixing bugs. For that, go to Github on <a
+                            href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/002-html-list-generator"
+                            target="_blank">Github &gt;&gt; HTML List Generator</a> and make a pull request. This will
+                        be
+                        great!
+                    </p> -->
+                </div>
+            </div>
+            <hr>
+        </div><!-- end container -->
+    </div>
+
+    <script>
+
+        let fileNameBox = document.getElementById('file-name');
+        let areaCSV = document.getElementById('area-csv');
+        let areaJSON = document.getElementById('output');
+        let csv = '';
+        let fileType = '';
+        let fileExtension = '';
+        let inputMessageDefault = 'Select CSV file or drag and drop here...';
+
+        // CSV example
+        // let csv = `nome,quantidade,valor
+        //     banana,4,1.5
+        //     maçã,5,1.2
+        //     pera,10,2.57`;
+
+        // --------------------------------------------------------
+        // Main functions
+        // --------------------------------------------------------
+
+        // Drag and Drop actions
+        let holder = document.getElementById('holder');
+        holder.ondragover = function () {
+            this.classList.add('input-hover');
+            this.classList.remove('input-error');
+            this.classList.remove('input-drop');
+            return false;
+        };
+        // holder.ondragend = function () { this.classList.remove('hover-input'); return false; };
+        holder.ondragleave = function () { this.classList.remove('input-hover'); return false; };
+        holder.ondrop = function (e) {
+            this.classList.remove('input-error');
+            this.classList.add('input-drop');
+            e.preventDefault();
+            readfiles(e.dataTransfer.files);
+        }
+
+        // Read the file uploaded through Drag and Drop
+        function readfiles(files) {
+
+            fileType = files[0].type;
+            fileNameBox.innerText = files[0].name;
+
+            // Exit process if the file type is not CSV
+            if (!isfileTypeAndAllowed(fileType)) {
+                return false;
+            }
+
+            reader = new FileReader();
+            reader.onload = function (event) {
+                csv = event.target.result;
+                areaCSV.value = csv;
+            }
+            reader.readAsText(files[0]);
+        }
+
+        // Fisrt Step :: Read csv is the CSV file with headers
+        function procressInputFile() {
+
+            let inputFile = document.getElementById('file');
+
+            if ('files' in inputFile && inputFile.files.length > 0) {
+                let file = inputFile.files[0];
+                fileNameBox = file.name;
+                fileType = file.type;
+                fileExtension = fileNameBox.substring(fileNameBox.lastIndexOf('.'), fileNameBox.length)
+                
+                // Exit process if the file type is not CSV
+                if (!isfileTypeAndAllowed(fileType)) {
+                    return false;
+                }
+
+                let fileReader = new FileReader();
+                fileReader.onload = function (event) {
+                    csv = event.target.result;
+                    areaCSV.value = csv;
+                }
+                fileReader.readAsText(file);
+            } else {
+                console.log('You need select a CSV file!');
+            }
+        }
+
+        // Last Step :: Convert the CSV string to JSON and print on textarea
+        function stringCSVtoJSON() {
+
+            csv = areaCSV.value;
+            let lines = csv.split("\n");
+            let result = [];
+            let headers = lines[0].split(",");
+
+            for (let i = 1; i < lines.length; i++) {
+
+                let obj = {};
+                let currentline = lines[i].split(",");
+
+                for (let j = 0; j < headers.length; j++) {
+
+                    try {
+                        if (!Number(currentline[j].trim())) {
+                            // Case value is string
+                            obj[headers[j].trim()] = currentline[j].trim();
+                        } else {
+                            // Case value is a number
+                            let n = Number(currentline[j].trim());
+                            obj[headers[j].trim()] = n;
+                        }
+                    } catch (error) {
+                        console.log('Has inconsistent data...');
+                    }
+                }
+                result.push(obj);
+            }
+
+            //return result; //JavaScript object
+            let json = JSON.stringify(result, undefined, 4); //JSON
+            areaJSON.value = json;
+        }
+
+        // --------------------------------------------------------
+        // Auxiliar functions
+        // --------------------------------------------------------
+
+        // Write the name of file on input box
+        function changeFileNameBoxOnInput(event) {
+            let partsPath = event.target.value.split('\\');
+            fileNameBox.innerText = partsPath[partsPath.length - 1];
+            procressInputFile();
+        }
+
+        function clearAreas() {
+            areaCSV.value = '';
+            areaJSON.value = '';
+            csv = '';
+            document.getElementById('file-name').innerText = inputMessageDefault;
+        }
+
+        function isfileTypeAndAllowed(fileType) {
+
+            // Exit process if the file type is not CSV
+            const allowedFileTypes = ['text/csv', 'text/comma-separated-values', '.csv', 'csv'];
+
+            if (!(allowedFileTypes.includes(fileType)) && fileExtension != '.csv') {
+                holder.classList.add('input-error');
+                fileNameBox.innerText = 'This file type is not allowed!';
+                setTimeout(() => {
+                    fileNameBox.innerText = inputMessageDefault;
+                    holder.classList = 'input-drag-drop'; // erase other classes
+                }, 5000);
+                return false; // exit process
+            }
+            return true;
+        }
+
+        // Download function
+        function download(filename, text) {
+
+            let element = document.createElement('a');
+
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        // Start file download in TXT or JSON
+        function downloadJSON(extension) {
+
+            // Generate download of hello.txt file with some content
+            let data = document.getElementById("output").value;
+            let filename = "csv-to-json-imediacto." + extension;
+
+            fileNameBox = document.getElementById('file-name');
+
+            if (fileNameBox.innerText != inputMessageDefault) {
+
+                let lastIndexDot = fileNameBox.innerText.lastIndexOf('.');
+                if (lastIndexDot != -1) {
+                    filename = fileNameBox.innerText.substring(0, lastIndexDot) + '-json.' + extension;
+                } else {
+                    // Case file without dot extension
+                    filename = fileNameBox.innerText + '.' + extension;
+                }
+            }
+
+            download(filename, data);
+        }
+
+        // Help links
+        // http://techslides.com/convert-csv-to-json-in-javascript
+        // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/result
+        // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
+        // https://stackoverflow.com/questions/8006715/drag-drop-files-into-standard-html-file-input
+        // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+        // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+        // https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/
+        // https://ourcodeworld.com/articles/read/189/how-to-create-a-file-and-generate-a-download-with-javascript-in-the-browser-without-a-server
+        // https://stackoverflow.com/questions/34648186/split-at-last-occurrence-of-character-then-join
+    </script>
+
+    <script>
+        // Global functions for tools
+        function copyToClipboard() {
+            let copyText = document.getElementById("output");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+
+            let check = document.getElementById("check");
+            check.classList.remove('none');
+            setTimeout(() => {
+                check.classList.add('none');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

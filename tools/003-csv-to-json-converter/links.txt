@@ -1,0 +1,12 @@
+Help Links
+
+https://stackoverflow.com/questions/8006715/drag-drop-files-into-standard-html-file-input
+http://techslides.com/convert-csv-to-json-in-javascript
+https://www.csvjson.com/csv2json
+
+
+Others help page names
+
+jquery - Convert CSV data into JSON format using Javascript - Stack Overflow
+How To Make A Drag-and-Drop File Uploader With Vanilla JavaScript — Smashing Magazine
+Convert CSV to JSON in JavaScript | TechSlides
