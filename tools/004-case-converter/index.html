@@ -237,13 +237,9 @@
                 }
             }
 
-            var maxLength = 1000000;
-            jQuery('#max-length-chars').text(maxLength);
-            jQuery('textarea').attr('maxlength', maxLength)
-            jQuery('textarea').keyup(function () {
-                var textlen = jQuery(this).val().length;
-                jQuery('#counting-chars').text(textlen);
-            });
+            window.onload = function () {
+                wordCount(1000000);
+            }
 
         // https://love2dev.com/blog/javascript-touppercase-tolowercase/
         // https://danielmiessler.com/blog/a-list-of-different-case-types/
@@ -269,6 +265,7 @@
             }, 3000);
         }
     </script>
+    <script src="../shared/js/scripts.js"></script>
 </body>
 
 </html>

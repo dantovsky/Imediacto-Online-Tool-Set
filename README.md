@@ -3,7 +3,7 @@
 This is a project to develop a very useful **basic tool set** (e.g. **text tools**, **text to HTML converter**, **list transformations**, **code generators**) to help programmers or newbies in web development or programming.
 
 
-## Online Free Tool Website
+## Free Online Tool Website
 https://www.imediacto.com/
 
 Everyone who desire contribute to this project is welcome to:
@@ -26,3 +26,7 @@ This application removes line breaks from a text, leaving all text on a single l
 Easily convert your CSV file to JSON with this Online Tool. You can chose a "file.csv" or put directly the text in CSV format (separated by commas).
 - [Case Converter](https://www.imediacto.com/tools/text-tools/case-converter)  
 Case Converter is a Text Online Tool to change case letters. You can convert to uppercase, lowercase, sentence case, capital letters and invert text case.
+- [Lowercase Converter](https://www.imediacto.com/tools/text-tools/lowercase-converter)  
+The Lowercase Converter is an online tool to change your text from uppercase to lowercase letters or convert from other letter case types.
+- [Uppercase Converter](https://www.imediacto.com/tools/text-tools/uppercase-converter)  
+The Uppercase Converter is an online tool to change your text from lowercase to UPPERCASE letters or convert from other letter case types.
