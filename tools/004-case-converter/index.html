@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="boot.css"> -->
+    <link rel="stylesheet" href="../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../shared/css/styles.css">
+    <!-- Icons Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Case Converter | Change to Uppercase, Lowercase, Sentence and Capital Letters</title>
+</head>
+
+<body>
+    <div class="box-container">
+        <h1>Case Converter</h1>
+        <div class="boot">
+            <h2>Case Converter Online Tool</h2>
+            <p>
+                <strong>Case Converter</strong> is an online tool to <strong>change case</strong> from a text. Using
+                this tool will help you the following text conversions: convert to <strong>uppercase letter</strong>,
+                <strong>lowercase letter</strong>, <strong>sentence case</strong>, <strong>capital letter</strong> and
+                <strong>invert text case</strong>.
+            </p>
+            <h3 class="mb-0">Put a text to convert case<img
+                    src="https://www.imediacto.com/wp-content/uploads/2020/05/arrow-down.svg" width="30" height="30"
+                    class="arrow-down" alt="Arrow down to indicate the important textarea"></h3>
+
+            <div class="d-flex align-items-center flex-column">
+                <div class="w-100" style="position: relative;">
+                    <div class="counting-chars"><span id="counting-chars">0</span> / <span
+                            id="max-length-chars">10000</span></div>
+                    <textarea name="input" id="input" cols="30" rows="7" maxlength="10000"
+                        placeholder="Insert text here to convert case"></textarea>
+                </div>
+                <div class="buttons">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="radio-lowercase" name="case-option" class="custom-control-input"
+                            onclick="applyCase('lowercase');">
+                        <label class="custom-control-label label-case" for="radio-lowercase">lowercase</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="radio-uppercase" name="case-option" class="custom-control-input"
+                            onclick="applyCase('uppercase');">
+                        <label class="custom-control-label label-case" for="radio-uppercase">UPPERCASE</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="radio-capitalize" name="case-option" class="custom-control-input"
+                            onclick="applyCase('capitalize');">
+                        <label class="custom-control-label label-case" for="radio-capitalize">Capitalize</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="radio-sentence" name="case-option" class="custom-control-input"
+                            onclick="applyCase('sentence');">
+                        <label class="custom-control-label label-case" for="radio-sentence">Sentence case</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="radio-invert" name="case-option" class="custom-control-input"
+                            onclick="applyCase('invert');">
+                        <label class="custom-control-label label-case" for="radio-invert">invert Case</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 d-flex align-items-center flex-column mt-3">
+                    <div class="inline-flex">
+                        <div class="div-btn mr-2" onclick="copyToClipboard('input')">
+                            <i class="fa fa-copy"></i> Copy to clipboard
+                        </div>
+                        <div id="check" class="none"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="more-notes">
+                <h2>Letter Case Conversion Functions</h2>
+                <p>In this case converter tool you'll find these following case type functions:</p>
+                <h3 class="case-name">Lowercase converter</h3>
+                <p class="lead">
+                    <strong>Lowercase converter</strong> is a function that converts the letters of a text to
+                    <strong>lowercase letters</strong>. You can convert from <strong>uppercase to lowercase</strong> or
+                    from any other text case types. When letter is already in lowercase, it will remain in that
+                    format.<br />
+                    <span class="ex">Example:</span> "i like programming in lowercase letters".
+                </p>
+                <hr>
+                <h3 class="case-name">Uppercase converter</h3>
+                <p class="lead">
+                    <strong>Uppercase converter</strong> converts the letters of a text <strong>to
+                        uppercase</strong>, also known as ALL CAPS format case. You can convert from <strong>lowercase
+                        to
+                        uppercase</strong> or from any other text case types. When letter is already capitalized, it
+                    will remain in that format.<br>
+                    <span class="ex">Example:</span> "YOU ARE VIEWING UPPERCASE LETTERS".
+                </p>
+                <hr>
+                <h3 class="case-name">Capitalize - Capital letter converter</h3>
+                <p class="lead">
+                    In the capitalize function, for each word, it make the first letter capitalized and keeps the
+                    remaining letters of the word lowercase.<br />
+                    <span class="ex">Example:</span> "This Is A Good Capitalized Phrase".
+                </p>
+                <hr>
+                <h3 class="case-name">Sentence case converter</h3>
+                <p class="lead">
+                    The <strong>sentence case converter</strong> is a function that capitalizes the first letter of each
+                    sentence in the text
+                    and keeps or converts the remaining letters of all words in the sentence to lowercase letters. Each
+                    sentence separation is based on the
+                    following symbols: dot (.), exclamation (!), interrogation (?) and ellipsis (...).<br /><span
+                        class="ex">Example:</span> "Hi! I'm
+                    mary and i like programming in javascript language. And you?""
+                </p>
+                <hr>
+                <h3 class="case-name">Case inverter</h3>
+                <p class="lead">
+                    The case inverter reverses the case of each letter of the text. When the algorithm finds a
+                    lowercase letter it converts to uppercase, and when it finds a lowercase letter it converts to
+                    lowercase.<br /><span class="ex">Example:</span> for the text "Change case of tExt IS so funnY!",
+                    the result will be "cHANGE CASE OF TeXT is SO FUNNy!"
+                </p>
+            </div>
+            <div class="notes">
+                <div class="image"></div>
+                <div class="message">
+                    <p>
+                        Send me your feedback about this <strong>text case converter</strong> and let me know if you
+                        have
+                        some specific need, then I can implement this new feature and improve this online tool. Also,
+                        let
+                        me know if you have some need about other different <strong>text tool</strong> or <strong>coding
+                            tool set</strong>.
+                        <!-- <br>
+                        You can learn about how this online tool works or contribute improving the Case Converter
+                        by programming some new feature or fixing bugs. For that, go to Github on <a
+                            href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/002-html-list-generator"
+                            target="_blank">Github >> Case Converter</a> and make a pull request. This will be
+                        great! -->
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Custom Code by Dante
+            // ----------------------------------------------
+
+            function isLetter(s) {
+                return s.match("^[a-zA-Z()]+$");
+            }
+
+            // By lov2dev.com
+            /*function capitalize(str) {
+              return str.replace(/[a-z]/ig, function (letter) {
+                return letter.toUpperCase();
+              });
+            }*/
+
+            // By lov2dev.com --------------
+            function titleCase(str) {
+                return str.replace(/\w\S/i, function (t) {
+                    return t.toUpperCase();
+                });
+            }
+
+            function sentenceCase(str) {
+                return str.replace(/[a-z]/i, function (letter) {
+                    return letter.toUpperCase();
+                });
+            }
+
+            // by lov2dev.com
+            function invertCase(str) {
+                var output = "";
+
+                for (var i = 0; i < str.length; i++) {
+                    var ch = str[i];
+
+                    if (ch === ch.toUpperCase()) {
+                        output += ch.toLowerCase();
+                    } else {
+                        output += ch.toUpperCase();
+                    }
+                }
+
+                return output;
+            }
+
+            function textToLowercase() {
+                jQuery("#input").val(jQuery("#input").val().toLowerCase());
+            }
+
+            function textToUpperCase() {
+                jQuery("#input").val(jQuery("#input").val().toUpperCase());
+            }
+
+            function applyCase(textCase) {
+                if (textCase == "lowercase") {
+                    textToLowercase();
+                } else if (textCase == "uppercase") {
+                    textToUpperCase();
+                } else if (textCase == "capitalize") {
+                    textToLowercase();
+                    let inputText = jQuery("#input");
+                    let lines = inputText.val().split("\n");
+
+                    inputText.val('')
+                    lines.forEach((line) => {
+                        let words = line.split(' ');
+                        let wordsCapitalized = [];
+                        words.forEach((word) => {
+                            word = word.toLowerCase();
+                            word = word.charAt(0).toUpperCase() + word.slice(1);
+                            wordsCapitalized.push(word);
+                        });
+                        inputText.val(inputText.val() + wordsCapitalized.join(" ") + '\n');
+                        words = [];
+                    });
+                } else if (textCase == "sentence") {
+                    textToLowercase();
+                    let inputText = jQuery("#input").val();
+                    let sentences = inputText.match(/[^\.!\?]+[\.!\?]+["']?|\s*$|[^\r\n]+/g);
+
+                    let sentencesCapitalized = [];
+                    sentences.forEach((sentence) => {
+                        sentence = sentenceCase(sentence);
+                        sentencesCapitalized.push(sentence);
+                    });
+                    jQuery("#input").val(sentencesCapitalized.join(""));
+                    sentences = [];
+                } else if (textCase == "invert") {
+                    jQuery("#input").val(invertCase(jQuery("#input").val()));
+                }
+            }
+
+            var maxLength = 1000000;
+            jQuery('#max-length-chars').text(maxLength);
+            jQuery('textarea').attr('maxlength', maxLength)
+            jQuery('textarea').keyup(function () {
+                var textlen = jQuery(this).val().length;
+                jQuery('#counting-chars').text(textlen);
+            });
+
+        // https://love2dev.com/blog/javascript-touppercase-tolowercase/
+        // https://danielmiessler.com/blog/a-list-of-different-case-types/
+        // https://flaviocopes.com/how-to-uppercase-first-letter-javascript/
+        // https://getbootstrap.com/docs/4.0/components/forms/
+        // https://www.w3resource.com/jquery-exercises/part1/jquery-practical-exercise-9.php
+
+        </script>
+    </div><!-- end box-container -->
+
+    <script>
+        // Global functions for tools
+        function copyToClipboard(idElement = 'output') {
+            let copyText = document.getElementById(idElement);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+
+            let check = document.getElementById("check");
+            check.classList.remove('none');
+            setTimeout(() => {
+                check.classList.add('none');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

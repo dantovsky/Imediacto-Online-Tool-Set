@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="boot.css"> -->
+    <link rel="stylesheet" href="../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../shared/css/styles.css">
+    <!-- Icons Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Lowercase Converter | Convert to Lowercase Letters</title>
+</head>
+
+<body>
+    <div class="box-container">
+        <h1>Lowercase Converter</h1>
+        <div class="boot">
+            <h2>Convert to lowercase letters</h2>
+            <p>
+                <strong>Lowercase Converter</strong> is an online tool to change your text from
+                <strong>uppercase to lowercase letters</strong> or convert from other letter case types like title case
+                or alternating letter case.
+            </p>
+            <h3 class="mb-0">Type a text to convert to lowercase<img
+                    src="https://www.imediacto.com/wp-content/uploads/2020/05/arrow-down.svg" width="30" height="30"
+                    class="arrow-down" alt="Arrow down to indicate the important textarea"></h3>
+
+            <div class="d-flex align-items-center flex-column">
+                <div class="w-100" style="position: relative;">
+                    <div class="counting-chars"><span id="counting-chars">0</span> / <span
+                            id="max-length-chars">10000</span></div>
+                    <textarea name="input" id="input" class="text-lowercase" cols="30" rows="7" maxlength="10000"
+                        placeholder="Type your text here to convert to lowercase..."></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 mt-1">
+                    <div class="inline-flex">
+                        <div class="div-btn mr-2" onclick="copyToClipboard('input')">
+                            <i class="fa fa-copy"></i> Copy to clipboard
+                        </div>
+                        <div id="check" class="none"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="more-notes">
+                <h2>How Does this Lower Case Conversion Tool Work?</h2>
+                <p>The text area automatically converts all text entries to lowercase as you type text or paste text
+                    directly into it. After getting the text converted to lowercase, click on the button below to copy
+                    it to the clipboard.
+                </p>
+                <p>
+                    Try our most complete <strong><a href="https://www.imediacto.com/tools/text-tools/case-converter">case converter online tool</a></strong> that allows you to perform various types of conversion in
+                    a single tool.
+                </p>
+            </div>
+            <div class="notes">
+                <div class="image"></div>
+                <div class="message">
+                    <p>
+                        Send me your feedback about this <strong>lowercase converter tool</strong> and let me know if
+                        this application works as you need it. If you need any improvement for this online tool, send me
+                        a message in the comments section.
+                        <!-- <br>
+                        You can learn about how this online tool works or contribute improving the Case Converter
+                        by programming some new feature or fixing bugs. For that, go to Github on <a
+                            href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/002-html-list-generator"
+                            target="_blank">Github >> Case Converter</a> and make a pull request. This will be
+                        great! -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div><!-- end box-container -->
+
+    <script>
+        // Global functions for tools
+        function copyToClipboard(idElement = 'output') {
+            let copyText = document.getElementById(idElement);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+
+            let check = document.getElementById("check");
+            check.classList.remove('none');
+            setTimeout(() => {
+                check.classList.add('none');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap");
+
+/* Estilos para dev */
+.box-container {
+  width: 62%;
+  margin-right: auto;
+  margin-left: auto;
+}
+/* **************** */
 
 /* font-family: 'Open Sans', sans-serif;
 font-family: 'Ubuntu', sans-serif; */
@@ -14,100 +22,320 @@ p {
     margin-bottom: 15px;
 } */
 * {
-    font-family: 'Open Sans', sans-serif;
-    /* font-family: 'Ubuntu', sans-serif; */
+  font-family: "Open Sans", sans-serif;
+  /* font-family: 'Ubuntu', sans-serif; */
 }
+
+.boot input.custom-symbol {
+  width: 100%;
+  background-color: #ebe0ff;
+  padding: 4px 8px;
+}
+.boot hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+.single h3, h3 { font-size: 1.35rem; margin-top: 24px; }
+/* ****************************
+	CUSTOM COLORS THEME
+******************************* */
+/* Padrao dos botoes */
+.boot button.btn {
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px 0px #888 !important;
+  padding: 4px 20px;
+  text-transform: unset !important;
+  font-family: 'Ubuntu' !important;
+}
+.boot button.btn-success {
+  background-color: #8c52ff;
+}
+.boot .btn-success:hover {
+  background-color: #562cb4 !important;
+}
+/* radio button */
+.boot .custom-control-input:checked~.custom-control-label::before {
+  color: #fff;
+  border-color: #8c52ff !important;
+  background-color: #8c52ff !important;
+}
+/* cor do h2 das paginas de categoria */
+.et_color_scheme_green a {
+  color: #000;
+}
+
 /* ****************************
 		POSTS (TOOLS)
 ******************************* */
+
 .notes {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around !important;
-    margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around !important;
+  margin-top: 50px;
 }
 .notes .image {
-    width: 50px;
-    height: 50px;
-    min-width: 50px;
-    background-color: #dedede;
-    background-image: url('https://www.imediacto.com/wp-content/uploads/2015/01/Dante-com-a-viola-2.jpg');
-    background-size: cover;
-    border-radius: 50px;
-    margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  background-color: #dedede;
+  background-image: url("https://www.imediacto.com/wp-content/uploads/2020/04/dante-marinho-online-tools-150x150.jpg");
+  background-size: cover;
+  border-radius: 50px;
+  margin-top: 10px;
+  position: relative;
 }
-/* .notes .imagem:after {
-    content: "Dante Marinho";
-    position: relative;
-    bottom: -50px;
-    left: 0;
-    font-size: 12px;
-} */
-.notes .message{
-    background: #dedede;
-    /*line-height: 1.6em; */ 
-    border-radius: 7px;
-    height: auto;
-    padding: 25px;
-    position: relative;
-    margin-left: 25px;
-    width: min-content;
-    flex-grow: 1;
-    transition: all .8s ease;
+.notes .image:after {
+  content: "Dante Marinho";
+  position: absolute;
+  width: max-content;
+  bottom: -25px;
+  left: -17px;
+  font-size: smaller;
+  font-family: Ubuntu;
+}
+.notes .message {
+  background: #dedede;
+  border-radius: 7px;
+  height: auto;
+  padding: 25px;
+  position: relative;
+  margin-left: 25px;
+  width: min-content;
+  flex-grow: 1;
+  transition: all 0.8s ease;
 }
 /* Triangulo */
-.notes .message:after{
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    /*Faz seta "apontar para baixo. Definir o valor como 'top' fará ela "apontar para cima" */
-    /*Aqui entra a cor da "aba" do balão */
-    border-right: 20px solid #dedede;
-    left: -18px;
-    top: 18px;
+.notes .message:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  /*Faz seta "apontar para baixo. Definir o valor como 'top' fará ela "apontar para cima" */
+  /*Aqui entra a cor da "aba" do balão */
+  border-right: 20px solid #dedede;
+  left: -18px;
+  top: 18px;
 }
 
 @media screen and (max-width: 680px) {
-    .notes {
-        flex-direction: column;
-    }
-    .notes .image {
-        align-self: center;
-    }
-    .notes .message {
-        width: unset;
-        margin-top: 30px;
-        margin-left: auto;
-    }
-    .notes .message:after {
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        border-bottom: 20px solid #dedede;
-        top: -35px;
-        left: calc(50% - 15px);
-    }
+  .notes {
+    flex-direction: column;
+  }
+  .notes .image {
+    align-self: center;
+  }
+  .notes .message {
+    width: unset;
+    margin-top: 45px;
+    margin-left: auto;
+  }
+  .notes .message:after {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid #dedede;
+    top: -35px;
+    left: calc(50% - 15px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boot .flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .boot .flex-row .custom-control {
+    display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  }
 }
 
 /* ******** */
 
 .boot input,
 .boot textarea {
-    display: block;
-    padding: 12px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 100%;
-    margin-bottom: 15px;
+  display: block;
+  border-radius: 4px;
+  padding: 12px;
+  box-shadow: 1px 1px 4px 0px #999999 !important;
+  background-color: #4d5866;
+  color: #f0f0f0;
+  width: 100%;
+  border: none !important;
 }
 
 .boot button {
-    padding: 5px;
-    text-transform: uppercase;
+  padding: 5px;
+  text-transform: uppercase;
 }
 
+.boot button.btn {
+  text-transform: unset !important;
+  font-family: "Ubuntu" !important;
+}
+
+.boot button.btn-success {
+  background-color: #8c52ff;
+}
+
+.boot .btn-success:hover {
+  background-color: #562cb4 !important;
+}
+
+.boot .help-text {
+  font-size: 1.45em;
+  color: #b5b5b5;
+}
+
+.boot span.help-text {
+  color: #8c52ff;
+  font-size: initial;
+  display: block;
+}
+
+.boot .hidden {
+  visibility: hidden !important;
+  opacity: 0;
+}
+
+.boot .show {
+  visibility: visible !important;
+  opacity: 1;
+}
+
+.boot .none {
+  display: none !important;
+}
+
+.boot .block {
+  display: block !important;
+}
+
+.boot .inline-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#check {
+  background: url("https://www.imediacto.com/wp-content/uploads/2020/04/check.png");
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.boot .div-btn {
+  cursor: pointer;
+  color: #8c52ff;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #afafaf;
+  text-transform: none;
+}
+
+textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: #afafaf;
+}
+
+textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #afafaf;
+}
+
+textarea:-ms-input-placeholder {
+  color: #afafaf;
+}
+
+textarea::placeholder {
+  color: #afafaf;
+}
+
+/* Case Converter
+ * ********************************************* */
+img.arrow-down {
+  display: none;
+  margin-top: 2px;
+  margin-bottom: -28px;
+  z-index: 1;
+  position: relative;
+}
+.case-name,
+.ex {
+  font-weight: 900;
+  color: #2c3e50;
+}
+span.ex {
+  margin-top: 10px;
+  display: inline-block;
+}
+.custom-radio {
+  padding: 2px 8px;
+  border-radius: 4px;
+  object-fit: fill;
+}
+.custom-radio:hover {
+  display: inline-flex;
+  margin-right: 1rem;
+  background-color: #8c52ff28;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #8c52ff;
+}
+.label-case {
+  font-weight: 900;
+  cursor: pointer;
+  margin-left: 0px;
+}
+.label-case:hover {
+  color: #8c52ff;
+}
+.buttons {
+  padding: 8px;
+}
+.counting-chars {
+  color: rgb(110, 110, 110);
+  position: absolute;
+  right: 8px;
+  top: -25px;
+  z-index: 0;
+}
+/* Bootstrap */
+.custom-control {
+  position: relative;
+  display: block;
+  min-height: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+.custom-control-inline {
+  display: inline-flex;
+  margin-right: 1rem;
+}
+.custom-control-input {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 1rem;
+  height: 1.25rem;
+  opacity: 0;
+}
+
+/* *************** */
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 620px) {
+  img.arrow-down {
+    display: inline-block;
+  }
+}
+/*
 .boot .custom-tooltip {
     position: relative;
     display: inline-block;
@@ -146,52 +374,4 @@ p {
     visibility: visible;
     opacity: 1;
 }
-
-.boot .btn {
-    text-transform: unset !important;
-    font-family: Arial !important
-}
-
-.boot .help-text {
-    font-size:1.45em;
-    color:#b5b5b5
-}
-
-.boot span.help-text {
-    color: #8c52ff;
-    font-size: initial;
-    display: block;
-}
-
-.boot textarea {
-	box-shadow: 1px 1px 4px 0px #999999 !important;
-}
-.boot .hidden {
-    visibility: hidden !important;
-    opacity: 0;
-}
-
-.boot .show {
-    visibility: visible !important;
-    opacity: 1;
-}
-
-.boot .none {
-    display: none !important;
-}
-
-.boot .block {
-    display: block! important;
-}
-
-.boot .inline-flex {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-#check {
-    background: url('https://www.imediacto.com/wp-content/uploads/2019/11/check.png');
-    width: 24px;
-    height: 24px;
-}
+*/

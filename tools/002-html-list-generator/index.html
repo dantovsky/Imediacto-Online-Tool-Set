@@ -8,23 +8,27 @@
     <!-- <link rel="stylesheet" href="boot.css"> -->
     <link rel="stylesheet" href="../shared/css/boot.min.css">
     <link rel="stylesheet" href="../shared/css/styles.css">
+    <!-- Icons Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>HTML List Generator | HTML Converter to convert text to HTML</title>
 </head>
 
 <body>
-    <div class="boot">
-        <div class="container-fluid">
+    <div class="box-container">
+        <div class="boot">
             <h2>About the HTML List Generator</h2>
             <p>
                 <strong>HTML List Generator</strong> is an <strong>HTML converter online tool</strong> that
-                <strong>converts text to html list</strong> and others <strong>text list formats</strong>. Using this tool will
-                help you convert some text list and transform it to a unordered or ordered HTML list, as well these text list formats:
+                <strong>converts text to html list</strong> and others <strong>text list formats</strong>. Using this
+                tool will
+                help you convert some text list and transform it to a unordered or ordered HTML list, as well these text
+                list formats:
                 text separated by lines, spaces, commas, semicolons and some other custom symbols you want to use.
             </p>
-            <div class="row mb-3">
+            <div class="row">
                 <div class="col-12">
                     <h3>Input (insert plain text)</h3>
-                    <textarea id="input" class="materialize-textarea" rows="7"
+                    <textarea id="input" class="mb-2" rows="7"
                         placeholder="Insert a plain text here to convert it to a HTML list."></textarea>
                 </div>
             </div>
@@ -88,25 +92,24 @@
                         <label class="custom-control-label" for="radio11">Custom</label>
                     </div>
                     <div class="custom-control" style="width: 50%;">
-                        <input type="text" id="custom" placeholder="Insert a custom symbol" class="none">
+                        <input type="text" id="custom" placeholder="Insert a custom symbol" class="none custom-symbol">
                     </div>
-
                     <h3>Output extra options</h3>
                     <!-- Wrap in quotes -->
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="wrap-in-quotes"
                             onchange="toggleQuotes()">
                         <label class="custom-control-label" for="wrap-in-quotes">Wrap the words in quotes</label>
-                        
+
                         <div id="quote-options" class="none">
                             <div class="custom-control custom-radio">
                                 <input type="radio" id="doble-quotes" name="quotes" value="doble"
-                                class="custom-control-input">
+                                    class="custom-control-input">
                                 <label class="custom-control-label" for="doble-quotes">Doble quotes</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input type="radio" id="single-quotes" name="quotes" value="single"
-                                class="custom-control-input">
+                                    class="custom-control-input">
                                 <label class="custom-control-label" for="single-quotes">Single quotes</label>
                             </div>
                         </div>
@@ -117,32 +120,30 @@
             <div class="row mb-3">
                 <div class="col-12">
                     <button class="btn btn-success" onclick="convertToList()"
-                        area-label="Button to convert text to HTML list">Convert to list</button>
+                        area-label="Button to convert text to HTML list"><i class="fa fa-chevron-right"></i> Convert
+                        list</button>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-12">
-                    <h3>Output (HTML list)</h3>
-                    <textarea id="output" rows="7"></textarea>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-12">
+                    <h3>Output (HTML list or other list formats)</h3>
+                    <textarea class="mb-2" id="output" rows="7"></textarea>
                     <div class="inline-flex">
-                        <button class="btn btn-secondary mr-2" onclick="copyToClipboard()"
+                        <div class="div-btn mr-1" onclick="copyToClipboard()" title="Copy output to clipboard"
                             area-label="Copy the output to clipboard">
+                            <i class="fa fa-copy"></i>
                             Copy to clipboard
-                        </button>
-                        <div id="check" class="none">
-                            <!-- <img src="../shared/img/check.png" alt="Image check (action applyed)"> -->
                         </div>
+                        <div id="check" class="none"></div>
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="more-notes">
                 <p>
                     Notes: <br>
-                    The output text list options are generated with a space after the separator symbol. You can use the custom option to generate that output only with symbols without spaces.
+                    The output text list options are generated with a space after the separator symbol. You can use the
+                    custom option to generate that output only with symbols without spaces.
                 </p>
                 <p>
                     Example: type comma (,) on custom option and will be generated a list like (banana,apple,blueberry).
@@ -156,7 +157,7 @@
                         some specific need, then I can implement this new feature to you and improve this <strong>html
                             tool</strong>. Also, let me know if you have some need about other different <strong>text
                             tool / HTML tool</strong> or <strong>coding tool set</strong>.
-                            <br>
+                        <br>
                         You can learn about how this online tool works or contribute improving the HTML List Generator
                         by programming some new feature or fixing bugs. For that, go to Github on <a
                             href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/002-html-list-generator"
@@ -165,126 +166,125 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
-    <script>
-        function toggleCustomInput(showCustomInput) {
-            if (showCustomInput) {
-                document.getElementById('custom').classList.remove('none');
-            } else {
-                document.getElementById('custom').classList.add('none');
-            }
-        }
-
-        function toggleQuotes() {
-            console.log('clicou no chekbox');
-            
-            let quoteOption = document.getElementById('wrap-in-quotes');
-            if (quoteOption.checked) {
-                document.getElementById('quote-options').classList.remove('none');
-                document.getElementById('doble-quotes').checked = true;
-            } else {
-                document.getElementById('quote-options').classList.add('none');
-            }
-        }
-
-        function convertToList() {
-            let input = document.getElementById('input').value;
-            let textOrigin = document.querySelector('input[name="text-origin"]:checked').value;
-            let listType = document.querySelector('input[name="list-type"]:checked').value;
-            let listTypeCustom = ''
-            let quotes = ''
-
-            // Input sepearator
-            let separator = '';
-            if (textOrigin == 'lines') {
-                separator = '\n';
-            } else if (textOrigin == 'commas') {
-                separator = ',';
-            } else if (textOrigin == 'semicolons') {
-                separator = ';';
-            } else if (textOrigin == 'spaces') {
-                separator = ' ';
-            }
-
-            // Get quote type
-            if (document.getElementById('wrap-in-quotes').checked) {
-                checkboxQuotes = document.querySelector('input[name="quotes"]:checked').value;
-                if (checkboxQuotes == 'doble')
-                {
-                    quotes = '"'
+        </div><!-- end .boot -->
+        <script>
+            function toggleCustomInput(showCustomInput) {
+                if (showCustomInput) {
+                    document.getElementById('custom').classList.remove('none');
                 } else {
-                    quotes = '\''
+                    document.getElementById('custom').classList.add('none');
                 }
             }
 
-            let lines = input.split(separator);
-            let output = '';
+            function toggleQuotes() {
+                console.log('clicou no chekbox');
 
-            if (listType == 'ul' || listType == 'ol') {
-                output = `<${listType}>\n`;
-                lines.forEach(e => {
-                    output += `    <li>${e.trim()}</li>\n`
-                });
-                output += `</${listType}>`
-            } else {
+                let quoteOption = document.getElementById('wrap-in-quotes');
+                if (quoteOption.checked) {
+                    document.getElementById('quote-options').classList.remove('none');
+                    document.getElementById('doble-quotes').checked = true;
+                } else {
+                    document.getElementById('quote-options').classList.add('none');
+                }
+            }
 
-                if (listType == 'commas') {
-                    listType = ','
-                } else if (listType == 'semicolons') {
-                    listType = ';'
-                } else if (listType == 'custom') {
-                    listTypeCustom = document.getElementById('custom').value;
+            function convertToList() {
+                let input = document.getElementById('input').value;
+                let textOrigin = document.querySelector('input[name="text-origin"]:checked').value;
+                let listType = document.querySelector('input[name="list-type"]:checked').value;
+                let listTypeCustom = ''
+                let quotes = ''
+
+                // Input sepearator
+                let separator = '';
+                if (textOrigin == 'lines') {
+                    separator = '\n';
+                } else if (textOrigin == 'commas') {
+                    separator = ',';
+                } else if (textOrigin == 'semicolons') {
+                    separator = ';';
+                } else if (textOrigin == 'spaces') {
+                    separator = ' ';
                 }
 
-                lines.forEach(term => {
-
-                    // Apply the quotes if exists
-                    term = quotes + term.trim() + quotes;
-
-                    if (listType == 'lines') {
-                        output += `${term}\n`;
-                    } else if (listType == 'spaces') {
-                        output += `${term} `;
-                    } else if (listType == 'custom') {
-                        output += term + listTypeCustom;
-                    } else if (listType == ',' || listType == ';') {
-                        output += `${term}${listType} `;
+                // Get quote type
+                if (document.getElementById('wrap-in-quotes').checked) {
+                    checkboxQuotes = document.querySelector('input[name="quotes"]:checked').value;
+                    if (checkboxQuotes == 'doble') {
+                        quotes = '"'
+                    } else {
+                        quotes = '\''
                     }
-                });
+                }
+
+                let lines = input.split(separator);
+                let output = '';
+
+                if (listType == 'ul' || listType == 'ol') {
+                    output = `<${listType}>\n`;
+                    lines.forEach(e => {
+                        output += `    <li>${e.trim()}</li>\n`
+                    });
+                    output += `</${listType}>`
+                } else {
+
+                    if (listType == 'commas') {
+                        listType = ','
+                    } else if (listType == 'semicolons') {
+                        listType = ';'
+                    } else if (listType == 'custom') {
+                        listTypeCustom = document.getElementById('custom').value;
+                    }
+
+                    lines.forEach(term => {
+
+                        // Apply the quotes if exists
+                        term = quotes + term.trim() + quotes;
+
+                        if (listType == 'lines') {
+                            output += `${term}\n`;
+                        } else if (listType == 'spaces') {
+                            output += `${term} `;
+                        } else if (listType == 'custom') {
+                            output += term + listTypeCustom;
+                        } else if (listType == ',' || listType == ';') {
+                            output += `${term}${listType} `;
+                        }
+                    });
+                }
+
+                // Remove the last symbol
+                if (listType == 'lines' || listType == 'spaces') {
+                    output = output.substring(0, output.length - 1);
+                } else if (listType == ',' || listType == ';') {
+                    output = output.substring(0, output.length - 2);
+                } else if (listType == 'custom') {
+                    output = output.substring(0, output.length - listTypeCustom.length);
+                }
+
+                document.getElementById('output').value = output;
+                copyToClipboard();
             }
 
-            // Remove the last symbol
-            if (listType == 'lines' || listType == 'spaces') {
-                output = output.substring(0, output.length - 1);
-            } else if (listType == ',' || listType == ';') {
-                output = output.substring(0, output.length - 2);
-            } else if (listType == 'custom') {
-                output = output.substring(0, output.length - listTypeCustom.length);
+            function copyToClipboard() {
+                let copyText = document.getElementById("output");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+
+                let check = document.getElementById("check");
+                check.classList.remove('none');
+                setTimeout(() => {
+                    check.classList.add('none');
+                }, 3000);
             }
 
-            document.getElementById('output').value = output;
-            copyToClipboard();
-        }
-
-        function copyToClipboard() {
-            let copyText = document.getElementById("output");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-
-            let check = document.getElementById("check");
-            check.classList.remove('none');
-            setTimeout(() => {
-                check.classList.add('none');
-            }, 3000);
-        }
-
-        // https://stackoverflow.com/questions/3547035/javascript-getting-html-form-values
-        // https://stackoverflow.com/questions/9618504/how-to-get-the-selected-radio-button-s-value
-        // https://getbootstrap.com/docs/4.3/components/forms/
-        // https://html.form.guide/html-form/html-checkbox-events.html
-    </script>
+            // https://stackoverflow.com/questions/3547035/javascript-getting-html-form-values
+            // https://stackoverflow.com/questions/9618504/how-to-get-the-selected-radio-button-s-value
+            // https://getbootstrap.com/docs/4.3/components/forms/
+            // https://html.form.guide/html-form/html-checkbox-events.html
+        </script>
+    </div><!-- end .box-container -->
 </body>
 
 </html>

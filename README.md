@@ -18,11 +18,11 @@ Everyone who desire contribute to this project is welcome to:
 
 ## Online Tools Available
 
-- HTML List Generator - Convert Text to HTML  
-https://www.imediacto.com/tools/html-tools/html-list-generator-convert-text-to-html
-
-- Remove Line Breaks Online - Line Breaks Remover  
-https://www.imediacto.com/tools/text-tools/remove-line-breaks-online
-
-- CSV to JSON Converter  
-https://www.imediacto.com/tools/text-tools/csv-to-json-converter
+- [HTML List Generator](https://www.imediacto.com/tools/html-tools/html-list-generator-convert-text-to-html)  
+HTML List Generator is an Online Tool that converts and transforms plain text to ordered or unordered HTML List and others Text List Formats.
+- [Remove Line Breaks Online](https://www.imediacto.com/tools/text-tools/remove-line-breaks-online)  
+This application removes line breaks from a text, leaving all text on a single line. This can be useful, for example, when you want to copy text from a PDF.
+- [CSV to JSON Converter](https://www.imediacto.com/tools/text-tools/csv-to-json-converter)  
+Easily convert your CSV file to JSON with this Online Tool. You can chose a "file.csv" or put directly the text in CSV format (separated by commas).
+- [Case Converter](https://www.imediacto.com/tools/text-tools/case-converter)  
+Case Converter is a Text Online Tool to change case letters. You can convert to uppercase, lowercase, sentence case, capital letters and invert text case.
