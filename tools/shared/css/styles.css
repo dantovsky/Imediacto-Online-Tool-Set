@@ -243,19 +243,23 @@ textarea::-webkit-input-placeholder {
 textarea:-moz-placeholder {
   /* Firefox 18- */
   color: #afafaf;
+  text-transform: none;
 }
 
 textarea::-moz-placeholder {
   /* Firefox 19+ */
   color: #afafaf;
+  text-transform: none;
 }
 
 textarea:-ms-input-placeholder {
   color: #afafaf;
+  text-transform: none;
 }
 
 textarea::placeholder {
   color: #afafaf;
+  text-transform: none;
 }
 
 /* Case Converter

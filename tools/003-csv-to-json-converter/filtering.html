@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Filtering Fields</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../shared/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .element-to-exclude {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body class="box-container">
+
+    <div class="boot">
+        <p>Click the button to create a Text Field.</p>
+
+        <div class="textarea">
+            <!-- Input textarea -->
+            <textarea class="mb-2" name="area-csv" id="area-csv" cols="30" rows="5"
+                placeholder="Type here your text in comma separated format"></textarea>
+            <button class="btn btn-success mb-2" onclick="stringCSVtoJSON();"
+                aria-label="Button to convert CSV to JSON">
+                <i class="fa fa-chevron-right"></i>
+                Convert to JSON
+            </button>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="filtering" onchange="toggleFieldsToIgnore(event)" />
+            <label class="custom-control-label" for="filtering">I want to ignore some fields</label>
+            <div id="fields-to-exclude"></div>
+        </div>
+        <textarea class="mb-2" name="output" id="output" cols="30" rows="10"></textarea>
+
+    </div>
+
+    <script>
+        let areaJSON = document.getElementById('output');
+        document.getElementById('area-csv').value =
+            `nome, idade, tamanho, sexo, telefone
+Dante Marinho, 36, 1.78, Masc, 919341742
+Rita Pinheiro, 29, 1.62, Fem, 927149094`
+
+        function toggleFieldsToIgnore(event) {
+
+            if (event.target.checked) {
+
+                // const fields = document.getElementById('area-csv').value.split('\n').shift(); // get first line
+                const textarea = document.getElementById('area-csv');
+                if (textarea.value == '') {
+                    return false
+                }
+
+                textarea.focus()
+                textarea.setSelectionRange(0, textarea.value.indexOf('\n'))
+                textarea.blur()
+                const fieldsSelected = window.getSelection().toString()
+                const fields = fieldsSelected.split(',').map(field => field.trim());
+                console.log(fields);
+
+                // Generate a checkbox for each CSV field
+                fields.forEach((campo, index) => {
+
+                    const divElem = document.createElement('div');
+                    divElem.setAttribute('class', 'element-to-exclude custom-control custom-checkbox');
+
+                    const iputElem = document.createElement("input");
+                    iputElem.setAttribute("type", "checkbox");
+                    iputElem.setAttribute("id", index);
+                    iputElem.setAttribute("class", "custom-control-input");
+                    divElem.appendChild(iputElem);
+
+                    const labelElem = document.createElement("label");
+                    labelElem.setAttribute("for", index);
+                    labelElem.setAttribute("class", "custom-control-label");
+                    labelElem.innerText = campo;
+                    divElem.appendChild(labelElem);
+
+                    // Add the new checkbox element to group div
+                    document.getElementById('fields-to-exclude').appendChild(divElem);
+                });
+            } else {
+                document.getElementById('fields-to-exclude').innerHTML = ''
+            }
+        }
+
+        function stringCSVtoJSON() {
+
+            csv = document.getElementById('area-csv').value;
+            let lines = csv.split("\n");
+            let result = [];
+            let headers = lines[0].split(",");
+
+            // Elements to exclude
+            const ignore = document.querySelectorAll('#fields-to-exclude .custom-control-input:checked')
+            const headersToIgnore = [...ignore].map(el => {
+                // return el.id.substring(el.id.indexOf('-') + 1, el.id.length) //use this if field ID is like field-0, field-1, ...
+                return parseInt(el.id)
+            })
+            console.log('headersToIgnore :: s', headersToIgnore)
+
+            const isFiltering = document.getElementById('filtering').checked ? true : false
+
+            for (let i = 1; i < lines.length; i++) {
+
+                let obj = {};
+                let currentline = lines[i].split(",");
+
+                for (let j = 0; j < headers.length; j++) {
+                    try {
+                        if (isFiltering) {
+                            if (!headersToIgnore.includes(j)) {
+                                if (!Number(currentline[j].trim())) {
+                                    // Case value is string
+                                    obj[headers[j].trim()] = currentline[j].trim();
+                                } else {
+                                    // Case value is a number
+                                    let n = Number(currentline[j].trim());
+                                    obj[headers[j].trim()] = n;
+                                }
+                            }
+                        } else {
+                            if (!Number(currentline[j].trim())) {
+                                // Case value is string
+                                obj[headers[j].trim()] = currentline[j].trim();
+                            } else {
+                                // Case value is a number
+                                let n = Number(currentline[j].trim());
+                                obj[headers[j].trim()] = n;
+                            }
+                        }
+                    } catch (error) {
+                        console.log('Has inconsistent data...');
+                    }
+                }
+                result.push(obj);
+            }
+
+            //return result; //JavaScript object
+            let json = JSON.stringify(result, undefined, 4); //JSON
+            areaJSON.value = json;
+        }
+    </script>
+
+</body>
+<!-- Help links
+https://stackoverflow.com/questions/48688950/get-checked-checkboxes-inside-an-element
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus
+ -->
+
+</html>
+
+<!-- Copy simple version
+
+function myFunction() {
+
+    const fields = ['nome', 'idade', 'sexo'];
+
+    fields.forEach(campo => {
+        console.log(campo)
+
+        var div = document.createElement('div');
+        div.setAttribute('class', 'element-to-exclude');
+
+        var x = document.createElement("INPUT");
+        x.setAttribute("type", "checkbox");
+        x.setAttribute("id", "campo-" + campo);
+        div.appendChild(x);
+
+        var l = document.createElement("label");
+        l.setAttribute("for", "campo-" + campo);
+        l.innerText = campo
+        div.appendChild(l);
+
+        // Add element to the body
+        document.body.appendChild(div);
+    });
+}
+
+-->
+
+
+<!-- Parte do filtro dividida em dois ciclos
+
+const isFiltering = document.getElementById('filtering').checked ? true : false
+
+if (isFiltering) {
+    console.log('filtering');
+
+    for (let i = 1; i < lines.length; i++) {
+
+        let obj = {};
+        let currentline = lines[i].split(",");
+
+        for (let j = 0; j < headers.length; j++) {
+
+            if (!headersToIgnore.includes(j)) {
+                try {
+                    if (!Number(currentline[j].trim())) {
+                        // Case value is string
+                        obj[headers[j].trim()] = currentline[j].trim();
+                    } else {
+                        // Case value is a number
+                        let n = Number(currentline[j].trim());
+                        obj[headers[j].trim()] = n;
+                    }
+                } catch (error) {
+                    console.log('Has inconsistent data...');
+                }
+            }
+        }
+        result.push(obj);
+    }
+} else {
+    console.log('not filtering');
+
+    for (let i = 1; i < lines.length; i++) {
+
+        let obj = {};
+        let currentline = lines[i].split(",");
+
+        for (let j = 0; j < headers.length; j++) {
+
+            try {
+                if (!Number(currentline[j].trim())) {
+                    // Case value is string
+                    obj[headers[j].trim()] = currentline[j].trim();
+                } else {
+                    // Case value is a number
+                    let n = Number(currentline[j].trim());
+                    obj[headers[j].trim()] = n;
+                }
+            } catch (error) {
+                console.log('Has inconsistent data...');
+            }
+        }
+        result.push(obj);
+    }
+}
+-->
