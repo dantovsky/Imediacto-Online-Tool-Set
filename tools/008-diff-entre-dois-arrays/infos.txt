@@ -1,0 +1,26 @@
+Saber os itens que há num array em relação a outro, ou saber o que tem em comum.
+
+How to get the difference between two arrays in JavaScript?
+https://stackoverflow.com/questions/1187518/how-to-get-the-difference-between-two-arrays-in-javascript
+
+JavaScript: Find the difference of two arrays
+https://www.w3resource.com/javascript-exercises/javascript-array-exercise-23.php
+
+// ---
+
+Mostra o que tem em B e não tem em A:
+
+const a = [1, 2, 3]
+const b = [2, 4, 5]
+
+const diffB = b.filter(n => !a.includes(n))
+
+Keyrods:
+compare lists                   2900
+compare two lists	            1900		40% difficult
+find distinct list elements     0
+list comparison tool
+
+Links:
+http://barc.wi.mit.edu/tools/compare/index.php
+http://www.listdiff.com/compare-2-lists-difference-tool

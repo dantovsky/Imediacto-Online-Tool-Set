@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../shared/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Diff Arrays JS</title>
+    <style>
+        pre {
+            width: 100%;
+            height: 250px;
+            box-shadow: 5px 5px 12px gray;
+        }
+
+        #adifb,
+        #bdiffa {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="boot">
+    <div class="container">
+        <h1>Diff Arrays JS</h1>
+        <p>Diff between two arrays.</p>
+
+        <div class="row">
+            <div class="col-12">
+                <button onclick="toggleLines()">Toggle lines</button>
+            </div>
+            <div class="col-sm-6">
+                <h2>Array A</h2>
+                <textarea id="input-a" name="input-a" id="" cols="30" rows="10">
+z
+b
+c</textarea>
+            </div>
+            <div class="col-sm-6">
+
+                <h2>Array B</h2>
+                <textarea id="input-b" name="input-a" id="" cols="30" rows="10">
+b
+c
+d
+e
+f</textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button onclick="applyDiffImproved()" class="mt-2">Apply Diff</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>A Diff B</h2>
+                <pre><div id="adiffb"></div></pre>
+            </div>
+            <div class="col-sm-6">
+                <h2>B Diff A</h2>
+                <pre><div id="bdiffa"></div></pre>
+            </div>
+            <div class="col-sm-6">
+                <h2>A Inter B</h2>
+                <pre><div id="ainterb"></div></pre>
+            </div>
+            <div class="col-sm-6">
+                <h2>A Union B</h2>
+                <pre><div id="aunionb"></div></pre>
+            </div>
+
+            <div class="col-sm-6">
+                <h2>Difference</h2>
+                <pre><div id="difference"></div></pre>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let separator = '\n'
+        // let inputA = ''
+        // let inputB = ''
+
+        function xDiffY(x, y) {
+            return x.filter(n => !y.includes(n))
+        }
+
+        function aDiffB(a, b) {
+            const aDiffB = xDiffY(a, b)
+            document.getElementById('adiffb').innerHTML = aDiffB.join(separator)
+            console.log('aDiffB', aDiffB)
+        }
+
+        function bDiffA(b, a) {
+            const bDiffA = xDiffY(b, a)
+            document.getElementById('bdiffa').innerHTML = bDiffA.join(separator)
+            console.log('bDiffA', bDiffA)
+        }
+
+        function applyDiff() {
+            const inputA = document.getElementById('input-a').value.split('\n')
+            const inputB = document.getElementById('input-b').value.split('\n')
+
+            aDiffB(inputA, inputB)
+            bDiffA(inputB, inputA)
+        }
+
+        // Improved
+        function applyDiffImproved() {
+            const inputA = document.getElementById('input-a').value.split('\n')
+            const inputB = document.getElementById('input-b').value.split('\n')
+
+            aDiffB = []
+            bDiffA = []
+            aInterB = []
+
+            // Passing through arrayA
+            for (item in inputA) {
+                if (!inputB.includes(inputA[item])) {
+                    aDiffB.push(inputA[item])
+                } else {
+                    aInterB.push(inputA[item])
+                }
+            }
+
+            // Passing through arrayB
+            for (item in inputB) {
+                if (!inputA.includes(inputB[item])) {
+                    bDiffA.push(inputB[item])
+                }
+            }
+
+            // Writing results
+            document.getElementById('adiffb').innerHTML = aDiffB.join(separator)
+            document.getElementById('bdiffa').innerHTML = bDiffA.join(separator)
+            document.getElementById('ainterb').innerHTML = aInterB.join(separator)
+            document.getElementById('aunionb').innerHTML = [...new Set(inputA.concat(inputB))].sort().join(separator)
+            document.getElementById('difference').innerHTML = aDiffB.concat(bDiffA).sort().join(separator)
+        }
+
+        function toggleLines() {
+            console.log('aqui')
+            const elems = document.querySelectorAll('.row > div')
+            elems.forEach(elem =>{
+                elem.classList.contains('col-sm-12') ? elem.classList.remove('col-sm-12') : elem.classList.add('col-sm-12')
+            })
+        }
+
+        // https://www.w3resource.com/javascript-exercises/javascript-array-exercise-23.php
+        // https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+
+    </script>
+</body>
+
+</html>

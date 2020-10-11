@@ -301,7 +301,7 @@
                     fileType = file.type;
                     fileExtension = fileNameBox.substring(fileNameBox.lastIndexOf('.'), fileNameBox.length)
 
-                    // Exit process if the file type is not CSV
+                    // Exit process if the file type is not allowed (CSV and TXT)
                     if (!isfileTypeAndAllowed(fileType)) {
                         return false;
                     }
@@ -320,7 +320,7 @@
             // Last Step :: Convert the CSV string to JSON and print on textarea
             function stringCSVtoJSON() {
 
-                csv = areaCSV.value;
+                csv = areaCSV.value.trim();
                 let lines = csv.split("\n");
                 let result = [];
                 let headers = lines[0].split(",");
@@ -363,7 +363,7 @@
                                 }
                             }
                         } catch (error) {
-                            console.log('Has inconsistent data...');
+                            console.log('Has inconsistent data... ', error);
                         }
                     }
                     result.push(obj);
@@ -375,7 +375,7 @@
             }
 
             function toggleFieldsToIgnore(event) {
-
+                event.preventDefault();
                 if (event.target.checked) {
 
                     // const fields = document.getElementById('area-csv').value.split('\n').shift(); // get first line
@@ -387,9 +387,10 @@
                     textarea.focus({ preventScroll: true })
                     textarea.setSelectionRange(0, textarea.value.indexOf('\n'))
                     textarea.blur()
-                    const fieldsSelected = window.getSelection().toString()
-                    const fields = fieldsSelected.split(',').map(field => field.trim());
-
+                    // const fieldsSelected = window.getSelection().toString() // not working on Mozilla Firefox
+                    const fieldsSelected = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd); // more browser compatible way
+                    const fields = fieldsSelected.split(',').map(field => field.trim())
+                    
                     // Generate a checkbox for each CSV field
                     fields.forEach((campo, index) => {
 
@@ -436,8 +437,10 @@
 
             function isfileTypeAndAllowed(fileType) {
 
+                console.log('filetype: ', fileType)
+
                 // Exit process if the file type is not CSV
-                const allowedFileTypes = ['text/csv', 'text/plain']; // 'text/comma-separated-values'
+                const allowedFileTypes = ['text/csv', 'text/comma-separated-values', 'application/vnd.ms-excel', 'text/plain']; // 'text/comma-separated-values'
 
                 if (!(allowedFileTypes.includes(fileType))) { /* && fileExtension != '.csv' */
                     holder.classList.add('input-error');
@@ -501,6 +504,7 @@
             // https://stackoverflow.com/questions/48688950/get-checked-checkboxes-inside-an-element
             // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
             // https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus
+            // https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox
         </script>
 
         <script>

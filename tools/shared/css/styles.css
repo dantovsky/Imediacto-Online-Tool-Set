@@ -26,6 +26,10 @@ p {
   /* font-family: 'Ubuntu', sans-serif; */
 }
 
+.boot h3, .boot .h3 {
+  font-size: 1.45rem;
+}
+
 .boot input.custom-symbol {
   width: 100%;
   background-color: #ebe0ff;
@@ -48,11 +52,14 @@ p {
   text-transform: unset !important;
   font-family: 'Ubuntu' !important;
 }
-.boot button.btn-success {
+.boot button.btn-success, .boot .btn-success:disabled {
   background-color: #8c52ff;
 }
 .boot .btn-success:hover {
   background-color: #562cb4 !important;
+}
+.boot .btn-success, .boot .btn-success:hover, .boot .btn-success:disabled {
+  border-color: transparent;
 }
 /* radio button */
 .boot .custom-control-input:checked~.custom-control-label::before {
@@ -160,13 +167,16 @@ p {
 
 .boot input,
 .boot textarea {
-  display: block;
+  /* display: block; */
   border-radius: 4px;
   padding: 12px;
+  width: 100%;
+}
+
+.boot textarea {
   box-shadow: 1px 1px 4px 0px #999999 !important;
   background-color: #4d5866;
   color: #f0f0f0;
-  width: 100%;
   border: none !important;
 }
 

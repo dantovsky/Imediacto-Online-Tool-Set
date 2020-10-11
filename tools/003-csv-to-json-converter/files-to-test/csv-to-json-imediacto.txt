@@ -1,3 +1,0 @@
-aaaa,bbb
-oiii,olaaa
-hello, hiii

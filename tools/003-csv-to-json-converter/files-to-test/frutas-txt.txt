@@ -1,0 +1,6 @@
+﻿nome,quantidade,preço
+banana,5,1.50
+manga,4,3.20
+pêssego,10,1.80
+pêra,15,1.50
+melancia,1,2.57
