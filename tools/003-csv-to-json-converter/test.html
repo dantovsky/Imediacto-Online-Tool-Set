@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>a Link with JSON Download</title>
+    <style>
+        i.fa {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Download</h1>
+    <i class="fa fa-download" onclick="foo()"> Baixar como JSON</i> 
+    
+    <script>
+        function foo() {
+            const json = { name: "Super Mario", tel: 999888777 }
+ 
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(json, 0, 4)));
+            element.setAttribute('download', 'json-file.json');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+</body>
+</html>
