@@ -379,6 +379,17 @@ span.ex {
     display: inline-block;
   }
 }
+
+/*
+RESPONSIVE
+******************************* */
+
+@media screen and (max-width: 575px) {
+    .hide-on-xs {
+        display: none;
+    }
+}
+
 /*
 .boot .custom-tooltip {
     position: relative;

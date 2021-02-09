@@ -59,19 +59,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 mb-3 d-none d-sm-block">
+            <div class="col-12 mb-3 hide-on-xs">
                 <div class="div-btn mr-1 mr-2" title="Switch view">
                     <i class="fa fa-list" onclick="toggleLines()"> <span>Switch view</span></i>
                 </div>
             </div>
             <div class="col-sm-6 mb-3">
                 <h2>List A</h2>
-                <textarea id="input-a" name="input-a" id="" cols="30" rows="10"></textarea>
+                <textarea id="input-a" name="input-a" cols="30" rows="10" placeholder="Insert items for list A"></textarea>
             </div>
             <div class="col-sm-6 mb-3">
 
                 <h2>List B</h2>
-                <textarea id="input-b" name="input-a" id="" cols="30" rows="10"></textarea>
+                <textarea id="input-b" name="input-a" cols="30" rows="10" placeholder="Insert items for list B"></textarea>
             </div>
         </div>
         <div class="row">
@@ -107,16 +107,16 @@
         </div>
         <div class="row mb-3">
             <div class="col-sm-12">
-                <div class="inline-flex space-between mt-2">
+                <div class="flex space-between mt-2">
                     <button onclick="applyDiffImproved()" class="btn btn-success mr-2">
-                        <i class="fa fa-chevron-right"></i> Apply Diff
+                        <i class="fa fa-chevron-right"></i> Apply diff
                     </button>
-                    <div class="inline-flex">
+                    <div class="flex">
                         <div class="div-btn mr-1" onclick="sortAllItems(false)" title="Sort all items asc" area-label="Sort items">
-                            <i class="fa fa-sort-amount-asc"> <span class="d-none d-sm-inline-block">Sort all asc</span></i>
+                            <i class="fa fa-sort-amount-asc"> <span class="hide-on-xs">Sort all asc</span></i>
                         </div>
                         <div class="div-btn mr-1" onclick="sortAllItems(true)" title="Sort all items asc" area-label="Sort items">
-                            <i class="fa fa-sort-amount-desc"> <span class="d-none d-sm-inline-block">Sort all desc</span></i>
+                            <i class="fa fa-sort-amount-desc"> <span class="hide-on-xs">Sort all desc</span></i>
                         </div>
                     </div>
                 </div>
@@ -124,9 +124,9 @@
         </div>
         <div class="row">
             <div class="col-sm-6 mt-3">
-                <h2>A diff B</h2>
-                <pre><div id="adiffb"><span class="help-text">Values in A only</span></div></pre>
-                <div class="inline-flex">
+                <h2 title="A minus B">A diff B</h2>
+                <pre title="A minus B"><div id="adiffb"><span class="help-text">Values in A only</span></div></pre>
+                <div class="flex">
                     <div class="div-btn mr-1" onclick="sortItems('adiffb')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
                     </div>
@@ -140,9 +140,9 @@
                 </div>
             </div>
             <div class="col-sm-6 mt-3">
-                <h2>B diff A</h2>
-                <pre><div id="bdiffa"><span class="help-text">Values in B only</span></div></pre>
-                <div class="inline-flex">
+                <h2 title="B minus A">B diff A</h2>
+                <pre title="B minus A"><div id="bdiffa"><span class="help-text">Values in B only</span></div></pre>
+                <div class="flex">
                     <div class="div-btn mr-1" onclick="sortItems('bdiffa')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
                     </div>
@@ -156,9 +156,9 @@
                 </div>
             </div>
             <div class="col-sm-6 mt-3">
-                <h2>A intersection B</h2>
-                <pre><div id="ainterb"><span class="help-text">Intersection of values ​​between A and B</span></div></pre>
-                <div class="inline-flex">
+                <h2 title="A intersection B">A &cap; B</h2>
+                <pre title="A intersection B"><div id="ainterb"><span class="help-text">Intersection of values ​​between A and B</span></div></pre>
+                <div class="flex">
                     <div class="div-btn mr-1" onclick="sortItems('ainterb')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
                     </div>
@@ -172,9 +172,9 @@
                 </div>
             </div>
             <div class="col-sm-6 mt-3">
-                <h2>A union B</h2>
-                <pre><div id="aunionb"><span class="help-text">Union of values ​​between A and B</span></div></pre>
-                <div class="inline-flex">
+                <h2 title="A union B">A &cup; B</h2>
+                <pre title="A union B"><div id="aunionb"><span class="help-text">Union of values ​​between A and B</span></div></pre>
+                <div class="flex">
                     <div class="div-btn mr-1" onclick="sortItems('aunionb')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
                     </div>
@@ -188,9 +188,9 @@
                 </div>
             </div>
             <div class="col-sm-6 mt-3">
-                <h2>Symmetric difference</h2>
-                <pre><div id="difference"><span class="help-text">Symmetric difference between A and B</span></div></pre>
-                <div class="inline-flex">
+                <h2 title="Symmetric difference">A &bigtriangleup; B</h2>
+                <pre title="Symmetric difference"><div id="difference"><span class="help-text">Symmetric difference between A and B</span></div></pre>
+                <div class="flex">
                     <div class="div-btn mr-1" onclick="sortItems('difference')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
                     </div>
@@ -208,27 +208,27 @@
         <h2>How does the Compare Two Lists tool work?</h2>
         <p>It will function normally according to the rules of the sets, in Mathematics. However, in this tool, you can also choose the list option, so that it is possible to work with repeated values. The following operations are performed:</p>
 
-        <div class="inline-flex mt-3">
+        <div class="flex mt-3">
             <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-a-minus-b.png" class="img-set" alt="Set: A minus B"><h3 class="mb-0 mt-0 pb-0">A minus B</h3>
         </div>
         <p>Returns the values ​​that are present only in list A.</p>
 
-        <div class="inline-flex mt-3">
+        <div class="flex mt-3">
             <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-b-minus-a.png" class="img-set" alt="Set: B minus A"><h3 class="mb-0 mt-0 pb-0">B minus A</h3>
         </div>
         <p>Returns the values ​​that are present only in list B.</p>
 
-        <div class="inline-flex mt-3">
+        <div class="flex mt-3">
             <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-intersection.png" class="img-set" alt="Set: A intersection B"><h3 class="mb-0 mt-0 pb-0">A intersection B</h3>
         </div>
         <p>They are represented by the values ​​that occur simultaneously in the two lists.</p>
 
-        <div class="inline-flex mt-3">
+        <div class="flex mt-3">
             <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-union.png" class="img-set" alt="Set: A union B"><h3 class="mb-0 mt-0 pb-0">A union B</h3>
         </div>
         <p>They are represented by all the values ​​present in both lists.</p>
 
-        <div class="inline-flex mt-3">
+        <div class="flex mt-3">
             <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-symmetric-difference.png" class="img-set" alt="Set: Symmetric diference between A and B"><h3 class="mb-0 mt-0 pb-0">Symmetric difference</h3>
         </div>
         <p>The symmetric difference of two sets is the set of elements that are in one of the sets, but not at its intersection.</p>
