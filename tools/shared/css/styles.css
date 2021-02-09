@@ -227,7 +227,7 @@ p {
   display: block !important;
 }
 
-.boot .inline-flex {
+.boot .flex {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -240,9 +240,13 @@ p {
   background-repeat: no-repeat;
   background-size: contain;
 }
-.boot .div-btn {
-  cursor: pointer;
-  color: #8c52ff;
+
+.check {
+    background: url("https://www.imediacto.com/wp-content/uploads/2020/04/check.png");
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 textarea::-webkit-input-placeholder {
@@ -339,6 +343,32 @@ span.ex {
   width: 1rem;
   height: 1.25rem;
   opacity: 0;
+}
+
+/* Compare Two Lists
+ * ********************************************* */
+
+.div-btn i.fa {
+    padding: 8px;
+    background-color: #8c52ff0d;
+}
+.div-btn i.fa:hover {
+    padding: 8px;
+    background-color: #8c52ff25;
+}
+
+.boot .div-btn {
+  cursor: pointer;
+  color: #8c52ff;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.img-set {
+    margin-right: 8px;
+    width: 39px;
 }
 
 /* *************** */

@@ -1,6 +1,6 @@
 // Global functions for tools
 // ---------------------------------------------
-function copyToClipboard(idElement = "output") {
+function copyToClipboard(idElement = "output", checkId = 'check') {
     let element = document.getElementById(idElement);
     const typeElement = element.tagName.toLowerCase()
 
@@ -14,7 +14,7 @@ function copyToClipboard(idElement = "output") {
         newTextarea.remove()
     }
 
-    let check = document.getElementById("check");
+    let check = document.getElementById(checkId);
     check.classList.remove("none");
     setTimeout(() => {
         check.classList.add("none");
@@ -27,21 +27,6 @@ function selectAndCopy(element) {
     document.execCommand("copy");
 }
 
-
-
-// function copyToClipboardCOPY(idElement = "output") {
-//     let copyText = document.getElementById(idElement);
-//     copyText.select();
-//     copyText.setSelectionRange(0, 99999);
-//     document.execCommand("copy");
-
-//     let check = document.getElementById("check");
-//     check.classList.remove("none");
-//     setTimeout(() => {
-//         check.classList.add("none");
-//     }, 3000);
-// }
-
 // Word count
 function wordCount(idElement, maxLength = 100000) {
     var maxLength = maxLength;
@@ -52,3 +37,18 @@ function wordCount(idElement, maxLength = 100000) {
         jQuery("#counting-chars").text(textlen);
     });
 }
+
+/* Old versions
+function copyToClipboard(idElement = 'output') {
+    let copyText = document.getElementById(idElement);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+
+    let check = document.getElementById("check");
+    check.classList.remove('none');
+    setTimeout(() => {
+        check.classList.add('none');
+    }, 3000);
+}
+*/

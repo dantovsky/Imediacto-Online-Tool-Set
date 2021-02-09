@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../shared/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Diff Arrays JS</title>
+    <style>
+        .boot pre {
+            height: 250px;
+            box-shadow: 5px 5px 12px gray;
+            padding: 12px;
+        }
+
+        .boot pre span.help-text {
+            color: #999;
+        }
+    </style>
+</head>
+
+<body class="boot">
+    <div class="container">
+        <h1>Compare Two Lists - Diff Arrays JS</h1>
+        <p>This <strong>list comparison tool</strong> allows you to <strong>compare two lists</strong> (arrays) to be able you analyze the <strong>difference between the two lists</strong>.
+            The program receives lists of the type string or number and after starting the comparison it is possible to sort the results.</p>
+
+        <div class="row">
+            <div class="col-md-6 col-12 col-sm-12 mb-3">
+                <h2>Input data structure</h2>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="sep1" name="items-separation" value="lines" class="custom-control-input"
+                        checked>
+                    <label class="custom-control-label" for="sep1">From lines</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="sep2" name="items-separation" value="commas" class="custom-control-input">
+                    <label class="custom-control-label" for="sep2">Separeted by commas</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="sep3" name="items-separation" value="spaces" class="custom-control-input">
+                    <label class="custom-control-label" for="sep3">Separeted by space</label>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 col-sm-12 mb-3">
+                <h2>Input data type</h2>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="string" name="data-type" value="string" class="custom-control-input"
+                        checked>
+                    <label class="custom-control-label" for="string">String</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="number" name="data-type" value="number" class="custom-control-input">
+                    <label class="custom-control-label" for="number">Number</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mb-3 d-none d-sm-block">
+                <div class="div-btn mr-1 mr-2" title="Switch view">
+                    <i class="fa fa-list" onclick="toggleLines()"> <span>Switch view</span></i>
+                </div>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <h2>List A</h2>
+                <textarea id="input-a" name="input-a" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="col-sm-6 mb-3">
+
+                <h2>List B</h2>
+                <textarea id="input-b" name="input-a" id="" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 mb-3">
+                <h2>Handle data as...</h2>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="set" name="set-or-list" value="set" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="set">As a set (no repeated elements)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="list" name="set-or-list" value="list" class="custom-control-input">
+                    <label class="custom-control-label" for="list">As a list (with repeated elements)</label>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 mb-3">
+                <h2>Output data separetad...</h2>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="output1" name="items-separation-output" value="lines"
+                        class="custom-control-input" checked>
+                    <label class="custom-control-label" for="output1">By lines</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="output2" name="items-separation-output" value="commas"
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="output2">By commas</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="output-" name="items-separation-output" value="spaces"
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="output-">By space</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <div class="inline-flex space-between mt-2">
+                    <button onclick="applyDiffImproved()" class="btn btn-success mr-2">
+                        <i class="fa fa-chevron-right"></i> Apply Diff
+                    </button>
+                    <div class="inline-flex">
+                        <div class="div-btn mr-1" onclick="sortAllItems(false)" title="Sort all items asc" area-label="Sort items">
+                            <i class="fa fa-sort-amount-asc"> <span class="d-none d-sm-inline-block">Sort all asc</span></i>
+                        </div>
+                        <div class="div-btn mr-1" onclick="sortAllItems(true)" title="Sort all items asc" area-label="Sort items">
+                            <i class="fa fa-sort-amount-desc"> <span class="d-none d-sm-inline-block">Sort all desc</span></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 mt-3">
+                <h2>A diff B</h2>
+                <pre><div id="adiffb"><span class="help-text">Values in A only</span></div></pre>
+                <div class="inline-flex">
+                    <div class="div-btn mr-1" onclick="sortItems('adiffb')" title="Sort items asc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-asc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('adiffb', true)" title="Sort items desc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-desc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('adiffb', 'check1')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
+                        <i class="fa fa-copy"></i>&nbsp;
+                    </div>
+                    <div id="check1" class="check none"></div>
+                </div>
+            </div>
+            <div class="col-sm-6 mt-3">
+                <h2>B diff A</h2>
+                <pre><div id="bdiffa"><span class="help-text">Values in B only</span></div></pre>
+                <div class="inline-flex">
+                    <div class="div-btn mr-1" onclick="sortItems('bdiffa')" title="Sort items asc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-asc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('bdiffa', true)" title="Sort items desc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-desc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('bdiffa', 'check2')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
+                        <i class="fa fa-copy"></i>&nbsp;
+                    </div>
+                    <div id="check2" class="check none"></div>
+                </div>
+            </div>
+            <div class="col-sm-6 mt-3">
+                <h2>A intersection B</h2>
+                <pre><div id="ainterb"><span class="help-text">Intersection of values ​​between A and B</span></div></pre>
+                <div class="inline-flex">
+                    <div class="div-btn mr-1" onclick="sortItems('ainterb')" title="Sort items asc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-asc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('ainterb', true)" title="Sort items desc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-desc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('ainterb', 'check3')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
+                        <i class="fa fa-copy"></i>&nbsp;
+                    </div>
+                    <div id="check3" class="check none"></div>
+                </div>
+            </div>
+            <div class="col-sm-6 mt-3">
+                <h2>A union B</h2>
+                <pre><div id="aunionb"><span class="help-text">Union of values ​​between A and B</span></div></pre>
+                <div class="inline-flex">
+                    <div class="div-btn mr-1" onclick="sortItems('aunionb')" title="Sort items asc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-asc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('aunionb', true)" title="Sort items desc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-desc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('aunionb', 'check4')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
+                        <i class="fa fa-copy"></i>&nbsp;
+                    </div>
+                    <div id="check4" class="check none"></div>
+                </div>
+            </div>
+            <div class="col-sm-6 mt-3">
+                <h2>Symmetric difference</h2>
+                <pre><div id="difference"><span class="help-text">Symmetric difference between A and B</span></div></pre>
+                <div class="inline-flex">
+                    <div class="div-btn mr-1" onclick="sortItems('difference')" title="Sort items asc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-asc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('difference', true)" title="Sort items desc" area-label="Sort items">
+                        <i class="fa fa-sort-amount-desc"></i>
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('difference', 'check5')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
+                        <i class="fa fa-copy"></i>&nbsp;
+                    </div>
+                    <div id="check5" class="check none"></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h2>How does the Compare Two Lists tool work?</h2>
+        <p>It will function normally according to the rules of the sets, in Mathematics. However, in this tool, you can also choose the list option, so that it is possible to work with repeated values. The following operations are performed:</p>
+
+        <div class="inline-flex mt-3">
+            <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-a-minus-b.png" class="img-set" alt="Set: A minus B"><h3 class="mb-0 mt-0 pb-0">A minus B</h3>
+        </div>
+        <p>Returns the values ​​that are present only in list A.</p>
+
+        <div class="inline-flex mt-3">
+            <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-b-minus-a.png" class="img-set" alt="Set: B minus A"><h3 class="mb-0 mt-0 pb-0">B minus A</h3>
+        </div>
+        <p>Returns the values ​​that are present only in list B.</p>
+
+        <div class="inline-flex mt-3">
+            <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-intersection.png" class="img-set" alt="Set: A intersection B"><h3 class="mb-0 mt-0 pb-0">A intersection B</h3>
+        </div>
+        <p>They are represented by the values ​​that occur simultaneously in the two lists.</p>
+
+        <div class="inline-flex mt-3">
+            <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-union.png" class="img-set" alt="Set: A union B"><h3 class="mb-0 mt-0 pb-0">A union B</h3>
+        </div>
+        <p>They are represented by all the values ​​present in both lists.</p>
+
+        <div class="inline-flex mt-3">
+            <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-symmetric-difference.png" class="img-set" alt="Set: Symmetric diference between A and B"><h3 class="mb-0 mt-0 pb-0">Symmetric difference</h3>
+        </div>
+        <p>The symmetric difference of two sets is the set of elements that are in one of the sets, but not at its intersection.</p>
+
+        <div class="notes">
+            <div class="image"></div>
+            <div class="message">
+                <p>
+                    List comparison is a recurring task among professional programmers and students.
+                    If you want some new feature for this <strong>Compare Two Lists</strong> tool, let me know in the comments area.
+                    Also, tell me if you found some bug, that I can fix it as soon as possible.
+                </p>
+                <p>
+                    You can learn about how this online list tool works or contribute improving the it
+                    by programming some new feature or fixing bugs. For that, go to Github on <a
+                        href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/008-compare-two-lists"
+                        target="_blank">Github >> Compare Two Lists</a> and make a pull request. This will be great!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let separatorOutput = '\n';
+
+        // Improved
+        function applyDiffImproved() {
+
+            const itemsSeparationsInput = document.querySelector('input[name="items-separation"]:checked').value
+            const setOrList = document.querySelector('input[name="set-or-list"]:checked').value
+            const itemsSeparationsOutput = document.querySelector('input[name="items-separation-output"]:checked').value
+
+            // Input sepearator
+            let separatorInput = '\n';
+            if (itemsSeparationsInput == 'lines') {
+                separatorInput = '\n';
+            } else if (itemsSeparationsInput == 'commas') {
+                separatorInput = ',';
+            } else if (itemsSeparationsInput == 'spaces') {
+                separatorInput = ' ';
+            }
+
+            // Output sepearator
+            if (itemsSeparationsOutput == 'lines') {
+                separatorOutput = '\n';
+            } else if (itemsSeparationsOutput == 'commas') {
+                separatorOutput = ', ';
+            } else if (itemsSeparationsOutput == 'spaces') {
+                separatorOutput = ' ';
+            }
+
+            // Set or list
+            const isSet = setOrList === 'set' ? true : false
+
+            // Get items on input textareas
+            let inputA = document.getElementById('input-a').value.split(separatorInput)
+            let inputB = document.getElementById('input-b').value.split(separatorInput)
+
+            if (separatorInput == '\n') {
+                inputA = inputA.filter(item => item != '')
+                inputB = inputB.filter(item => item != '')
+            }
+
+            if (separatorInput == '\n' || separatorInput == ',') {
+                inputA = inputA.map(item => item.trim())
+                inputB = inputB.map(item => item.trim())
+            } else {
+                // Remove empty elements
+                inputA = inputA.filter(item => item != '')
+                inputB = inputB.filter(item => item != '')
+            }
+
+            aDiffB = []
+            bDiffA = []
+            aInterB = []
+
+            // Passing through arrayA :: get A diff B and A inter B
+            for (item in inputA) {
+                if (!inputB.includes(inputA[item])) {
+                    aDiffB.push(inputA[item])
+                } else {
+                    aInterB.push(inputA[item])
+                }
+            }
+
+            // Passing through arrayB :: get B diff A
+            bDiffA = inputB.filter(item => !inputA.includes(item))
+
+            // Writing results
+            if (isSet) {
+                document.getElementById('adiffb').innerHTML = [...new Set(aDiffB)].join(separatorOutput)
+                document.getElementById('bdiffa').innerHTML = [...new Set(bDiffA)].join(separatorOutput)
+                document.getElementById('ainterb').innerHTML = [...new Set(aInterB)].join(separatorOutput)
+                document.getElementById('aunionb').innerHTML = [...new Set(inputA.concat(inputB))].join(separatorOutput)
+                document.getElementById('difference').innerHTML = [...new Set(aDiffB.concat(bDiffA))].join(separatorOutput)
+            } else {
+                document.getElementById('adiffb').innerHTML = aDiffB.join(separatorOutput)
+                document.getElementById('bdiffa').innerHTML = bDiffA.join(separatorOutput)
+                document.getElementById('ainterb').innerHTML = aInterB.join(separatorOutput)
+                document.getElementById('aunionb').innerHTML = inputA.concat(inputB).join(separatorOutput)
+                document.getElementById('difference').innerHTML = aDiffB.concat(bDiffA).join(separatorOutput)
+            }
+        }
+
+        function toggleLines() {
+            const elems = document.querySelectorAll('.row > div')
+            elems.forEach(elem => {
+                elem.classList.contains('col-sm-12') ? elem.classList.remove('col-sm-12') : elem.classList.add('col-sm-12')
+            })
+        }
+
+        function sortItems(id, isDesc = false) {
+
+            const dataType = document.querySelector('input[name="data-type"]:checked').value
+            const element = document.getElementById(id)
+            let content = element.innerText.split(separatorOutput)
+
+            if (dataType === 'string') {
+                content.sort()
+                if (isDesc) {
+                    content = content.reverse()
+                }
+            } else if (dataType === 'number') {
+                isDesc ? content.sort((a, b) => b - a) : content.sort((a, b) => a - b)
+            }
+
+            element.innerHTML = content.join(separatorOutput)
+        }
+        
+        function sortAllItems(isDesc = false) {
+            const operations = ['adiffb','bdiffa','ainterb','aunionb','difference']
+            operations.forEach(operation => {
+                sortItems(operation, isDesc)
+            })
+        }
+
+        // https://www.w3resource.com/javascript-exercises/javascript-array-exercise-23.php
+        // https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+        // https://www.30secondsofcode.org/blog/s/copy-text-to-clipboard-with-javascript
+        // https://fontawesome.com/v4.7.0/icons/
+
+    </script>
+    <script src="../shared/js/scripts.js"></script>
+</body>
+
+</html>

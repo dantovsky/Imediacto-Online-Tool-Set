@@ -30,3 +30,11 @@ Case Converter is a Text Online Tool to change case letters. You can convert to 
 The Lowercase Converter is an online tool to change your text from uppercase to lowercase letters or convert from other letter case types.
 - [Uppercase Converter](https://www.imediacto.com/tools/text-tools/uppercase-converter)  
 The Uppercase Converter is an online tool to change your text from lowercase to UPPERCASE letters or convert from other letter case types.
+- [Bulk Image Resizer and Compressor](https://www.imediacto.com/tools/image-tools/bulk-image-resizer-and-compressor)  
+It’s an Image Online Tool that helps you to optimize images and photos, such as resizing, compressing, and converting. It’s good for SEO optimization.
+- [Compare Two Lists](https://www.imediacto.com/tools/list-tools/compare-two-lists)  
+This list comparison tool allows you to compare two lists to be able you analyze SET operations (difference, intersection, union, symmetric difference).
+
+## Blog Posts
+
+- [Letter Case Types in Programming](https://www.imediacto.com/blog/list-of-letter-case-types-in-programming)

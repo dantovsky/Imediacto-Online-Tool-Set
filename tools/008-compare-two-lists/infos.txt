@@ -15,14 +15,10 @@ const b = [2, 4, 5]
 
 const diffB = b.filter(n => !a.includes(n))
 
-Keywords:
-compare lists                   2900
-compare two lists	            1900		40% difficult
-find distinct list elements     0
-list comparison tool
-
 Links:
 http://barc.wi.mit.edu/tools/compare/index.php
 http://www.listdiff.com/compare-2-lists-difference-tool
 14 Awesome JavaScript Array Tips You Should Know About
     https://dev.to/kais_blog/14-awesome-javascript-array-tips-you-should-know-about-1d0m
+
+
