@@ -1,0 +1,17 @@
+{
+  "name": "purge-css",
+  "version": "1.0.0",
+  "description": "Este app faz o purge do CSS não utilizado que está na pasta shared/css/boot.css.",
+  "main": "index.js",
+  "scripts": {
+    "purge": "postcss shared/css/boot.css > dist/boot3.css"
+  },
+  "keywords": ["purge css", "remove unused css"],
+  "author": "Dante Marinho",
+  "license": "ISC",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.2",
+    "cssnano": "^4.1.10",
+    "postcss": "^8.2.7"
+  }
+}

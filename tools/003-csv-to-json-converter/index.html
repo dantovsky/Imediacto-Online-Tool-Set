@@ -2,357 +2,188 @@
 <html lang="en">
 
 <head>
+    <title>CSV to JSON Converter ~ Free Online Tools - Imediacto</title>
+    <meta name="description" content="CSV to JSON Converter is an easy Free Online Tool to convert from CSV to a JSON format and download the result as TXT or JSON file." />
+    <meta name="keywords" content="csv to json converter, csv to json, convert csv to json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../shared/css/boot.min.css">
     <link rel="stylesheet" href="../shared/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title>CSV to JSON Converter</title>
     <style>
-        .boot #file {
-            display: none;
-        }
-
-        .boot #holder:hover {
-            background-color: rgb(248, 248, 248);
-        }
-
-        .boot label.input-drag-drop {
-            width: 100%;
-            border: 2px solid #8c52ff !important;
+        .element-to-exclude {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            transition: all .5s ease;
-            padding: 1px;
-            border-radius: 4px;
-        }
-
-        .boot .file-name {
-            padding: 7px 10px;
-            color: #4d5866;
-        }
-
-        .boot .text-browse {
-            background-color: #8c52ff;
-            color: #fff;
-            padding: 7px 18px;
-            border-radius: 4px;
-        }
-
-        .boot .input-hover {
-            background-color: rgb(145, 224, 147);
-        }
-
-        .boot .input-drop {
-            background-color: rgb(145, 224, 147);
-        }
-
-        .boot .input-error {
-            background-color: #f8d7da;
-            border-color: #f5c6cb !important;
-        }
-
-        .boot .display-flex-row {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .boot .display-flex-row .textarea {
-            width: 48.5%;
-        }
-
-        .boot .icon-apply {
-            width: 1.5%;
-            padding-top: 15px;
-            /* background-color: lightpink; */
-        }
-
-        .boot .icon-apply i {
-            font-size: larger;
-            cursor: pointer;
-            /* background-color: lightseagreen; */
-            width: 100%;
-            text-align: center;
-        }
-
-        .boot .icon-apply i:first-child {
-            color: #8c52ff;
-            margin-bottom: 10px;
-        }
-
-        .boot .icon-apply i:last-child {
-            color: #8b8b8b;
-        }
-
-        .boot .div-btn {
-            cursor: pointer;
-            color: #8c52ff;
-        }
-
-        @media screen and (max-width: 980px) {
-            .boot .display-flex-col-980-down {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
-
-            .boot .display-flex-row .textarea {
-                width: 100%;
-            }
-
-            .boot .icon-apply {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 680px) {
-            .boot .display-flex-col-680-down {
-                display: flex;
-                flex-direction: column;
-                align-items: left;
-            }
-
-            .boot .hidden-680-down {
-                display: none;
-            }
         }
     </style>
 </head>
 
-<body>
-    <div class="box-container">
-        <div class="boot">
-            <h2>Free Online CSV to JSON Converter</h2>
-            <p>
-                <strong>CSV to JSON Converter</strong> is a free online tool that converts a given text in CSV format to
-                JSON format. You can chose a "file.csv", "file.txt" with a text structured in CSV format, or put
-                directly the text in CSV format (separated by commas) in the first input text area. You can ignore some
-                fields as needed.
-            </p>
+<body class="box-container">
 
-            <h3>Select your CSV file or type in the first box area</h3>
-            <!-- Div to Drag and Drop CSV file -->
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="file" onchange="changeFileNameBoxOnInput(event)"
-                    accept=".csv,text/plain">
-                <label id="holder" class="input-drag-drop" for="file">
-                    <div id="file-name" class="file-name text-truncate">Select CSV file or drag and drop here...</div>
-                    <div class="text-browse"><i class="fa fa-search"></i> <span class="hidden-680-down">Browse</span>
-                    </div>
-                </label>
+    <div class="boot">
+        <h2>Free Online CSV to JSON Converter</h2>
+        <p> <strong>CSV to JSON Converter</strong> is a free online tool that converts a given text in CSV format to
+            JSON format. You can chose a "file.csv", "file.txt" with a text structured in CSV format, or put directly
+            the text in CSV format (separated by commas) in the first input text area. You can ignore some fields as
+            needed.</p>
+        <h3>Select your CSV file or type in the first box area</h3>
+        <div class="custom-file"> <input type="file" class="custom-file-input" id="file" onchange="changeFileNameBoxOnInput(event)" accept=".csv,text/plain"> <label id="holder" class="input-drag-drop" for="file">
+                <div id="file-name" class="file-name text-truncate">Select CSV file or drag and drop here...</div>
+                <div class="text-browse"><i class="fa fa-search"></i> <span class="hidden-680-down">Browse</span></div>
+            </label></div>
+        <div class="display-flex-row display-flex-col-980-down">
+            <div class="textarea"><textarea class="mb-2" name="area-csv" id="area-csv" cols="30" rows="12" placeholder="Type here your text in comma separated format"></textarea><button class="btn btn-success mb-2" onclick="stringCSVtoJSON();" aria-label="Button to convert CSV to JSON"> <i class="fa fa-chevron-right"></i> Convert to JSON
+                </button>
+                <div class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id="filtering" onchange="toggleFieldsToIgnore(event)" /> <label class="custom-control-label" for="filtering">I want to ignore some fields</label>
+                    <div id="fields-to-exclude"></div>
+                </div>
             </div>
-            <div class="display-flex-row display-flex-col-980-down">
-                <div class="textarea">
-                    <!-- Input textarea -->
-                    <textarea class="mb-2" name="area-csv" id="area-csv" cols="30" rows="12"
-                        placeholder="Type here your text in comma separated format"></textarea>
-                    <button class="btn btn-success mb-2" onclick="stringCSVtoJSON();"
-                        aria-label="Button to convert CSV to JSON">
-                        <i class="fa fa-chevron-right"></i>
-                        Convert to JSON
-                    </button>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="filtering"
-                            onchange="toggleFieldsToIgnore(event)" />
-                        <label class="custom-control-label" for="filtering">I want to ignore some fields</label>
-                        <div id="fields-to-exclude"></div>
+            <div class="icon-apply"> <i class="fa fa-chevron-right" onclick="stringCSVtoJSON()" aria-label="Icon button to convert CSV to JSON" title="Button to convert CSV to JSON"></i> <i class="fa fa-close" onclick="clearAreas()" aria-label="Icon button to clear data" title="Button to clear data"></i></div>
+            <div class="textarea"><textarea class="mb-2" name="output" id="output" cols="30" rows="12"></textarea>
+                <div class="flex">
+                    <div class="div-btn mr-1" onclick="downloadJSON('json')" title="Download as JSON" aria-label="Button to download the output JSON"> <i class="fa fa-download">
+                            <span>JSON</span></i></div>
+                    <div class="div-btn mr-1" onclick="downloadJSON('txt')" title="Download as TXT" aria-label="Button to download the output JSON"> <i class="fa fa-download"> <span>TXT</span></i>
                     </div>
-                </div>
-                <div class="icon-apply">
-                    <i class="fa fa-chevron-right" onclick="stringCSVtoJSON()"
-                        aria-label="Icon button to convert CSV to JSON" title="Button to convert CSV to JSON"></i>
-                    <i class="fa fa-close" onclick="clearAreas()" aria-label="Icon button to clear data"
-                        title="Button to clear data"></i>
-                </div>
-                <div class="textarea">
-                    <!-- Output textarea -->
-                    <textarea class="mb-2" name="output" id="output" cols="30" rows="12"></textarea>
-                    <div class="inline-flex">
-                        <div class="div-btn mr-3" onclick="downloadJSON('json')" title="Download as JSON"
-                            aria-label="Button to download the output JSON">
-                            <i class="fa fa-download"></i> JSON
-                        </div>
-                        <div class="div-btn mr-3" onclick="downloadJSON('txt')" title="Download as TXT"
-                            aria-label="Button to download the output JSON">
-                            <i class="fa fa-download"></i> TXT
-                        </div>
-                        <div class="inline-flex">
-                            <div class="div-btn mr-2" onclick="copyToClipboard()" title="Copy output to clipboard"
-                                area-label="Button to copy the JSON to clipboard">
-                                <i class="fa fa-copy"></i>
-                                Copy to clipboard
-                            </div>
-                            <div id="check" class="none"
-                                style="width: 18px; height: 18px; background-size: contain; margin-bottom: 4px;">
-                                <!-- <img src="../shared/img/check.png" alt="Image check (action applyed)"> -->
-                            </div>
-                        </div>
+                    <div class="flex">
+                        <div class="div-btn" onclick="copyToClipboard()" title="Copy output to clipboard" area-label="Button to copy the JSON to clipboard"> <i class="fa fa-copy"> <span class="hide-on-xs">Copy to
+                                    clipboard</span></i></div>
+                        <div id="check" class="none" style="width: 18px; height: 18px; background-size: contain; margin-bottom: 4px;"></div>
                     </div>
                 </div>
             </div>
-            <hr>
-            <h2>Convert CSV to JSON Excluding Fields</h2>
-            <p>After you select or type your CSV in the first text area, you can choose some fields to ignore, so these
-                fields will don't appear in the output JSON format. For that, mark the checkbox "I want to ignore some
-                fields" below of the apply button. This function can be very useful when you have a CSV with many fields
-                and many records, and you need to ignore some fields.</p>
-
-            <h2>What is CSV format file?</h2>
-            <p>The CSV (comma-separated values) is a text file delimited by lines where each line is delimited by
-                commas. Usually, the first line of the CSV is the header for the data of the remaining lines.</p>
-            <p>CSV format can be read by plain text editors, as it is plain text, in fact. Programs like LibreOffice
-                Calc and Microsoft Office Excel read this format, organizing them between columns and rows.</p>
-
-            <h2>What is JSON format file?</h2>
-            <p>JSON (JavaScript Object Notation), is a compact text format used for simple and fast data exchange
-                between systems, where its main purpose is the use of key-value pairs.</p>
-            <p>Therefore, CSV and JSON are widely used data formats and we constantly need to <strong>convert CSV to
-                    JSON</strong> or convert from JSON to CSV.</p>
-
-            <div class="notes">
-                <div class="image"></div>
-                <div class="message">
-                    <p>
-                        Give me your feedback about the <strong>CSV to JSON Converter</strong> and let me know if you
-                        have some specific need or if you found some error in this tool, then I can implement this new
-                        feature to you and improve or fix this <strong>text tool</strong>. Also, let me know if you have
-                        some need about other different <strong>JSON tool converter</strong> or <strong>coding tool
-                            set</strong>.
-                    </p>
-                    <p>
-                        You can learn about how this online tool works or contribute improving the <strong>CSV to JSON
-                            Converter</strong>
-                        by programming some new feature or fixing bugs. For that, go to Github on <a
-                            href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/003-csv-to-json-converter"
-                            target="_blank">Github &gt;&gt; CSV to JSON Converter</a> and make a pull request. This will
-                        be great!
-                    </p>
-                </div>
+        </div>
+        <hr>
+        <h2>Convert CSV to JSON Excluding Fields</h2>
+        <p>After you select or type your CSV in the first text area, you can choose some fields to ignore, so these
+            fields will don't appear in the output JSON format. For that, mark the checkbox "I want to ignore some
+            fields" below of the apply button. This function can be very useful when you have a CSV with many fields and
+            many records, and you need to ignore some fields.</p>
+        <h2>What is CSV format file?</h2>
+        <p>The CSV (comma-separated values) is a text file delimited by lines where each line is delimited by commas.
+            Usually, the first line of the CSV is the header for the data of the remaining lines.</p>
+        <p>CSV format can be read by plain text editors, as it is plain text, in fact. Programs like LibreOffice Calc
+            and Microsoft Office Excel read this format, organizing them between columns and rows.</p>
+        <h2>What is JSON format file?</h2>
+        <p><a href="https://www.json.org/json-en.html" target="_blank">JSON (JavaScript Object Notation)</a> is a compact text format used for simple and fast data exchange between
+            systems, where its main purpose is the use of key-value pairs.</p>
+        <p>Therefore, CSV and JSON are widely used <a href="https://www.imediacto.com/blog/xml-csv-json-data-formats/">data formats</a> and we constantly need
+            to <strong>convert CSV to JSON</strong> or convert from JSON to CSV.</p>
+        <div class="notes">
+            <div class="image"></div>
+            <div class="message">
+                <p> Give me your feedback about the <strong>CSV to JSON Converter</strong> and let me know if you have
+                    some specific need or if you found some error in this tool, then I can implement this new feature to
+                    you and improve or fix this <strong>text tool</strong>. Also, let me know if you have some need
+                    about other different <strong>JSON tool converter</strong> or <strong>coding tool set</strong>.</p>
+                <p> You can learn about how this online tool works or contribute improving the <strong>CSV to JSON
+                        Converter</strong> by programming some new feature or fixing bugs. For that, go to Github on <a href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/003-csv-to-json-converter" target="_blank">Github &gt;&gt; CSV to JSON Converter</a> and make a pull request. This will be
+                    great!</p>
             </div>
-            <hr>
-        </div><!-- end .boot -->
-        <script>
+        </div>
+        <hr>
+    </div>
+    <script>
+        let fileNameBox = document.getElementById('file-name');
+        let areaCSV = document.getElementById('area-csv');
+        let areaJSON = document.getElementById('output');
+        let csv = '';
+        let fileType = '';
+        let fileExtension = '';
+        let inputMessageDefault = 'Select CSV file or drag and drop here...';
 
-            let fileNameBox = document.getElementById('file-name');
-            let areaCSV = document.getElementById('area-csv');
-            let areaJSON = document.getElementById('output');
-            let csv = '';
-            let fileType = '';
-            let fileExtension = '';
-            let inputMessageDefault = 'Select CSV file or drag and drop here...';
+        // --------------------------------------------------------
+        // Main functions
+        // --------------------------------------------------------
 
-            // CSV example
-            // let csv = `nome,quantidade,valor
-            //     banana,4,1.5
-            //     maçã,5,1.2
-            //     pera,10,2.57`;
+        // Drag and Drop actions
+        let holder = document.getElementById('holder');
+        holder.ondragover = function () {
+            this.classList.add('input-hover');
+            this.classList.remove('input-error');
+            this.classList.remove('input-drop');
+            return false;
+        };
+        // holder.ondragend = function () { this.classList.remove('hover-input'); return false; };
+        holder.ondragleave = function () { this.classList.remove('input-hover'); return false; };
+        holder.ondrop = function (e) {
+            this.classList.remove('input-error');
+            this.classList.add('input-drop');
+            e.preventDefault();
+            readfiles(e.dataTransfer.files);
+        }
 
-            // --------------------------------------------------------
-            // Main functions
-            // --------------------------------------------------------
+        // Read the file uploaded through Drag and Drop
+        function readfiles(files) {
 
-            // Drag and Drop actions
-            let holder = document.getElementById('holder');
-            holder.ondragover = function () {
-                this.classList.add('input-hover');
-                this.classList.remove('input-error');
-                this.classList.remove('input-drop');
+            fileType = files[0].type;
+            fileNameBox.innerText = files[0].name;
+
+            // Exit process if the file type is not CSV
+            if (!isfileTypeAndAllowed(fileType)) {
                 return false;
-            };
-            // holder.ondragend = function () { this.classList.remove('hover-input'); return false; };
-            holder.ondragleave = function () { this.classList.remove('input-hover'); return false; };
-            holder.ondrop = function (e) {
-                this.classList.remove('input-error');
-                this.classList.add('input-drop');
-                e.preventDefault();
-                readfiles(e.dataTransfer.files);
             }
 
-            // Read the file uploaded through Drag and Drop
-            function readfiles(files) {
+            reader = new FileReader();
+            reader.onload = function (event) {
+                csv = event.target.result;
+                areaCSV.value = csv;
+            }
+            reader.readAsText(files[0]);
+        }
 
-                fileType = files[0].type;
-                fileNameBox.innerText = files[0].name;
+        // Fisrt Step :: Read csv is the CSV file with headers
+        function procressInputFile() {
 
-                // Exit process if the file type is not CSV
+            let inputFile = document.getElementById('file');
+
+            if ('files' in inputFile && inputFile.files.length > 0) {
+                let file = inputFile.files[0];
+                fileNameBox = file.name;
+                fileType = file.type;
+                fileExtension = fileNameBox.substring(fileNameBox.lastIndexOf('.'), fileNameBox.length)
+
+                // Exit process if the file type is not allowed (CSV and TXT)
                 if (!isfileTypeAndAllowed(fileType)) {
                     return false;
                 }
 
-                reader = new FileReader();
-                reader.onload = function (event) {
+                let fileReader = new FileReader();
+                fileReader.onload = function (event) {
                     csv = event.target.result;
                     areaCSV.value = csv;
                 }
-                reader.readAsText(files[0]);
+                fileReader.readAsText(file);
+            } else {
+                console.log('You need select a CSV file!');
             }
+        }
 
-            // Fisrt Step :: Read csv is the CSV file with headers
-            function procressInputFile() {
+        // Last Step :: Convert the CSV string to JSON and print on textarea
+        function stringCSVtoJSON() {
 
-                let inputFile = document.getElementById('file');
+            csv = areaCSV.value.trim();
+            let lines = csv.split("\n");
+            let result = [];
+            let headers = lines[0].split(",");
 
-                if ('files' in inputFile && inputFile.files.length > 0) {
-                    let file = inputFile.files[0];
-                    fileNameBox = file.name;
-                    fileType = file.type;
-                    fileExtension = fileNameBox.substring(fileNameBox.lastIndexOf('.'), fileNameBox.length)
+            // Elements to exclude
+            const ignore = document.querySelectorAll('#fields-to-exclude .custom-control-input:checked')
+            const headersToIgnore = [...ignore].map(el => {
+                // return el.id.substring(el.id.indexOf('-') + 1, el.id.length) //use this if field ID is like field-0, field-1, ...
+                return parseInt(el.id)
+            })
 
-                    // Exit process if the file type is not allowed (CSV and TXT)
-                    if (!isfileTypeAndAllowed(fileType)) {
-                        return false;
-                    }
+            const isFiltering = document.getElementById('filtering').checked ? true : false
 
-                    let fileReader = new FileReader();
-                    fileReader.onload = function (event) {
-                        csv = event.target.result;
-                        areaCSV.value = csv;
-                    }
-                    fileReader.readAsText(file);
-                } else {
-                    console.log('You need select a CSV file!');
-                }
-            }
+            for (let i = 1; i < lines.length; i++) {
 
-            // Last Step :: Convert the CSV string to JSON and print on textarea
-            function stringCSVtoJSON() {
+                let obj = {};
+                let currentline = lines[i].split(",");
 
-                csv = areaCSV.value.trim();
-                let lines = csv.split("\n");
-                let result = [];
-                let headers = lines[0].split(",");
-
-                // Elements to exclude
-                const ignore = document.querySelectorAll('#fields-to-exclude .custom-control-input:checked')
-                const headersToIgnore = [...ignore].map(el => {
-                    // return el.id.substring(el.id.indexOf('-') + 1, el.id.length) //use this if field ID is like field-0, field-1, ...
-                    return parseInt(el.id)
-                })
-
-                const isFiltering = document.getElementById('filtering').checked ? true : false
-
-                for (let i = 1; i < lines.length; i++) {
-
-                    let obj = {};
-                    let currentline = lines[i].split(",");
-
-                    for (let j = 0; j < headers.length; j++) {
-                        try {
-                            if (isFiltering) {
-                                if (!headersToIgnore.includes(j)) {
-                                    if (!Number(currentline[j].trim())) {
-                                        // Case value is string
-                                        obj[headers[j].trim()] = currentline[j].trim();
-                                    } else {
-                                        // Case value is a number
-                                        let n = Number(currentline[j].trim());
-                                        obj[headers[j].trim()] = n;
-                                    }
-                                }
-                            } else {
+                for (let j = 0; j < headers.length; j++) {
+                    try {
+                        if (isFiltering) {
+                            if (!headersToIgnore.includes(j)) {
                                 if (!Number(currentline[j].trim())) {
                                     // Case value is string
                                     obj[headers[j].trim()] = currentline[j].trim();
@@ -362,167 +193,164 @@
                                     obj[headers[j].trim()] = n;
                                 }
                             }
-                        } catch (error) {
-                            console.log('Has inconsistent data... ', error);
+                        } else {
+                            if (!Number(currentline[j].trim())) {
+                                // Case value is string
+                                obj[headers[j].trim()] = currentline[j].trim();
+                            } else {
+                                // Case value is a number
+                                let n = Number(currentline[j].trim());
+                                obj[headers[j].trim()] = n;
+                            }
                         }
-                    }
-                    result.push(obj);
-                }
-
-                //return result; //JavaScript object
-                let json = JSON.stringify(result, undefined, 4); //JSON
-                areaJSON.value = json;
-            }
-
-            function toggleFieldsToIgnore(event) {
-                event.preventDefault();
-                if (event.target.checked) {
-
-                    // const fields = document.getElementById('area-csv').value.split('\n').shift(); // get first line
-                    const textarea = document.getElementById('area-csv');
-                    if (textarea.value == '') {
-                        return false
-                    }
-
-                    textarea.focus({ preventScroll: true })
-                    textarea.setSelectionRange(0, textarea.value.indexOf('\n'))
-                    textarea.blur()
-                    // const fieldsSelected = window.getSelection().toString() // not working on Mozilla Firefox
-                    const fieldsSelected = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd); // more browser compatible way
-                    const fields = fieldsSelected.split(',').map(field => field.trim())
-                    
-                    // Generate a checkbox for each CSV field
-                    fields.forEach((campo, index) => {
-
-                        const divElem = document.createElement('div');
-                        divElem.setAttribute('class', 'element-to-exclude custom-control custom-checkbox');
-
-                        const iputElem = document.createElement("input");
-                        iputElem.setAttribute("type", "checkbox");
-                        iputElem.setAttribute("id", index);
-                        iputElem.setAttribute("class", "custom-control-input");
-                        divElem.appendChild(iputElem);
-
-                        const labelElem = document.createElement("label");
-                        labelElem.setAttribute("for", index);
-                        labelElem.setAttribute("class", "custom-control-label");
-                        labelElem.innerText = campo;
-                        divElem.appendChild(labelElem);
-
-                        // Add the new checkbox element to group div
-                        document.getElementById('fields-to-exclude').appendChild(divElem);
-                    });
-                } else {
-                    document.getElementById('fields-to-exclude').innerHTML = ''
-                }
-            }
-
-            // --------------------------------------------------------
-            // Auxiliar functions
-            // --------------------------------------------------------
-
-            // Write the name of file on input box
-            function changeFileNameBoxOnInput(event) {
-                let partsPath = event.target.value.split('\\');
-                fileNameBox.innerText = partsPath[partsPath.length - 1];
-                procressInputFile();
-            }
-
-            function clearAreas() {
-                areaCSV.value = '';
-                areaJSON.value = '';
-                csv = '';
-                document.getElementById('file-name').innerText = inputMessageDefault;
-            }
-
-            function isfileTypeAndAllowed(fileType) {
-
-                console.log('filetype: ', fileType)
-
-                // Exit process if the file type is not CSV
-                const allowedFileTypes = ['text/csv', 'text/comma-separated-values', 'application/vnd.ms-excel', 'text/plain']; // 'text/comma-separated-values'
-
-                if (!(allowedFileTypes.includes(fileType))) { /* && fileExtension != '.csv' */
-                    holder.classList.add('input-error');
-                    fileNameBox.innerText = 'This file type is not allowed!';
-                    setTimeout(() => {
-                        fileNameBox.innerText = inputMessageDefault;
-                        holder.classList = 'input-drag-drop'; // erase other classes
-                    }, 5000);
-                    return false; // exit process
-                }
-                return true;
-            }
-
-            // Download function
-            function download(filename, text) {
-
-                let element = document.createElement('a');
-
-                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-                element.setAttribute('download', filename);
-                element.style.display = 'none';
-                document.body.appendChild(element);
-                element.click();
-                document.body.removeChild(element);
-            }
-
-            // Start file download in TXT or JSON
-            function downloadJSON(extension) {
-
-                // Generate download of hello.txt file with some content
-                let data = document.getElementById("output").value;
-                let filename = "csv-to-json-imediacto." + extension;
-
-                fileNameBox = document.getElementById('file-name');
-
-                if (fileNameBox.innerText != inputMessageDefault) {
-
-                    let lastIndexDot = fileNameBox.innerText.lastIndexOf('.');
-                    if (lastIndexDot != -1) {
-                        filename = fileNameBox.innerText.substring(0, lastIndexDot) + '-json.' + extension;
-                    } else {
-                        // Case file without dot extension
-                        filename = fileNameBox.innerText + '.' + extension;
+                    } catch (error) {
+                        console.log('Has inconsistent data... ', error);
                     }
                 }
-
-                download(filename, data);
+                result.push(obj);
             }
 
-            // Help links
-            // http://techslides.com/convert-csv-to-json-in-javascript
-            // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/result
-            // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
-            // https://stackoverflow.com/questions/8006715/drag-drop-files-into-standard-html-file-input
-            // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
-            // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
-            // https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/
-            // https://ourcodeworld.com/articles/read/189/how-to-create-a-file-and-generate-a-download-with-javascript-in-the-browser-without-a-server
-            // https://stackoverflow.com/questions/34648186/split-at-last-occurrence-of-character-then-join
-            // https://stackoverflow.com/questions/11832930/html-input-file-accept-attribute-file-type-csv
-            // https://stackoverflow.com/questions/48688950/get-checked-checkboxes-inside-an-element
-            // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
-            // https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus
-            // https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox
-        </script>
+            //return result; //JavaScript object
+            let json = JSON.stringify(result, undefined, 4); //JSON
+            areaJSON.value = json;
+        }
 
-        <script>
-            // Global functions for tools
-            function copyToClipboard() {
-                let copyText = document.getElementById("output");
-                copyText.select();
-                copyText.setSelectionRange(0, 99999);
-                document.execCommand("copy");
+        function toggleFieldsToIgnore(event) {
+            event.preventDefault();
+            if (event.target.checked) {
 
-                let check = document.getElementById("check");
-                check.classList.remove('none');
+                // const fields = document.getElementById('area-csv').value.split('\n').shift(); // get first line
+                const textarea = document.getElementById('area-csv');
+                if (textarea.value == '') {
+                    return false
+                }
+
+                textarea.focus({ preventScroll: true })
+                textarea.setSelectionRange(0, textarea.value.indexOf('\n'))
+                textarea.blur()
+                // const fieldsSelected = window.getSelection().toString() // not working on Mozilla Firefox
+                const fieldsSelected = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd); // more browser compatible way
+                const fields = fieldsSelected.split(',').map(field => field.trim())
+
+                // Generate a checkbox for each CSV field
+                fields.forEach((campo, index) => {
+
+                    const divElem = document.createElement('div');
+                    divElem.setAttribute('class', 'element-to-exclude custom-control custom-checkbox');
+
+                    const iputElem = document.createElement("input");
+                    iputElem.setAttribute("type", "checkbox");
+                    iputElem.setAttribute("id", index);
+                    iputElem.setAttribute("class", "custom-control-input");
+                    divElem.appendChild(iputElem);
+
+                    const labelElem = document.createElement("label");
+                    labelElem.setAttribute("for", index);
+                    labelElem.setAttribute("class", "custom-control-label");
+                    labelElem.innerText = campo;
+                    divElem.appendChild(labelElem);
+
+                    // Add the new checkbox element to group div
+                    document.getElementById('fields-to-exclude').appendChild(divElem);
+                });
+            } else {
+                document.getElementById('fields-to-exclude').innerHTML = ''
+            }
+        }
+
+        // --------------------------------------------------------
+        // Auxiliar functions
+        // --------------------------------------------------------
+
+        // Write the name of file on input box
+        function changeFileNameBoxOnInput(event) {
+            let partsPath = event.target.value.split('\\');
+            fileNameBox.innerText = partsPath[partsPath.length - 1];
+            procressInputFile();
+        }
+
+        function clearAreas() {
+            areaCSV.value = '';
+            areaJSON.value = '';
+            csv = '';
+            document.getElementById('file-name').innerText = inputMessageDefault;
+        }
+
+        function isfileTypeAndAllowed(fileType) {
+
+            console.log('filetype: ', fileType)
+
+            // Exit process if the file type is not CSV
+            const allowedFileTypes = ['text/csv', 'text/comma-separated-values', 'application/vnd.ms-excel', 'text/plain']; // 'text/comma-separated-values'
+
+            if (!(allowedFileTypes.includes(fileType))) { /* && fileExtension != '.csv' */
+                holder.classList.add('input-error');
+                fileNameBox.innerText = 'This file type is not allowed!';
                 setTimeout(() => {
-                    check.classList.add('none');
-                }, 3000);
+                    fileNameBox.innerText = inputMessageDefault;
+                    holder.classList = 'input-drag-drop'; // erase other classes
+                }, 5000);
+                return false; // exit process
             }
-        </script>
-    </div><!-- end box-container -->
+            return true;
+        }
+
+        // Download function
+        function download(filename, text) {
+
+            let element = document.createElement('a');
+
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        // Start file download in TXT or JSON
+        function downloadJSON(extension) {
+
+            // Generate download of hello.txt file with some content
+            let data = document.getElementById("output").value;
+            let filename = "csv-to-json-imediacto." + extension;
+
+            fileNameBox = document.getElementById('file-name');
+
+            if (fileNameBox.innerText != inputMessageDefault) {
+
+                let lastIndexDot = fileNameBox.innerText.lastIndexOf('.');
+                if (lastIndexDot != -1) {
+                    filename = fileNameBox.innerText.substring(0, lastIndexDot) + '-json.' + extension;
+                } else {
+                    // Case file without dot extension
+                    filename = fileNameBox.innerText + '.' + extension;
+                }
+            }
+
+            download(filename, data);
+        }
+
+    // Help links
+    // http://techslides.com/convert-csv-to-json-in-javascript
+    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/result
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
+    // https://stackoverflow.com/questions/8006715/drag-drop-files-into-standard-html-file-input
+    // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+    // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+    // https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/
+    // https://ourcodeworld.com/articles/read/189/how-to-create-a-file-and-generate-a-download-with-javascript-in-the-browser-without-a-server
+    // https://stackoverflow.com/questions/34648186/split-at-last-occurrence-of-character-then-join
+    // https://stackoverflow.com/questions/11832930/html-input-file-accept-attribute-file-type-csv
+    // https://stackoverflow.com/questions/48688950/get-checked-checkboxes-inside-an-element
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus
+    // https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox
+    </script>
+
+    <!-- Shared Scripts -->
+    <script src="../shared/js/scripts.js"></script>
+
 </body>
 
 </html>

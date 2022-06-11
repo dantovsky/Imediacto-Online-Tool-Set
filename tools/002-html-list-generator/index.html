@@ -16,9 +16,9 @@
 <body>
     <div class="box-container">
         <div class="boot">
-            <h2>About the HTML List Generator</h2>
+            <h2>Converting Text to HTML List</h2>
             <p>
-                <strong>HTML List Generator</strong> is an <strong>HTML converter online tool</strong> that
+                The <strong>HTML List Generator</strong> is an <strong>HTML converter online tool</strong> that
                 <strong>converts text to html list</strong> and others <strong>text list formats</strong>. Using this
                 tool will
                 help you convert some text list and transform it to a unordered or ordered HTML list, as well these text
@@ -28,16 +28,14 @@
             <div class="row">
                 <div class="col-12">
                     <h3>Input (insert plain text)</h3>
-                    <textarea id="input" class="mb-2" rows="7"
-                        placeholder="Insert a plain text here to convert it to a HTML list."></textarea>
+                    <textarea id="input" class="mb-2" rows="7" placeholder="Insert a plain text here to convert it to a HTML list."></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-5 col-sm-12 mb-3">
                     <h3>Input text options</h3>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="radio1" name="text-origin" value="lines" class="custom-control-input"
-                            checked>
+                        <input type="radio" id="radio1" name="text-origin" value="lines" class="custom-control-input" checked>
                         <label class="custom-control-label" for="radio1">From lines</label>
                     </div>
                     <div class="custom-control custom-radio">
@@ -45,8 +43,7 @@
                         <label class="custom-control-label" for="radio2">Separeted by commas</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="radio3" name="text-origin" value="semicolons"
-                            class="custom-control-input">
+                        <input type="radio" id="radio3" name="text-origin" value="semicolons" class="custom-control-input">
                         <label class="custom-control-label" for="radio3">Separeted by semicolons</label>
                     </div>
                     <div class="custom-control custom-radio">
@@ -57,38 +54,31 @@
                 <div class="col-md-7 col-sm-12">
                     <h3>Output List type options</h3>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="radio5" name="list-type" value="ul" class="custom-control-input"
-                            onclick="toggleCustomInput(false)" checked>
+                        <input type="radio" id="radio5" name="list-type" value="ul" class="custom-control-input" onclick="toggleCustomInput(false)" checked>
                         <label class="custom-control-label" for="radio5">Unordered list</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="radio6" name="list-type" value="ol" class="custom-control-input"
-                            onclick="toggleCustomInput(false)">
+                        <input type="radio" id="radio6" name="list-type" value="ol" class="custom-control-input" onclick="toggleCustomInput(false)">
                         <label class="custom-control-label" for="radio6">Ordered list</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="radio7" name="list-type" value="lines" class="custom-control-input"
-                            onclick="toggleCustomInput(false)">
+                        <input type="radio" id="radio7" name="list-type" value="lines" class="custom-control-input" onclick="toggleCustomInput(false)">
                         <label class="custom-control-label" for="radio7">Lines</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="radio8" name="list-type" value="commas" class="custom-control-input"
-                            onclick="toggleCustomInput(false)">
+                        <input type="radio" id="radio8" name="list-type" value="commas" class="custom-control-input" onclick="toggleCustomInput(false)">
                         <label class="custom-control-label" for="radio8">Commas</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="radio9" name="list-type" value="semicolons" class="custom-control-input"
-                            onclick="toggleCustomInput(false)">
+                        <input type="radio" id="radio9" name="list-type" value="semicolons" class="custom-control-input" onclick="toggleCustomInput(false)">
                         <label class="custom-control-label" for="radio9">Semicolons</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="radio10" name="list-type" value="spaces" class="custom-control-input"
-                            onclick="toggleCustomInput(false)">
+                        <input type="radio" id="radio10" name="list-type" value="spaces" class="custom-control-input" onclick="toggleCustomInput(false)">
                         <label class="custom-control-label" for="radio10">Spaces</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="radio11" name="list-type" value="custom" class="custom-control-input"
-                            onclick="toggleCustomInput(true)">
+                        <input type="radio" id="radio11" name="list-type" value="custom" class="custom-control-input" onclick="toggleCustomInput(true)">
                         <label class="custom-control-label" for="radio11">Custom</label>
                     </div>
                     <div class="custom-control" style="width: 50%;">
@@ -97,19 +87,16 @@
                     <h3>Output extra options</h3>
                     <!-- Wrap in quotes -->
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="wrap-in-quotes"
-                            onchange="toggleQuotes()">
+                        <input type="checkbox" class="custom-control-input" id="wrap-in-quotes" onchange="toggleQuotes()">
                         <label class="custom-control-label" for="wrap-in-quotes">Wrap the words in quotes</label>
 
                         <div id="quote-options" class="none">
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="doble-quotes" name="quotes" value="doble"
-                                    class="custom-control-input">
+                                <input type="radio" id="doble-quotes" name="quotes" value="doble" class="custom-control-input">
                                 <label class="custom-control-label" for="doble-quotes">Doble quotes</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="single-quotes" name="quotes" value="single"
-                                    class="custom-control-input">
+                                <input type="radio" id="single-quotes" name="quotes" value="single" class="custom-control-input">
                                 <label class="custom-control-label" for="single-quotes">Single quotes</label>
                             </div>
                         </div>
@@ -119,8 +106,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-12">
-                    <button class="btn btn-success" onclick="convertToList()"
-                        area-label="Button to convert text to HTML list"><i class="fa fa-chevron-right"></i> Convert
+                    <button class="btn btn-success" onclick="convertToList()" area-label="Button to convert text to HTML list"><i class="fa fa-chevron-right"></i> Convert
                         list</button>
                 </div>
             </div>
@@ -129,8 +115,7 @@
                     <h3>Output (HTML list or other list formats)</h3>
                     <textarea class="mb-2" id="output" rows="7"></textarea>
                     <div class="inline-flex">
-                        <div class="div-btn mr-1" onclick="copyToClipboard()" title="Copy output to clipboard"
-                            area-label="Copy the output to clipboard">
+                        <div class="div-btn mr-1" onclick="copyToClipboard()" title="Copy output to clipboard" area-label="Copy the output to clipboard">
                             <i class="fa fa-copy"></i>
                             Copy to clipboard
                         </div>
@@ -159,9 +144,7 @@
                             tool / HTML tool</strong> or <strong>coding tool set</strong>.
                         <br>
                         You can learn about how this online tool works or contribute improving the HTML List Generator
-                        by programming some new feature or fixing bugs. For that, go to Github on <a
-                            href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/002-html-list-generator"
-                            target="_blank">Github >> HTML List Generator</a> and make a pull request. This will be
+                        by programming some new feature or fixing bugs. For that, go to Github on <a href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/002-html-list-generator" target="_blank">Github >> HTML List Generator</a> and make a pull request. This will be
                         great!
                     </p>
                 </div>

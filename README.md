@@ -7,14 +7,14 @@ This is a project to develop a very useful **basic tool set** (e.g. **text tools
 https://www.imediacto.com/
 
 Everyone who desire contribute to this project is welcome to:
-- make new features
-- make corrections
-- to send me ideas for new tools:
-	- text tools
+- Make new features
+- Make corrections
+- To send me ideas for new tools:
+	- Text tools
 	- HTML tools
 	- CSS tools
 	- Javascript tools
-	- and other coding tool set
+	- And other coding tool set
 
 ## Online Tools Available
 
@@ -38,3 +38,4 @@ This list comparison tool allows you to compare two lists to be able you analyze
 ## Blog Posts
 
 - [Letter Case Types in Programming](https://www.imediacto.com/blog/list-of-letter-case-types-in-programming)
+- [XML, CSV, and JSON Data Formats in Practice](https://www.imediacto.com/blog/xml-csv-json-data-formats)

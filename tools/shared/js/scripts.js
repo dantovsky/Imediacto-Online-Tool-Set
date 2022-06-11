@@ -23,7 +23,7 @@ function copyToClipboard(idElement = "output", checkId = 'check') {
 
 function selectAndCopy(element) {
     element.select();
-    element.setSelectionRange(0, 99999);
+    // element.setSelectionRange(0, 99999); // Limit selection
     document.execCommand("copy");
 }
 

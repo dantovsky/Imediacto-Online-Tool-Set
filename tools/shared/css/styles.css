@@ -26,6 +26,13 @@ p {
   /* font-family: 'Ubuntu', sans-serif; */
 }
 
+.boot p, .boot p.lead {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
 .boot h3, .boot .h3 {
   font-size: 1.45rem;
 }
@@ -274,6 +281,18 @@ textarea:-ms-input-placeholder {
 textarea::placeholder {
   color: #afafaf;
   text-transform: none;
+}
+
+/*
+Tools form elements
+******************************* */
+
+.boot .custom-file {
+    height: auto !important;
+}
+
+.boot .custom-range {
+    height: 0;
 }
 
 /* Case Converter
