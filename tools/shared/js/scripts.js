@@ -8,7 +8,7 @@ function copyToClipboard(idElement = "output", checkId = 'check') {
         selectAndCopy(element)
     } else if (typeElement === 'div') {
         const newTextarea = document.createElement('textarea')
-        newTextarea.value = document.getElementById(idElement).innerHTML
+        newTextarea.value = document.getElementById(idElement).innerText
         document.body.appendChild(newTextarea)
         selectAndCopy(newTextarea)
         newTextarea.remove()
@@ -36,6 +36,19 @@ function wordCount(idElement, maxLength = 100000) {
         var textlen = jQuery(this).val().length;
         jQuery("#counting-chars").text(textlen);
     });
+}
+
+// Download function
+function download(filename, text) {
+
+    let element = document.createElement('a');
+
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
 }
 
 /* Old versions

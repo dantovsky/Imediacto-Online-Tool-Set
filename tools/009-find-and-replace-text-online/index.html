@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../shared/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Find and Replace Text Online</title>
+    <style>
+        .boot pre {
+            height: 250px;
+            box-shadow: 5px 5px 12px gray;
+            padding: 12px;
+        }
+
+        .boot pre span.help-text {
+            color: #999;
+        }
+
+        .boot strong.title {
+            display: block;
+            margin-bottom: 8px;
+            /* background-color: aquamarine; */
+        }
+
+        #output {
+            background-color: #4d5866;
+            color: #eee;
+            padding: 10px;
+            border-radius: 4px;
+            height: 250px;
+            overflow: auto;
+        }
+
+        mark {
+            background-color: yellow !important;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body class="boot">
+    <div class="container">
+        <h1>Find and Replace Text Online</h1>
+
+
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <strong class="title">Input</strong>
+                <textarea id="input" name="input" cols="30" rows="10" placeholder="Insert text to replace">Oi meu bem, tudo bem contigo??? Como está o meu bemzinho hoje?
+Meu bem, como estás?
+E hoje, tudo certinho???</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12 col-sm-12">
+                <strong class="title">Search for</strong>
+                <div class="form-group">
+                    <input id="search" class="form-control mb-2 mr-sm-2" type="text" value="bem"
+                        placeholder="Text to search for">
+                </div>
+            </div>
+            <div class="col-md-6 col-12 col-sm-12">
+                <strong class="title">Replace with</strong>
+                <div class="form-group">
+                    <input id="replace" class="form-control mb-2 mr-sm-2" type="text" value="AMOR"
+                        placeholder="Text to replace with">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12 col-sm-12 mb-3">
+                <strong class="title">Options</strong>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="case-sensitive" class="custom-control-input">
+                    <label class="custom-control-label" for="case-sensitive">Math case-sensitive</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="match-exact-word" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="match-exact-word">Math exact word / term</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="first-occurrence" class="custom-control-input">
+                    <label class="custom-control-label" for="first-occurrence">Find only first occurrence</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <button class="btn btn-success" onclick="findAndReplace();"
+                    aria-label="Button to find and replace text">
+                    <i class="fa fa-chevron-right"></i> Find and replace
+                </button>
+            </div>
+            <div class="col-sm-12">
+                <strong class="title">Output</strong>
+                <div id="output"></div>
+                <div class="flex" style="justify-content: space-between;">
+                    <div class="flex mt-2">
+                        <div class="div-btn mr-1" onclick="saveToFile()" title="Download as TXT"
+                            aria-label="Button to download the output JSON"> <i class="fa fa-download">
+                                <span>TXT</span></i>
+                        </div>
+                        <div class="flex">
+                            <div class="div-btn" onclick="copyToClipboard()" title="Copy output to clipboard"
+                                area-label="Button to copy the JSON to clipboard"> <i class="fa fa-copy"> <span
+                                        class="hide-on-xs">Copy to clipboard</span></i></div>
+                            <div id="check" class="none"
+                                style="width: 18px; height: 18px; background-size: contain; margin-left: 8px; margin-bottom: 4px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="num-occurrences" class="mt-2 float-right"></div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>How does the Find and Replace Text work?</h2>
+        <p>It will function normally according to the rules of the sets, in Mathematics. However, in this tool,
+            you can
+            also choose the list option, so that it is possible to work with repeated values. The following
+            operations
+            are performed:</p>
+
+        <div class="notes">
+            <div class="image"></div>
+            <div class="message">
+                <p>
+                    List comparison is a recurring task among professional programmers and students.
+                    If you want some new feature for this <strong>Compare Two Lists</strong> tool, let me know
+                    in the
+                    comments area.
+                    Also, tell me if you found some bug, that I can fix it as soon as possible.
+                </p>
+                <p>
+                    You can learn about how this online list tool works or contribute improving the it
+                    by programming some new feature or fixing bugs. For that, go to Github on <a
+                        href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/008-compare-two-lists"
+                        target="_blank">Github >> Compare Two Lists</a> and make a pull request. This will be
+                    great!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function findAndReplace() {
+
+            const search = document.getElementById('search').value
+            const replace = document.getElementById('replace').value
+
+            if (search == '' || replace == '') {
+                document.getElementById('output').innerHTML = ''
+                return
+            }
+
+            const text = document.getElementById('input').value
+            const isCaseSensitive = document.getElementById('case-sensitive').checked ? true : false
+            const isMatchExactlyWord = document.getElementById('match-exact-word').checked ? true : false
+            const isToFindFirstOccurrence = document.getElementById('first-occurrence').checked ? true : false
+
+            const regex = new RegExp((isMatchExactlyWord ? '\\b' : '') + search + (isMatchExactlyWord ? '\\b' : ''), (isToFindFirstOccurrence ? '' : 'g') + (isCaseSensitive ? '' : 'i'))
+
+            document.getElementById('output').innerHTML = text
+                .replace(/\n/g, '<br />')
+                .replace(regex, '<mark>' + replace + '</mark>')
+            console.log(text.match(regex))
+            document.getElementById('num-occurrences').innerHTML = (text.match(regex) ? text.match(regex).length : '0') + (text.match(regex) && text.match(regex).length == 1 ? ' occurrence' : ' occurrences')
+        }
+
+        function saveToFile() {
+            download('text-replaced.txt', document.getElementById('output').innerText)
+        }
+
+        document.getElementById('search').addEventListener('keyup', findAndReplace)
+        document.getElementById('replace').addEventListener('keyup', findAndReplace)
+        document.getElementById('case-sensitive').addEventListener('click', findAndReplace)
+        document.getElementById('match-exact-word').addEventListener('click', findAndReplace)
+        document.getElementById('first-occurrence').addEventListener('click', findAndReplace)
+
+        // ---------------
+        /*
+
+        Regex to replace exact matching string
+        https://stackoverflow.com/questions/17210616/regex-to-replace-exact-matching-string
+
+        RegExp regular expression find & replace whole words only
+        https://stackoverflow.com/questions/11697483/regexp-regular-expression-find-replace-whole-words-only
+
+        String.prototype.replace()
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+
+        RegExp
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+
+        */
+
+    </script>
+    <script src="../shared/js/scripts.js"></script>
+</body>
+
+</html>

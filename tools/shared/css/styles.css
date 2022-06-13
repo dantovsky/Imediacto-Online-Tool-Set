@@ -48,9 +48,11 @@ p {
   border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 .single h3, h3 { font-size: 1.35rem; margin-top: 24px; }
+
 /* ****************************
 	CUSTOM COLORS THEME
 ******************************* */
+
 /* Padrao dos botoes */
 .boot button.btn {
   border-radius: 4px;

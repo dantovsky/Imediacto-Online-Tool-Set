@@ -6,12 +6,16 @@
   "scripts": {
     "purge": "postcss shared/css/boot.css > dist/boot3.css"
   },
-  "keywords": ["purge css", "remove unused css"],
+  "keywords": [
+    "purge css",
+    "remove unused css"
+  ],
   "author": "Dante Marinho",
   "license": "ISC",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.2",
     "cssnano": "^4.1.10",
-    "postcss": "^8.2.7"
+    "postcss": "^8.4.14",
+    "postcss-cli": "^9.1.0"
   }
 }

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../shared/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Find and Replace Text Online</title>
+    <style>
+        .boot pre {
+            height: 250px;
+            box-shadow: 5px 5px 12px gray;
+            padding: 12px;
+        }
+
+        .boot pre span.help-text {
+            color: #999;
+        }
+
+        .boot strong.title {
+            display: block;
+            margin-bottom: 8px;
+            /* background-color: aquamarine; */
+        }
+
+        /* Highlight text */
+
+        /* textarea {
+            margin: 0;
+            border-radius: 0;
+        } */
+
+        textarea#output, textarea#input {
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .backdrop {
+            overflow: auto;
+        }
+
+        textarea#output,
+        textarea#input {
+            color: #444;
+            /* or whatever */
+            background-color: transparent;
+        }
+
+        .highlights {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #ccc
+                /*transparent; */
+        }
+
+        mark {
+            color: transparent;
+            background-color: #65cc20;
+            /* or whatever */
+        }
+
+        .backdrop {
+            background-color: #fff;
+            /* or whatever */
+
+            position: absolute;
+            z-index: -1;
+            border: 2px solid #685972;
+            background-color: rgba(255, 255, 255, 0);
+            overflow: auto;
+            pointer-events: none;
+            transition: transform 1s;
+        }
+    </style>
+</head>
+
+<!-- Solução testada:
+    Highlight Text Inside a Textarea
+    https://codersblock.com/blog/highlight-text-inside-a-textarea/#:~:text=You%20can't%20actually%20highlight,JavaScript%2C%20you%20can%20fake%20it.
+
+    Outras possibilidades:
+    https://www.cssscript.com/highlighting-text-textarea-highlight-ta-js/
+    https://lonekorean.github.io/highlight-within-textarea/
+ -->
+
+<body class="boot">
+    <div class="container">
+        <h1>Find and Replace Text Online</h1>
+
+
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <strong class="title">Input</strong>
+                <div class="container">
+                    <div id="backdrop" class="backdrop">
+                        <div id="highlights" class="highlights">
+                            <!-- cloned text with <mark> tags here -->
+                        </div>
+                    </div>
+                    <textarea id="input" name="input" cols="30" rows="10" placeholder="Insert text to replace">Oi meu bem, tudo bem contigo???
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12 col-sm-12 mb-3">
+                <strong class="title">Search for</strong>
+                <div class="form-group">
+                    <input id="search" class="form-control mb-2 mr-sm-2" type="text" placeholder="Text to search for">
+                </div>
+            </div>
+            <div class="col-md-6 col-12 col-sm-12 mb-3">
+                <strong class="title">Replace with</strong>
+                <div class="form-group">
+                    <input id="replace" class="form-control mb-2 mr-sm-2" type="text"
+                        placeholder="Text to replace with">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12 col-sm-12 mb-3">
+                <strong class="title">Options</strong>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="case-sensitive" class="custom-control-input">
+                    <label class="custom-control-label" for="case-sensitive">Math case-sensitive</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="first-occurrence" class="custom-control-input">
+                    <label class="custom-control-label" for="first-occurrence">Find only first occurrence</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="other" class="custom-control-input">
+                    <label class="custom-control-label" for="other">Separeted by commas</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <strong class="title">Output</strong>
+                <div class="container">
+                    <div id="backdrop" class="backdrop">
+                        <div id="highlights" class="highlights">
+                            <!-- cloned text with <mark> tags here -->
+                        </div>
+                    </div>
+                    <textarea id="output" name="output" cols="30" rows="10" placeholder="Text replaced..."
+                        readonly></textarea>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>How does the Find and Replace Text work?</h2>
+        <p>It will function normally according to the rules of the sets, in Mathematics. However, in this tool,
+            you can
+            also choose the list option, so that it is possible to work with repeated values. The following
+            operations
+            are performed:</p>
+
+        <div class="notes">
+            <div class="image"></div>
+            <div class="message">
+                <p>
+                    List comparison is a recurring task among professional programmers and students.
+                    If you want some new feature for this <strong>Compare Two Lists</strong> tool, let me know
+                    in the
+                    comments area.
+                    Also, tell me if you found some bug, that I can fix it as soon as possible.
+                </p>
+                <p>
+                    You can learn about how this online list tool works or contribute improving the it
+                    by programming some new feature or fixing bugs. For that, go to Github on <a
+                        href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/008-compare-two-lists"
+                        target="_blank">Github >> Compare Two Lists</a> and make a pull request. This will be
+                    great!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        document.getElementById('replace').addEventListener('keyup', e => {
+
+            const search = document.getElementById('search').value
+            const replace = e.target.value
+            const input = document.getElementById('input').value
+            const caseSensitive = false
+            const findfirst = false
+
+            console.log(input)
+
+            const regex = new RegExp(search, (findfirst ? '' : 'g') + (caseSensitive ? '' : 'i'))
+            document.getElementById('output').value = document.getElementById('input').value.replace(regex, replace)
+        })
+
+        // HIGHLIGHTS
+
+        document.getElementById('input').addEventListener('input', handleInput)
+        document.getElementById('input').addEventListener('scroll', handleScroll)
+
+        function handleInput() {
+            console.log('handle input')
+            var text = document.getElementById('input').value;
+            var highlightedText = applyHighlights(text);
+            document.getElementById('highlights').innerHTML = highlightedText;
+        }
+
+        function applyHighlights(text) {
+            console.log('scroll')
+            return text
+                .replace(/\n$/g, '\n\n')
+                .replace(/[A-Z].*?\b/g, '<mark>$&</mark>');
+        }
+
+        function handleScroll() {
+            var scrollTop = document.getElementById('input').scrollTop();
+            document.getElementById('backdrop').scrollTop(scrollTop);
+        }
+    </script>
+    <script src="../shared/js/scripts.js"></script>
+</body>
+
+</html>
