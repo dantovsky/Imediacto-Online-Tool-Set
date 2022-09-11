@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Find and Replace Text Online</title>
     <style>
-        .boot pre {
+        /* .boot pre {
             height: 250px;
             box-shadow: 5px 5px 12px gray;
             padding: 12px;
@@ -18,12 +18,11 @@
 
         .boot pre span.help-text {
             color: #999;
-        }
+        } */
 
         .boot strong.title {
             display: block;
             margin-bottom: 8px;
-            /* background-color: aquamarine; */
         }
 
         #output {
@@ -46,13 +45,12 @@
     <div class="container">
         <h1>Find and Replace Text Online</h1>
 
-
+        <p>This is a <strong>online text replacer tool</strong> that allows you to find and replace text saving your time when you need to change some words in a large document.</p>
+        
         <div class="row">
             <div class="col-sm-12 mb-3">
                 <strong class="title">Input</strong>
-                <textarea id="input" name="input" cols="30" rows="10" placeholder="Insert text to replace">Oi meu bem, tudo bem contigo??? Como está o meu bemzinho hoje?
-Meu bem, como estás?
-E hoje, tudo certinho???</textarea>
+                <textarea id="input" name="input" cols="30" rows="10" placeholder="Insert text to replace"></textarea>
             </div>
         </div>
 
@@ -124,27 +122,24 @@ E hoje, tudo certinho???</textarea>
         <hr>
 
         <h2>How does the Find and Replace Text work?</h2>
-        <p>It will function normally according to the rules of the sets, in Mathematics. However, in this tool,
-            you can
-            also choose the list option, so that it is possible to work with repeated values. The following
-            operations
-            are performed:</p>
+        <p>To use this tool you need:</p>
+        <ol>
+            <li>In the <strong>Input</strong> textarea, type or paste a block of text you want to replace.</li>
+            <li>In the <strong>Search for</strong> input, put the term you want to search for.</li>
+            <li>In the <strong>Replace with</strong> input, put the term you want to replace for.</li>
+            <li>Choose options to improve your search.</li>
+            <li>Click the <strong>Find and replace</strong> button. Actually the process will be applyed automatically.</li>
+            <li>Finally, you can see the resulting text in the <strong>Output</strong> textarea.</li>
+        </ol>
 
         <div class="notes">
             <div class="image"></div>
             <div class="message">
                 <p>
-                    List comparison is a recurring task among professional programmers and students.
-                    If you want some new feature for this <strong>Compare Two Lists</strong> tool, let me know
-                    in the
-                    comments area.
-                    Also, tell me if you found some bug, that I can fix it as soon as possible.
-                </p>
-                <p>
-                    You can learn about how this online list tool works or contribute improving the it
-                    by programming some new feature or fixing bugs. For that, go to Github on <a
-                        href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/008-compare-two-lists"
-                        target="_blank">Github >> Compare Two Lists</a> and make a pull request. This will be
+                    You can view the source code of this online tool or contribute to improving it
+                    by programming some new feature or fixing bugs. For that, go to Github at <a
+                        href="https://github.com/dantovsky/Imediacto-Online-Tool-Set/tree/master/tools/009-find-and-replace-text-online"
+                        target="_blank">Github >> Find and Replace Text Online</a> and make a pull request. This will be
                     great!
                 </p>
             </div>
@@ -170,9 +165,9 @@ E hoje, tudo certinho???</textarea>
             const regex = new RegExp((isMatchExactlyWord ? '\\b' : '') + search + (isMatchExactlyWord ? '\\b' : ''), (isToFindFirstOccurrence ? '' : 'g') + (isCaseSensitive ? '' : 'i'))
 
             document.getElementById('output').innerHTML = text
-                .replace(/\n/g, '<br />')
                 .replace(regex, '<mark>' + replace + '</mark>')
-            console.log(text.match(regex))
+                .replace(/\n/g, '<br />')
+            // console.log(text.match(regex))
             document.getElementById('num-occurrences').innerHTML = (text.match(regex) ? text.match(regex).length : '0') + (text.match(regex) && text.match(regex).length == 1 ? ' occurrence' : ' occurrences')
         }
 
