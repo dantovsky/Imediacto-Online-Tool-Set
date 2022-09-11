@@ -13,7 +13,7 @@ Everyone who desire contribute to this project is welcome to:
 	- Text tools
 	- HTML tools
 	- CSS tools
-	- Javascript tools
+	- JavaScript tools
 	- And other coding tool set
 
 ## Online Tools Available
@@ -34,6 +34,8 @@ The Uppercase Converter is an online tool to change your text from lowercase to 
 It’s an Image Online Tool that helps you to optimize images and photos, such as resizing, compressing, and converting. It’s good for SEO optimization.
 - [Compare Two Lists](https://www.imediacto.com/tools/list-tools/compare-two-lists)  
 This list comparison tool allows you to compare two lists to be able you analyze SET operations (difference, intersection, union, symmetric difference).
+- [Find and Replace Text Online](https://www.imediacto.com/tools/text-tools/find-and-replace-text-online/)  
+This is a online text replacer tool that allows you to find and replace text saving your time when you need to change some words in a large document.
 
 ## Blog Posts
 
