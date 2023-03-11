@@ -2,19 +2,19 @@
     {
         "name": "Chat.GPT",
         "description": "Chat super intelligent to use in your way.",
-        "url": "https://",
+        "url": "https://chat.openai.com/auth/login",
         "categories": ["chat"]
     },
     {
-        "name": "Chat.GPT 2",
-        "description": "Chat super intelligent to use in your way.",
-        "url": "https://",
-        "categories": ["chat"]
+        "name": "Midjourney",
+        "description": "Create images from text with this AI.",
+        "url": "https://www.midjourney.com/",
+        "categories": ["image"]
     },
     {
-        "name": "Chat.GPT 3",
-        "description": "Chat super intelligent to use in your way.",
-        "url": "https://",
-        "categories": ["chat"]
+        "name": "Stable Diffusion",
+        "description": "Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input, cultivates autonomous freedom to produce incredible imagery, empowers billions of people to create stunning art within seconds.",
+        "url": "https://stablediffusionweb.com/",
+        "categories": ["image"]
     }
 ]
