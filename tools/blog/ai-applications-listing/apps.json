@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Chat.GPT",
+        "description": "Chat super intelligent to use in your way.",
+        "url": "https://",
+        "categories": ["chat"]
+    },
+    {
+        "name": "Chat.GPT 2",
+        "description": "Chat super intelligent to use in your way.",
+        "url": "https://",
+        "categories": ["chat"]
+    },
+    {
+        "name": "Chat.GPT 3",
+        "description": "Chat super intelligent to use in your way.",
+        "url": "https://",
+        "categories": ["chat"]
+    }
+]

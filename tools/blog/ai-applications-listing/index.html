@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obtenção dos posts através do WP JSON</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        * {
+            text-decoration: none;
+            color: rgb(53, 53, 53);
+        }
+
+        /* New cards on home */
+        #tools-home {
+            width: 100%;
+            margin: auto;
+
+            /* width: 100%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; */
+        }
+
+        #tools-loader {
+            position: fixed;
+            left: calc(50vw - 40px);
+            margin-top: -20px;
+        }
+
+        .tools {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tools .tool {
+            box-shadow: 2px 2px 4px 0px #ccc ! important;
+            margin-bottom: 12px;
+            margin-right: 12px;
+            padding: 8px;
+            width: 345px;
+            height: 70px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tool:hover {
+            box-shadow: 2px 2px 7px 2px rgb(223, 223, 223) ! important;
+            background-color: rgb(245, 245, 245);
+        }
+
+        .tools .tool h3,
+        .tools .tool .excerpt,
+        .tools .tool .excerpt p {
+            margin: 0;
+        }
+
+        .tools .tool h3 {
+            font-size: 1.17em;
+            font-family: Ubuntu, monospace;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            margin-bottom: -6px;
+            font-weight: 600;
+        }
+
+        .tools .tool .text .excerpt p {
+            font-size: 12px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 16px;
+        }
+
+        a.tool-link {
+            display: flex;
+            flex-direction: row;
+            color: #222;
+        }
+
+        .image {
+            width: 60px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image img {
+            width: 45px;
+            height: 45px;
+        }
+
+        .tools .tool .text {
+            padding: 2px 8px;
+            flex: 1;
+        }
+
+        /* loader */
+
+        .lds-ripple {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .lds-ripple div {
+            position: absolute;
+            border: 4px solid #5627b3 !important;
+            opacity: 1;
+            border-radius: 50%;
+            -webkit-animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+            animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        }
+
+        .lds-ripple div:nth-child(2) {
+            -webkit-animation-delay: -0.5s;
+            animation-delay: -0.5s;
+        }
+
+        @-webkit-keyframes lds-ripple {
+            0% {
+                top: 36px;
+                left: 36px;
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+
+            100% {
+                top: 0px;
+                left: 0px;
+                width: 72px;
+                height: 72px;
+                opacity: 0;
+            }
+        }
+
+        @keyframes lds-ripple {
+            0% {
+                top: 36px;
+                left: 36px;
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+
+            100% {
+                top: 0px;
+                left: 0px;
+                width: 72px;
+                height: 72px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Obtenção dos posts através do WP JSON</h1>
+    <p>Endereço: <strong>https://www.imediacto.com/wp-json/wp/v2/posts</strong></p>
+    <p>Estou obtendo os campos: id, title.rendered, link, excerpt.rendered e categories[0]. O índice 0 do campo
+        categories é a categoria principal a que o post está associado.</p>
+
+    <h2>getJSON para fazer os cards da home</h2>
+
+    <p>copy text from a PDF.
+
+        With this web application you can to smells tastes like converting text list into HTML lista or other list
+        formats,
+        convert CSV to JSON and exclude some header field as you need, remove line braks from a text and use case
+        converter
+        tools.</p>
+
+
+    <div id="tools-home">
+        <div id="tools-loader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        const apps = [
+        {
+                "name": "Chat.GPT",
+                "description": "Chat super intelligent to use in your way.",
+                "url": "https://",
+                "categories": ["chat"]
+            },
+            {
+                "name": "Chat.GPT 2",
+                "description": "Chat super intelligent to use in your way.",
+                "url": "https://",
+                "categories": ["chat"]
+            },
+            {
+                "name": "Chat.GPT 3",
+                "description": "Chat super intelligent to use in your way.",
+                "url": "https://",
+                "categories": ["chat"]
+            }
+        ]
+        
+        jQuery(document).ready(function ($) {
+
+            loadPosts();
+
+            function loadPosts() {
+
+                const version = "1.6a"
+                const url = "https://www.imediacto.com/wp-json/wp/v2/posts?v=" + version
+
+                if (localStorage.imediactoAIApps && localStorage.imediactoAIAppsVersion && version == localStorage.imediactoAIAppsVersion) {
+                    // console.log('busca do localStorage');
+                    const items = localStorage.getItem('imediactoAIApps')
+
+                    // Insert all items inside a div.tools and append to #tools-home
+                    $("<div/>", {
+                        "class": "tools",
+                        html: items
+                    }).appendTo("#tools-home");
+
+                    // Clear leader
+                    $('#tools-loader').fadeOut();
+
+                } else {
+                    $.getJSON(null, function () {
+                        // Success!
+                    })
+                        .done(function (data, status, request) {
+
+                            // Array to store all posts
+                            var items = []
+                            for (var post in data) {
+                                // console.log('post: ', data[post])
+
+                                if (data[post].categories[0] == 7) {
+                                    continue;
+                                }
+
+                                const title = data[post].title.rendered // & #8211 ; (large hifen code)
+                                let item = {
+                                    id: data[post].id,
+                                    title: title.indexOf(` ~`) === -1 ? title : title.substr(0, title.indexOf(` ~`)),
+                                    link: data[post].link,
+                                    excerpt: data[post].excerpt.rendered,
+                                    category: data[post].categories[0]
+                                }
+
+                                if (item.category == 4) {
+                                    item.image = 'https://www.imediacto.com/wp-content/uploads/2020/06/tools.svg'
+                                } else if (item.category == 9) {
+                                    item.image = 'https://www.imediacto.com/wp-content/uploads/2021/02/listing.svg'
+                                } else {
+                                    item.image = 'https://www.imediacto.com/wp-content/uploads/2020/06/html-rounded.svg'
+                                }
+
+                                items.push(`
+                            <div id="tool-id-${item.id}" class="tool">
+                                <a href="${item.link}" class="tool-link">
+                                    <div class="image">
+                                        <img src="${item.image}" alt="${item.title}"/>
+                                    </div>
+                                    <div class="text">
+                                        <h3>${item.title}</h3>
+                                        <div class="excerpt">${item.excerpt}</div>
+                                    </div>
+                                </a>
+                            </div>`);
+                            }
+
+                            // Insert all items inside a div.tools and append to #tools-home
+                            $("<div/>", {
+                                "class": "tools",
+                                html: items.join("")
+                            }).appendTo("#tools-home");
+
+                            // Saving on localStorage
+                            localStorage.setItem('imediactoDataHome', items.join(""))
+                            localStorage.setItem('imediactoDataHomeVersion', version)
+
+                        }).fail(function (error) {
+                            $('#tabela tbody').html("Something went wrong when loading the data.");
+                        }).always(function () {
+
+                            // Clear leader
+                            $('#tools-loader').fadeOut();
+                        })
+                }
+            }
+        });
+        // https://api.jquery.com/jQuery.getJSON/
+        // https://zellwk.com/blog/looping-through-js-objects/
+        // https://stackoverflow.com/questions/26973570/setting-a-max-character-length-in-css/26975271
+    </script>
+</body>
+
+</html>
+
+<!-- 
+    // console.log('ID: ', item.id)
+    // console.log('Title: ', item.title)
+    // console.log('link: ', item.link)
+    // console.log('excerpt: ', item.excerpt)
+    // console.log('category: ', item.category)
+    // console.log('\n');
+ -->
