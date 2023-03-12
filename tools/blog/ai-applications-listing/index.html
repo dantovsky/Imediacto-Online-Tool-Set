@@ -219,6 +219,12 @@
             text-decoration: underline;
         }
         
+        #ai-listing .jumbotron.tool .categories {
+            margin: .5rem 0;
+            display: flex;
+            gap: 8px;
+        }
+
         #ai-listing .jumbotron.tool .categories .category {
             color: #ffffffef;
             font-size: .875rem;
@@ -227,33 +233,27 @@
             border-radius: 16px;
         }
 
-        #ai-listing .jumbotron.tool .categories {
-            margin: .5rem 0;
-        }
-
-        input#search {
+        .post-ai-apps input#search {
             margin: auto;
             display: block;
             width: 280px;
             max-width: 50%;
             padding: 8px;
-            background-color: #323238;
-            border: none;
-            color: #ffffffef;
             border-radius: 6px;
         }
 
-        input#search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: #ffffffef;
+        post-ai-apps input#search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #2b2b2bef;
             opacity: 1; /* Firefox */
+            font-weight: 400;
         }
 
-        input#search:-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: #ffffffef;
+        post-ai-apps input#search:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #2b2b2bef;
         }
 
-        input#search::-ms-input-placeholder { /* Microsoft Edge */
-            color: #ffffffef;
+        post-ai-apps input#search::-ms-input-placeholder { /* Microsoft Edge */
+            color: #2b2b2bef;
         }
 
         .align-center {
@@ -264,7 +264,7 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 8px;
         }
 
         ul#category-filter li {
@@ -299,32 +299,34 @@
     
     <h2>List of AI applications with short explanation</h2>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="input-group">
-                <div class="align-center">
-                    <p>Search to filter</p>
+    <div class="post-ai-apps">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="align-center">
+                        <p>Search to filter</p>
+                    </div>
+                    <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
+                    <input type="text" id="search" name="search" class="form-control" placeholder="Search AI application" aria-describedby="sizing-addon2">
                 </div>
-                <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
-                <input type="text" id="search" name="search" class="form-control" placeholder="Search AI application" aria-describedby="sizing-addon2">
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12 d-flex">
-            <div class="align-center">
-                <p>Filter by category</p>
+    
+        <div class="row">
+            <div class="col-lg-12 d-flex">
+                <div class="align-center">
+                    <p>Filter by category</p>
+                </div>
+                <ul id="category-filter"></ul>
             </div>
-            <ul id="category-filter"></ul>
         </div>
-    </div>
-
-    <div id="ai-listing">
-        <div id="tools-loader">
-            <div class="lds-ripple">
-                <div></div>
-                <div></div>
+    
+        <div id="ai-listing">
+            <div id="tools-loader">
+                <div class="lds-ripple">
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
         </div>
     </div>
@@ -354,7 +356,7 @@
 
         function loadPosts() {
 
-            const version = "1.4a"
+            const version = "1.5"
             const url = "https://raw.githubusercontent.com/dantovsky/Imediacto-Online-Tool-Set/master/tools/blog/ai-applications-listing/apps.json?v=" + version
 
             if (localStorage.imediactoAIApps && localStorage.imediactoAIAppsVersion && version == localStorage.imediactoAIAppsVersion) {
@@ -383,26 +385,30 @@
                         var items = []
                         for (var post in data) {
 
-                            const name = data[post].name
                             let item = {
                                 // id: data[post].id,
-                                name: name,
+                                name: data[post].name,
                                 url: data[post].url,
                                 description: data[post].description,
-                                category: data[post].categories[0]
+                                categories: data[post].categories
                             }
 
                         // TODO :: Adicionar id, exemplo: <div id="tool-id-${item.name}" class="tool">
                         
-                            items.push(`
+                            let tool = `
                             <div class="jumbotron tool">
                                 <h3>${item.name}</h3>
-                                <div class="categories"><span class="category">${item.category}</span></div>
+                                <div class="categories">`
+                            item.categories.forEach(category => {
+                                tool += `<span class="category">${category}</span>`
+                            })
+                            tool += `</div>
                                 <p>${item.description}</p>
                                 <a href="${item.url}" target="_blank" rel="nofollow">${item.url}</a>
-                            </div>`);
+                            </div>`
+                            items.push(tool);
                         }
-                        console.log('vai colocar as tools')
+                        console.log('tools')
 
                         // Insert all items inside a div.tools and append to #ai-listing
                         $("<div/>", {
@@ -436,7 +442,7 @@
         // Search apps
         // --------------------------------------------------------------------
 
-        const searchApplications = function() {
+        function searchApplications() {
             let searchInput = document.querySelector('#search');            
 
             searchInput = document.querySelector('#search');
@@ -465,7 +471,7 @@
         // Category list selectable for filtering
         // --------------------------------------------------------------------
 
-        const generatecateroryListFilterable = function() {
+        function generatecateroryListFilterable() {
             // Obtém todas as categorias existentes
             const allCategories = Array.from(document.querySelectorAll('.category')).map(span => span.textContent);
 
@@ -495,10 +501,10 @@
 
                     // Se nenhuma categoria estiver selecionada, exibe todas as ferramentas
                     if (activeCategories.length === 0) {
-                    tools.forEach(tool => {
-                        tool.style.display = 'block';
-                    });
-                    return;
+                        tools.forEach(tool => {
+                            tool.style.display = 'block';
+                        });
+                        return;
                     }
                     
                     // Remove todas as ferramentas da tela
