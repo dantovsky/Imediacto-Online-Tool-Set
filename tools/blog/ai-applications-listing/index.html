@@ -354,11 +354,11 @@
 
         function loadPosts() {
 
-            const version = "1.4"
+            const version = "1.4a"
             const url = "https://raw.githubusercontent.com/dantovsky/Imediacto-Online-Tool-Set/master/tools/blog/ai-applications-listing/apps.json?v=" + version
 
             if (localStorage.imediactoAIApps && localStorage.imediactoAIAppsVersion && version == localStorage.imediactoAIAppsVersion) {
-                // console.log('busca do localStorage');
+
                 const items = localStorage.getItem('imediactoAIApps')
 
                 // Insert all items inside a div.tools and append to #ai-listing
@@ -367,6 +367,10 @@
                     html: items
                 }).appendTo("#ai-listing");
 
+                // Call other funcitons
+                searchApplications()
+                generatecateroryListFilterable()
+
                 // Clear leader
                 $('#tools-loader').fadeOut();
 
@@ -374,9 +378,6 @@
                 $.getJSON(url, function () {
                     // Success!
                 }).done(function (data, status, request) {
-
-                    console.log('done ::', data)
-
 
                         // Array to store all posts
                         var items = []
@@ -391,18 +392,7 @@
                                 category: data[post].categories[0]
                             }
 
-                        //     items.push(`
-                        // <div id="tool-id-${item.name}" class="tool">
-                        //     <a href="${item.url}" class="tool-link">
-                        //         <!--<div class="image">
-                        //             <img src="${item.image}" alt="${item.name}"/>
-                        //         </div>-->
-                        //         <div class="text">
-                        //             <h3>${item.name}</h3>
-                        //             <div class="excerpt">${item.description}</div>
-                        //         </div>
-                        //     </a>
-                        // </div>`);
+                        // TODO :: Adicionar id, exemplo: <div id="tool-id-${item.name}" class="tool">
                         
                             items.push(`
                             <div class="jumbotron tool">
@@ -425,7 +415,6 @@
                         localStorage.setItem('imediactoAIAppsVersion', version)
 
                         // Call other funcitons
-                        console.log('chamando a func')
                         searchApplications()
                         generatecateroryListFilterable()
 
@@ -476,7 +465,7 @@
         // Category list selectable for filtering
         // --------------------------------------------------------------------
 
-        function generatecateroryListFilterable() {
+        const generatecateroryListFilterable = function() {
             // Obtém todas as categorias existentes
             const allCategories = Array.from(document.querySelectorAll('.category')).map(span => span.textContent);
 
