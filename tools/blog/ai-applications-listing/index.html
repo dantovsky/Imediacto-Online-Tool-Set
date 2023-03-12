@@ -175,9 +175,19 @@
 
         /* AI APPS */
 
+        @-webkit-keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         #ai-listing .tools .tool {
             height: fit-content;
-            transition: all .1s ease;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s;
         }
 
         #ai-listing .tools .tool:hover {
@@ -210,7 +220,6 @@
         }
         
         #ai-listing .jumbotron.tool .categories .category {
-            color: #00b37e;
             color: #ffffffef;
             font-size: .875rem;
             background-color: #00875f;
@@ -221,6 +230,64 @@
         #ai-listing .jumbotron.tool .categories {
             margin: .5rem 0;
         }
+
+        input#search {
+            margin: auto;
+            display: block;
+            width: 280px;
+            max-width: 50%;
+            padding: 8px;
+            background-color: #323238;
+            border: none;
+            color: #ffffffef;
+            border-radius: 6px;
+        }
+
+        input#search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #ffffffef;
+            opacity: 1; /* Firefox */
+        }
+
+        input#search:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #ffffffef;
+        }
+
+        input#search::-ms-input-placeholder { /* Microsoft Edge */
+            color: #ffffffef;
+        }
+
+        .align-center {
+            text-align: center;
+        }
+
+        ul#category-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        ul#category-filter li {
+            list-style: none !important;
+            background-color: #323238;
+            background-color: #00875f;
+            border-radius: 1rem;
+            background-color: #00875f;
+            border-radius: 1rem;
+            padding: 5px 0.8rem;            
+        }
+
+        ul#category-filter li label {
+            color: #00875f;
+            color: #ffffffef;
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+        }
+
+        /* body {
+            overflow-y: scroll;
+        } */
     </style>
 </head>
 
@@ -231,6 +298,27 @@
     <p>These are just a few of the many AI applications that are transforming the way we live and work. As technology continues to evolve, we can expect to see even more exciting advances in the future.</p>
     
     <h2>List of AI applications with short explanation</h2>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <div class="align-center">
+                    <p>Search to filter</p>
+                </div>
+                <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
+                <input type="text" id="search" name="search" class="form-control" placeholder="Search AI application" aria-describedby="sizing-addon2">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 d-flex">
+            <div class="align-center">
+                <p>Filter by category</p>
+            </div>
+            <ul id="category-filter"></ul>
+        </div>
+    </div>
 
     <div id="ai-listing">
         <div id="tools-loader">
@@ -251,95 +339,196 @@
 
     <p>Another important application of AI is in finance. AI can be used to analyze financial data and predict market trends. This can help investors and financial institutions make informed decisions and reduce financial risks.</p>
 
-    <script>        
+    <script>
+    
+        let categoryFilter = document.querySelector('#category-filter');
+        let tools = document.querySelectorAll('.tool');
+
+        // --------------------------------------------------------------------
+        // Get AI applications list
+        // --------------------------------------------------------------------
+
         jQuery(document).ready(function ($) {
 
-            loadPosts();
+        loadPosts();
 
-            function loadPosts() {
+        function loadPosts() {
 
-                const version = "1.1"
-                const url = "https://raw.githubusercontent.com/dantovsky/Imediacto-Online-Tool-Set/master/tools/blog/ai-applications-listing/apps.json?v=" + version
+            const version = "1.2b" + "-" + Math.random()
+            const url = "https://raw.githubusercontent.com/dantovsky/Imediacto-Online-Tool-Set/master/tools/blog/ai-applications-listing/apps.json?v=" + version
 
-                if (localStorage.imediactoAIApps && localStorage.imediactoAIAppsVersion && version == localStorage.imediactoAIAppsVersion) {
-                    // console.log('busca do localStorage');
-                    const items = localStorage.getItem('imediactoAIApps')
+            if (localStorage.imediactoAIApps && localStorage.imediactoAIAppsVersion && version == localStorage.imediactoAIAppsVersion) {
+                // console.log('busca do localStorage');
+                const items = localStorage.getItem('imediactoAIApps')
 
-                    // Insert all items inside a div.tools and append to #ai-listing
-                    $("<div/>", {
-                        "class": "tools",
-                        html: items
-                    }).appendTo("#ai-listing");
+                // Insert all items inside a div.tools and append to #ai-listing
+                $("<div/>", {
+                    "class": "tools",
+                    html: items
+                }).appendTo("#ai-listing");
 
-                    // Clear leader
-                    $('#tools-loader').fadeOut();
+                // Clear leader
+                $('#tools-loader').fadeOut();
 
-                } else {
-                    $.getJSON(url, function () {
-                        // Success!
-                    }).done(function (data, status, request) {
+            } else {
+                $.getJSON(url, function () {
+                    // Success!
+                }).done(function (data, status, request) {
 
-                        console.log('done ::', data)
+                    console.log('done ::', data)
 
 
-                            // Array to store all posts
-                            var items = []
-                            for (var post in data) {
+                        // Array to store all posts
+                        var items = []
+                        for (var post in data) {
 
-                                const name = data[post].name
-                                let item = {
-                                    // id: data[post].id,
-                                    name: name,
-                                    url: data[post].url,
-                                    description: data[post].description,
-                                    category: data[post].categories[0]
-                                }
-
-                            //     items.push(`
-                            // <div id="tool-id-${item.name}" class="tool">
-                            //     <a href="${item.url}" class="tool-link">
-                            //         <!--<div class="image">
-                            //             <img src="${item.image}" alt="${item.name}"/>
-                            //         </div>-->
-                            //         <div class="text">
-                            //             <h3>${item.name}</h3>
-                            //             <div class="excerpt">${item.description}</div>
-                            //         </div>
-                            //     </a>
-                            // </div>`);
-                            
-                                items.push(`
-                                <div class="jumbotron tool">
-                                    <h3>${item.name}</h3>
-                                    <div class="categories"><span class="category">${item.category}</span></div>
-                                    <p>${item.description}</p>
-                                    <a href="${item.url}" target="_blank" rel="nofollow">${item.url}</a>
-                                </div>`);
+                            const name = data[post].name
+                            let item = {
+                                // id: data[post].id,
+                                name: name,
+                                url: data[post].url,
+                                description: data[post].description,
+                                category: data[post].categories[0]
                             }
 
-                            // Insert all items inside a div.tools and append to #ai-listing
-                            $("<div/>", {
-                                "class": "tools",
-                                html: items.join("")
-                            }).appendTo("#ai-listing");
+                        //     items.push(`
+                        // <div id="tool-id-${item.name}" class="tool">
+                        //     <a href="${item.url}" class="tool-link">
+                        //         <!--<div class="image">
+                        //             <img src="${item.image}" alt="${item.name}"/>
+                        //         </div>-->
+                        //         <div class="text">
+                        //             <h3>${item.name}</h3>
+                        //             <div class="excerpt">${item.description}</div>
+                        //         </div>
+                        //     </a>
+                        // </div>`);
+                        
+                            items.push(`
+                            <div class="jumbotron tool">
+                                <h3>${item.name}</h3>
+                                <div class="categories"><span class="category">${item.category}</span></div>
+                                <p>${item.description}</p>
+                                <a href="${item.url}" target="_blank" rel="nofollow">${item.url}</a>
+                            </div>`);
+                        }
+                        console.log('vai colocar as tools')
 
-                            // Saving on localStorage
-                            localStorage.setItem('imediactoAIApps', items.join(""))
-                            localStorage.setItem('imediactoAIAppsVersion', version)
+                        // Insert all items inside a div.tools and append to #ai-listing
+                        $("<div/>", {
+                            "class": "tools",
+                            html: items.join("")
+                        }).appendTo("#ai-listing");
 
-                        }).fail(function (error) {
-                            $('#tabela tbody').html("Something went wrong when loading the data.");
-                        }).always(function () {
+                        // Saving on localStorage
+                        localStorage.setItem('imediactoAIApps', items.join(""))
+                        localStorage.setItem('imediactoAIAppsVersion', version)
 
-                            // Clear leader
-                            $('#tools-loader').fadeOut();
-                        })
-                }
+                        // Call other funcitons
+                        console.log('chamando a func')
+                        searchApplications()
+                        generatecateroryListFilterable()
+
+                    }).fail(function (error) {
+                        $('#tabela tbody').html("Something went wrong when loading the data.");
+                    }).always(function () {
+
+                        // Clear leader
+                        $('#tools-loader').fadeOut();
+                    })
             }
+        }
         });
         // https://api.jquery.com/jQuery.getJSON/
         // https://zellwk.com/blog/looping-through-js-objects/
         // https://stackoverflow.com/questions/26973570/setting-a-max-character-length-in-css/26975271
+
+        // --------------------------------------------------------------------
+        // Search apps
+        // --------------------------------------------------------------------
+
+        const searchApplications = function() {
+            let searchInput = document.querySelector('#search');            
+
+            searchInput = document.querySelector('#search');
+            tools = document.querySelectorAll('.tool');
+
+            searchInput.addEventListener('input', function(event) {
+
+                const searchTerm = event.target.value.toLowerCase(); 
+
+                tools.forEach(tool => {
+                    const name = tool.querySelector('h3').textContent.toLowerCase();
+                    const category = tool.querySelector('.category').textContent.toLowerCase();
+                    const description = tool.querySelector('p').textContent.toLowerCase();
+                    
+                    if (name.includes(searchTerm) || category.includes(searchTerm) || description.includes(searchTerm)) {
+                        tool.style.display = "";
+                    } else {
+                        tool.style.display = "none"
+                    }
+                });
+            });
+        }
+
+        
+        // --------------------------------------------------------------------
+        // Category list selectable for filtering
+        // --------------------------------------------------------------------
+
+        function generatecateroryListFilterable() {
+            // Obtém todas as categorias existentes
+            const allCategories = Array.from(document.querySelectorAll('.category')).map(span => span.textContent);
+
+            // Remove duplicatas
+            const uniqueCategories = [...new Set(allCategories)];
+
+            // Cria a lista de categorias na classe "category-filter"
+            // const categoryFilter = document.querySelector('.category-filter');
+            uniqueCategories.forEach(category => {
+                const li = document.createElement('li');
+                const label = document.createElement('label');
+                const checkbox = document.createElement('input');
+                
+                checkbox.type = 'checkbox';
+                checkbox.value = category;
+                label.appendChild(checkbox);
+                label.appendChild(document.createTextNode(category));
+                li.appendChild(label);
+                categoryFilter.appendChild(li);
+            });
+
+            // Adiciona ouvinte de eventos à lista de categorias
+            const categoryCheckboxes = Array.from(categoryFilter.querySelectorAll('input[type="checkbox"]'));
+            categoryCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() { console.log('alterado')
+                    const activeCategories = categoryCheckboxes.filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+
+                    // Se nenhuma categoria estiver selecionada, exibe todas as ferramentas
+                    if (activeCategories.length === 0) {
+                    tools.forEach(tool => {
+                        tool.style.display = 'block';
+                    });
+                    return;
+                    }
+                    
+                    // Remove todas as ferramentas da tela
+                    tools.forEach(tool => {
+                        tool.style.display = 'none';
+                    });
+
+                    // Filtra as ferramentas com base nas categorias ativas
+                    tools.forEach(tool => {
+                    const toolCategories = Array.from(tool.querySelectorAll('.category')).map(span => span.textContent);
+                    if (activeCategories.some(category => toolCategories.includes(category))) {
+                        tool.style.display = 'block';
+                    } else {
+                        tool.style.display = 'none';
+                    }
+                    });
+                });
+            });
+        }
     </script>
 </body>
 

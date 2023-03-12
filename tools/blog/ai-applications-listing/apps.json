@@ -3,7 +3,7 @@
         "name": "ChatGPT",
         "description": "ChatGPT is a large language model developed by OpenAI that has been trained on a vast amount of text data. It has the ability to understand natural language and generate human-like responses to questions and prompts. ChatGPT can assist with a wide range of tasks, such as answering questions, providing information, generating text, and more.",
         "url": "https://chat.openai.com/",
-        "categories": ["chat"]
+        "categories": ["chat", "code generator"]
     },
     {
         "name": "OpenAI Developer community",
