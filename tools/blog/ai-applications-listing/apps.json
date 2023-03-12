@@ -1,13 +1,13 @@
 [
     {
         "name": "Chat.GPT",
-        "description": "Chat super intelligent to use in your way.",
-        "url": "https://chat.openai.com/auth/login",
+        "description": "ChatGPT is a large language model developed by OpenAI that has been trained on a vast amount of text data. It has the ability to understand natural language and generate human-like responses to questions and prompts. ChatGPT can assist with a wide range of tasks, such as answering questions, providing information, generating text, and more.",
+        "url": "https://chat.openai.com/",
         "categories": ["chat"]
     },
     {
         "name": "Midjourney",
-        "description": "Create images from text with this AI.",
+        "description": "Midjourney is an independent research lab exploring new mediums of thought and expanding the imaginative powers of the human species. Midjourney allows users to convert text into images that can be used for a variety of purposes, such as creating social media posts, designing posters, or generating visual content for websites. The users can customize the font, color, background, and other design elements of their images, making it easy to create visually appealing graphics without any design skills. The application is available online on Discord and can be used on desktops, laptops, and mobile devices.",
         "url": "https://www.midjourney.com/",
         "categories": ["image"]
     },

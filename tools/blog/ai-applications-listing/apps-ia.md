@@ -3,7 +3,7 @@
 > https://chat.openai.com/ - Chat
 > https://lnkd.in/dRvAyAAk - Comunidade OpenAI
 > https://lnkd.in/dY8v33nG - TheGptTimes Escreva uma noticia com 3 tweets.
-> https://www.midjourney.com/ - Crie imagens baseadas em texto com essa IA.
+> https://www.midjourney.com/ - Crie imagens baseadas em texto com essa IA. Use /imagine to generate an image in under 60 seconds, based on a text prompt!
 > https://stablediffusionweb.com/ - Crie imagens baseadas em texto com essa IA.
 > https://codewp.ai/ - Scripts para Wordpress
 > https://www.sitekick.ai/ - Crie Landpages com IA dizendo como você quer via texto.

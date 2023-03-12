@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Obtenção dos posts através do WP JSON</title>
+    <link rel="stylesheet" href="../../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../../shared/css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         * {
@@ -13,7 +15,7 @@
         }
 
         /* New cards on home */
-        #tools-home {
+        #ai-listing {
             width: 100%;
             margin: auto;
 
@@ -49,6 +51,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+
+            background-color: #323238;
+            border-radius: .25rem;
+            color: #000;
         }
 
         .tool:hover {
@@ -71,6 +77,9 @@
             -webkit-box-orient: vertical;
             margin-bottom: -6px;
             font-weight: 600;
+
+            color: #e1e1e6;
+            text-shadow: none !important;
         }
 
         .tools .tool .text .excerpt p {
@@ -163,27 +172,67 @@
                 opacity: 0;
             }
         }
+
+        /* AI APPS */
+
+        #ai-listing .tools .tool {
+            height: fit-content;
+            transition: all .1s ease;
+        }
+
+        #ai-listing .tools .tool:hover {
+            box-shadow: 2px 2px 8px 2px rgb(184, 184, 184) !important;
+            background-color: #323238;
+        }
+
+        #ai-listing .jumbotron.tool {
+            background-color: #323238;
+            border-radius: .25rem;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        #ai-listing .jumbotron h3, .jumbotron p {
+            color: #dfdfdf;
+            margin: 0;
+            padding: 0;
+            height: auto;
+        }
+
+        #ai-listing .jumbotron h3 {
+            font-size: 1.4rem;
+            font-weight: 400 !important;
+        }
+
+        #ai-listing .jumbotron.tool a {
+            color: #00b37e;
+            text-decoration: underline;
+        }
+        
+        #ai-listing .jumbotron.tool .categories .category {
+            color: #00b37e;
+            color: #ffffffef;
+            font-size: .875rem;
+            background-color: #00875f;
+            padding: 0 .5rem;
+            border-radius: 16px;
+        }
+
+        #ai-listing .jumbotron.tool .categories {
+            margin: .5rem 0;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Obtenção dos posts através do WP JSON</h1>
-    <p>Endereço: <strong>https://www.imediacto.com/wp-json/wp/v2/posts</strong></p>
-    <p>Estou obtendo os campos: id, title.rendered, link, excerpt.rendered e categories[0]. O índice 0 do campo
-        categories é a categoria principal a que o post está associado.</p>
+    <h1>List Application of Artificial Intelligence</h1>
+    <p>Artificial intelligence is one of the most transformative technologies of our time. With its ability to learn, reason, and make decisions, AI is changing the way businesses operate, governments govern, and people live their lives. As technology continues to advance, AI applications are becoming increasingly sophisticated and are being used across a wide variety of sectors and industries.</p>
 
-    <h2>getJSON para fazer os cards da home</h2>
+    <p>These are just a few of the many AI applications that are transforming the way we live and work. As technology continues to evolve, we can expect to see even more exciting advances in the future.</p>
+    
+    <h2>List of AI applications with short explanation</h2>
 
-    <p>copy text from a PDF.
-
-        With this web application you can to smells tastes like converting text list into HTML lista or other list
-        formats,
-        convert CSV to JSON and exclude some header field as you need, remove line braks from a text and use case
-        converter
-        tools.</p>
-
-
-    <div id="tools-home">
+    <div id="ai-listing">
         <div id="tools-loader">
             <div class="lds-ripple">
                 <div></div>
@@ -191,47 +240,36 @@
             </div>
         </div>
     </div>
-    <script>
 
-        const apps = [
-        {
-                "name": "Chat.GPT",
-                "description": "Chat super intelligent to use in your way.",
-                "url": "https://",
-                "categories": ["chat"]
-            },
-            {
-                "name": "Chat.GPT 2",
-                "description": "Chat super intelligent to use in your way.",
-                "url": "https://",
-                "categories": ["chat"]
-            },
-            {
-                "name": "Chat.GPT 3",
-                "description": "Chat super intelligent to use in your way.",
-                "url": "https://",
-                "categories": ["chat"]
-            }
-        ]
-        
+    <h2>Major areas of applications of artificial intelligence</h2>
+
+    <p>One of the most important areas where AI is being used is in medicine. AI can be used to help doctors diagnose diseases, prescribe treatments, and monitor patient health. Additionally, AI is also being used to discover new drugs and therapies for complex diseases.</p>
+
+    <p>Another sector where AI is having a big impact is the automotive industry. AI is being used to help create self-driving cars that can drive without the need for human intervention. This can help reduce the number of accidents on the road and make transportation more efficient and safe.</p>
+
+    <p>AI is also being used to improve cybersecurity. With an increasing amount of data being generated and stored online, cybersecurity has become an important concern. AI can be used to identify security threats and prevent attacks before they happen.</p>
+
+    <p>Another important application of AI is in finance. AI can be used to analyze financial data and predict market trends. This can help investors and financial institutions make informed decisions and reduce financial risks.</p>
+
+    <script>        
         jQuery(document).ready(function ($) {
 
             loadPosts();
 
             function loadPosts() {
 
-                const version = "1.0"
+                const version = "1.1"
                 const url = "https://raw.githubusercontent.com/dantovsky/Imediacto-Online-Tool-Set/master/tools/blog/ai-applications-listing/apps.json?v=" + version
 
                 if (localStorage.imediactoAIApps && localStorage.imediactoAIAppsVersion && version == localStorage.imediactoAIAppsVersion) {
                     // console.log('busca do localStorage');
                     const items = localStorage.getItem('imediactoAIApps')
 
-                    // Insert all items inside a div.tools and append to #tools-home
+                    // Insert all items inside a div.tools and append to #ai-listing
                     $("<div/>", {
                         "class": "tools",
                         html: items
-                    }).appendTo("#tools-home");
+                    }).appendTo("#ai-listing");
 
                     // Clear leader
                     $('#tools-loader').fadeOut();
@@ -247,11 +285,6 @@
                             // Array to store all posts
                             var items = []
                             for (var post in data) {
-                                // console.log('post: ', data[post])
-
-                                if (data[post].categories[0] == 7) {
-                                    continue;
-                                }
 
                                 const name = data[post].name
                                 let item = {
@@ -262,29 +295,37 @@
                                     category: data[post].categories[0]
                                 }
 
+                            //     items.push(`
+                            // <div id="tool-id-${item.name}" class="tool">
+                            //     <a href="${item.url}" class="tool-link">
+                            //         <!--<div class="image">
+                            //             <img src="${item.image}" alt="${item.name}"/>
+                            //         </div>-->
+                            //         <div class="text">
+                            //             <h3>${item.name}</h3>
+                            //             <div class="excerpt">${item.description}</div>
+                            //         </div>
+                            //     </a>
+                            // </div>`);
+                            
                                 items.push(`
-                            <div id="tool-id-${item.name}" class="tool">
-                                <a href="${item.url}" class="tool-link">
-                                    <!--<div class="image">
-                                        <img src="${item.image}" alt="${item.name}"/>
-                                    </div>-->
-                                    <div class="text">
-                                        <h3>${item.name}</h3>
-                                        <div class="excerpt">${item.description}</div>
-                                    </div>
-                                </a>
-                            </div>`);
+                                <div class="jumbotron tool">
+                                    <h3>${item.name}</h3>
+                                    <div class="categories"><span class="category">${item.category}</span></div>
+                                    <p>${item.description}</p>
+                                    <a href="${item.url}" target="_blank" rel="nofollow">${item.url}</a>
+                                </div>`);
                             }
 
-                            // Insert all items inside a div.tools and append to #tools-home
+                            // Insert all items inside a div.tools and append to #ai-listing
                             $("<div/>", {
                                 "class": "tools",
                                 html: items.join("")
-                            }).appendTo("#tools-home");
+                            }).appendTo("#ai-listing");
 
                             // Saving on localStorage
-                            localStorage.setItem('imediactoDataHome', items.join(""))
-                            localStorage.setItem('imediactoDataHomeVersion', version)
+                            localStorage.setItem('imediactoAIApps', items.join(""))
+                            localStorage.setItem('imediactoAIAppsVersion', version)
 
                         }).fail(function (error) {
                             $('#tabela tbody').html("Something went wrong when loading the data.");
@@ -299,132 +340,7 @@
         // https://api.jquery.com/jQuery.getJSON/
         // https://zellwk.com/blog/looping-through-js-objects/
         // https://stackoverflow.com/questions/26973570/setting-a-max-character-length-in-css/26975271
-
-        /*
-
-        > https://chat.openai.com/ - Chat
-        > https://lnkd.in/dRvAyAAk - Comunidade OpenAI
-        > https://lnkd.in/dY8v33nG - TheGptTimes Escreva uma noticia com 3 tweets.
-        > https://lnkd.in/d6MM5DZf - Crie imagens baseadas em texto com essa IA.
-        > https://lnkd.in/dURDahxJ - Crie imagens baseadas em texto com essa IA.
-        > https://codewp.ai/ - Scripts para Wordpress
-        > https://www.sitekick.ai/ - Crie Landpages com IA dizendo como você quer via texto.
-        > https://humanpal.io/ - Crie Avatares com aparência humana única
-        > https://contentbot.ai/ - Escreva conteúdos para artigos, anúncios, produtos etc..
-        > https://lexica.art/ - The Stable Diffusion search engine, crie imagens com base em texto.
-        > https://civitai.com/ - Custom AI art models
-        > https://www.synthesia.io/ - Crie um apresentador virtual que narra seu texto pra você.
-        > https://www.perplexity.ai/ - O Perplexity Ask é alimentado por grandes modelos de linguagem (API OpenAI) e mecanismos de pesquisa, traz resultados de pesquisa.
-        > https://www.copy.ai/ - Escreva suas copys para blogs, descrições, produtos, anúncios.
-        > https://infinitycopy.ai/ - Gere textos e imagens com inteligência Artificial.
-        > https://www.synthesia.io/ - Crie vídeos a partir de texto simples em minutos
-        > https://brandmark.io/ - designs de cartões de visita, gráficos de mídia social, ícones de aplicativos, cabeçalhos de cartas e muito mais
-        > https://lnkd.in/dbxQa5M6 - Crie um belo logotipo em segundos.
-        > https://lnkd.in/dz7-5kki - Simplesmente converte seu texto em vídeo.
-        > https://pictory.ai/ - extraindo automaticamente 'pepitas de ouro' escondidas nas profundezas de suas gravações de Zoom, Teams e Webinar.
-        > https://www.veed.io/ - Edição de vídeos usando IA.
-        > https://voicely.net/ - Transforme texto em voz com IA.
-        > https://invideo.io/ - Crie vídeos online.
-        > https://speechtext.ai/ - Transforme seus textos em Áudio.
-
-        Para identificar as melhores ferramentas de IA:
-        https://www.futuretools.io/ 
-
-        Krisp: A IA do Krisp remove vozes, ruídos e ecos de fundo de suas chamadas, proporcionando paz nas chamadas
-        https://krisp.ai/
-
-        Beatoven: crie músicas exclusivas isentas de royalties que elevem sua história
-        https://www.beatoven.ai/
-
-        Cleanvoice: edite automaticamente seus episódios de podcast
-        https://cleanvoice.ai/
-
-        Podcastle: gravação com qualidade de estúdio, direto do seu computador
-        https://podcastle.ai/
-
-        Flair: design de conteúdo de marca em um piscar de olhos
-        https://flair.ai/
-
-        Illustroke: crie imagens vetoriais matadoras a partir de instruções de texto
-        https://illustroke.com/
-
-        Estampado: Gere os padrões exatos que você precisa e desenhe
-        https://www.patterned.ai/
-
-        Stockimg: Gere sempre a foto perfeita que você precisa
-        https://stockimg.ai/
-
-        Copia: cópia gerada por IA, que na verdade aumenta a conversão
-        https://www.copy.ai/
-
-        CopyMonkey: Crie listagens da Amazon em segundos
-        http://copymonkey.ai/
-
-        Ocoya: crie e agende conteúdo de mídia social 10 vezes mais rápido
-        https://www.ocoya.com/
-
-        Copia inteligente Unbounce: escreva e-mails frios de alto desempenho em escala
-        https://unbounce.com/
-
-        Vidyo: Faça vídeos curtos de conteúdo longo em apenas alguns cliques
-        https://vidyo.ai/
-
-        Maverick: Gere vídeos personalizados em escala
-        https://lnkd.in/dmrkz_ah
-
-        Quickchat: chatbots de IA que automatizam gráficos de atendimento ao cliente
-        https://www.quickchat.ai/
-
-        Puzzle: construa uma base de conhecimento baseada em IA para sua equipe e clientes
-        https://www.puzzlelabs.ai/
-
-        Soundraw: Pare de procurar a música que você precisa.
-        https://soundraw.io/
-
-        Limpieza: Remova qualquer objeto, defeito, pessoa ou texto de suas fotos em segundos
-        https://cleanup.pictures/
-
-        Reanudado: Melhore seu currículo e perfil no LinkedIn
-        https://lnkd.in/d9EurcnX
-
-        Looka: crie sua própria marca bonita
-        https://looka.com/
-
-        Theresanaiforthat: Banco de dados completo de IAs disponíveis para cada tarefa
-        https://lnkd.in/dKhqaaF3
-
-        Sintesia: Crie vídeos AI simplesmente digitando o texto
-        https://www.synthesia.io/
-
-        Descripción: Nova forma de fazer vídeos e podcasts
-        https://lnkd.in/d_Kdj35E
-
-        Nutria: capture e compartilhe ideias de suas reuniões
-        https://otter.ai/
-
-        Site que ajuda a entender melhor as IA's e como ter uma conversação mais assertiva usando prompting 
-        https://learnprompting.org/docs/intro
-
-        Alternativas ao Chat GPT: Jasper, YouChat, Chatsonic, Socratic
-        https://www.zdnet.com/article/can-ai-detectors-save-us-from-chatgpt-i-tried-3-online-tools-to-find-out/ 
-
-        Generative storytelling:
-        https://beta.tome.app/
-
-        Best AI writer for creating:
-        https://writesonic.com/
-        
-        */
     </script>
 </body>
 
 </html>
-
-<!-- 
-    // console.log('ID: ', item.id)
-    // console.log('Title: ', item.title)
-    // console.log('link: ', item.link)
-    // console.log('excerpt: ', item.excerpt)
-    // console.log('category: ', item.category)
-    // console.log('\n');
- -->
