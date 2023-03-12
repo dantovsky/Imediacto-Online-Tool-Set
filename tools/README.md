@@ -12,3 +12,9 @@ Após finalizar o dev, rodar o comando:
 ```
 npm run purge
 ```
+
+# Git command
+
+```
+git add . && git commit -m "Updating Listing and app." && git push
+```

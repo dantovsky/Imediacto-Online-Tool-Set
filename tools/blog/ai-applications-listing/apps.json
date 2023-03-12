@@ -1,9 +1,15 @@
 [
     {
-        "name": "Chat.GPT",
+        "name": "ChatGPT",
         "description": "ChatGPT is a large language model developed by OpenAI that has been trained on a vast amount of text data. It has the ability to understand natural language and generate human-like responses to questions and prompts. ChatGPT can assist with a wide range of tasks, such as answering questions, providing information, generating text, and more.",
         "url": "https://chat.openai.com/",
         "categories": ["chat"]
+    },
+    {
+        "name": "OpenAI Developer community",
+        "description": "The OpenAI Developer Community is a community of developers, researchers, and enthusiasts who are interested in artificial intelligence and machine learning. The community is focused on building and sharing tools, resources, and knowledge related to AI and machine learning.",
+        "url": "https://community.openai.com/",
+        "categories": ["community", "chat"]
     },
     {
         "name": "Midjourney",
@@ -16,5 +22,29 @@
         "description": "Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input, cultivates autonomous freedom to produce incredible imagery, empowers billions of people to create stunning art within seconds.",
         "url": "https://stablediffusionweb.com/",
         "categories": ["image"]
+    },
+    {
+        "name": "CodeWP",
+        "description": "AI Code Generator For WordPress Creators » CodeWP is an AI code generator built and trained specifically for WordPress. Modes for PHP, JS, WooCommerce and many popular plugins. No more expensive developers, or tedious StackOverflow searches. Prompt, test, and install.",
+        "url": "https://codewp.ai/",
+        "categories": ["code generator", "wordpress"]
+    },
+    {
+        "name": "The GPT Times",
+        "description": "Input up to three tweets, select a style, and GPT writes the news. The GPT Times takes tweets as inputs and uses GPT-3 to generate an article and a prompt for a thumbnail, which is sent to Stable Diffusion to generate an image. The response is then compiled and posted here.",
+        "url": "https://www.thegpttimes.com/",
+        "categories": ["article generator"]
+    },
+    {
+        "name": "Sitekick",
+        "description": "Create a beautiful landing page in minutes. Automatically. Sitekick is an AI landing page builder. It allows you to create beautiful landing pages without the need for coding, design or copywriting skills.",
+        "url": "https://www.sitekick.ai/",
+        "categories": ["page generator"]
+    },
+    {
+        "name": "HumanPal",
+        "description": "Meet Ultra-Realistic 'Virtual Humans' That Speak Anything You Type In All Languages. Create Engaging AI Human Spokesperson Videos Like The Big Brands on a Shoestring Budget Without Actors, Camera or Studio Equipment!",
+        "url": "https://www.sitekick.ai/",
+        "categories": ["virtual human"]
     }
 ]
