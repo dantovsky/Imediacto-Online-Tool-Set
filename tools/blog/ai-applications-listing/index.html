@@ -242,17 +242,17 @@
             border-radius: 6px;
         }
 
-        post-ai-apps input#search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        .post-ai-apps input#search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
             color: #2b2b2bef;
             opacity: 1; /* Firefox */
             font-weight: 400;
         }
 
-        post-ai-apps input#search:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        .post-ai-apps input#search:-ms-input-placeholder { /* Internet Explorer 10-11 */
             color: #2b2b2bef;
         }
 
-        post-ai-apps input#search::-ms-input-placeholder { /* Microsoft Edge */
+        .post-ai-apps input#search::-ms-input-placeholder { /* Microsoft Edge */
             color: #2b2b2bef;
         }
 
@@ -278,7 +278,6 @@
         }
 
         ul#category-filter li label {
-            color: #00875f;
             color: #ffffffef;
             display: flex;
             align-items: center;
@@ -302,9 +301,9 @@
     <div class="post-ai-apps">
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
-                    <div class="align-center">
-                        <p>Search to filter</p>
+                <div class="input-group">
+                    <div class="align-center mb-2 mt-2">
+                        <p class="">Search to filter</p>
                     </div>
                     <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
                     <input type="text" id="search" name="search" class="form-control" placeholder="Search AI application" aria-describedby="sizing-addon2">
@@ -313,9 +312,9 @@
         </div>
     
         <div class="row">
-            <div class="col-lg-12 d-flex">
+            <div class="col-lg-12">
                 <div class="align-center">
-                    <p>Filter by category</p>
+                    <p class="mb-2 mt-2">Filter by category</p>
                 </div>
                 <ul id="category-filter"></ul>
             </div>
@@ -356,7 +355,7 @@
 
         function loadPosts() {
 
-            const version = "1.5"
+            const version = "1.6"
             const url = "https://raw.githubusercontent.com/dantovsky/Imediacto-Online-Tool-Set/master/tools/blog/ai-applications-listing/apps.json?v=" + version
 
             if (localStorage.imediactoAIApps && localStorage.imediactoAIAppsVersion && version == localStorage.imediactoAIAppsVersion) {
@@ -393,10 +392,10 @@
                                 categories: data[post].categories
                             }
 
-                        // TODO :: Adicionar id, exemplo: <div id="tool-id-${item.name}" class="tool">
+                            // TODO :: Adicionar id, exemplo: <div id="tool-id-${item.name}" class="tool">
                         
                             let tool = `
-                            <div class="jumbotron tool">
+                            <div id="${nameToId(item.name)}" class="jumbotron tool">
                                 <h3>${item.name}</h3>
                                 <div class="categories">`
                             item.categories.forEach(category => {
@@ -408,7 +407,6 @@
                             </div>`
                             items.push(tool);
                         }
-                        console.log('tools')
 
                         // Insert all items inside a div.tools and append to #ai-listing
                         $("<div/>", {
@@ -438,6 +436,15 @@
         // https://zellwk.com/blog/looping-through-js-objects/
         // https://stackoverflow.com/questions/26973570/setting-a-max-character-length-in-css/26975271
 
+        // --------------------------------------------------------------------
+        // Convert composed names to ID
+        // --------------------------------------------------------------------
+
+        function nameToId(name) {
+            const id = name.toLowerCase().replace(/[^a-z0-9 ]/g, ""); // Converte para minúsculo e remove caracteres especiais
+            return id.replace(/\s+/g, "-"); // Substitui espaços por hífens
+        }
+        
         // --------------------------------------------------------------------
         // Search apps
         // --------------------------------------------------------------------
@@ -496,7 +503,7 @@
             // Adiciona ouvinte de eventos à lista de categorias
             const categoryCheckboxes = Array.from(categoryFilter.querySelectorAll('input[type="checkbox"]'));
             categoryCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() { console.log('alterado')
+                checkbox.addEventListener('change', function() {
                     const activeCategories = categoryCheckboxes.filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
 
                     // Se nenhuma categoria estiver selecionada, exibe todas as ferramentas
