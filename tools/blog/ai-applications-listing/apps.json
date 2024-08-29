@@ -46,5 +46,299 @@
         "description": "Meet Ultra-Realistic 'Virtual Humans' That Speak Anything You Type In All Languages. Create Engaging AI Human Spokesperson Videos Like The Big Brands on a Shoestring Budget Without Actors, Camera or Studio Equipment!",
         "url": "https://www.sitekick.ai/",
         "categories": ["virtual human"]
+    },
+    {
+        "name": "Gemini",
+        "description": "Gemini is a powerful AI developed by Google that integrates natural language processing with multimodal capabilities. It aims to combine advanced reasoning and conversational abilities with the capability to understand and generate images, providing a versatile AI experience.",
+        "url": "https://gemini.google",
+        "categories": ["chat", "multimodal"]
+    },
+    {
+        "name": "Bing Chat",
+        "description": "Bing Chat is an AI-powered conversational service from Microsoft that integrates with the Bing search engine. It allows users to interact through natural language queries, providing answers and information sourced from the web in real-time.",
+        "url": "https://www.bing.com/chat",
+        "categories": ["chat", "search"]
+    },
+    {
+        "name": "Perplexity",
+        "description": "Perplexity is an AI tool designed to provide concise and accurate answers to user queries. It utilizes state-of-the-art machine learning models to understand complex questions and deliver precise information quickly and efficiently.",
+        "url": "https://www.perplexity.ai",
+        "categories": ["chat", "search"]
+    },
+    {
+        "name": "Claude",
+        "description": "Claude is an AI assistant developed by Anthropic that prioritizes safety and ethical considerations. It is designed to be a friendly and reliable conversational agent, emphasizing safe and ethical AI interactions.",
+        "url": "https://lnkd.in/dhqMuyXM",
+        "categories": ["chat", "ethics"]
+    },
+    {
+        "name": "Dora",
+        "description": "Dora is a decentralized platform that connects hackers and innovators through hackathons. It uses blockchain technology to offer transparency and decentralized governance, fostering global innovation in a collaborative environment.",
+        "url": "https://dorahacks.io",
+        "categories": ["website", "blockchain"]
+    },
+    {
+        "name": "Durable",
+        "description": "Durable is an AI-powered tool that helps small businesses create websites quickly and easily. With user-friendly interfaces and AI-driven design suggestions, Durable enables users to build professional-looking websites without any coding knowledge.",
+        "url": "https://www.durable.co",
+        "categories": ["website", "page generator"]
+    },
+    {
+        "name": "Wegic",
+        "description": "Wegic is a modern website creation tool that uses AI to assist users in building custom websites. It provides a range of templates and design tools, enabling users to create unique websites with ease.",
+        "url": "https://wegic.com",
+        "categories": ["website", "design"]
+    },
+    {
+        "name": "Framer",
+        "description": "Framer is an AI-powered design tool that helps users create interactive and responsive websites. It offers a wide range of features for prototyping, design, and development, making it a versatile tool for web designers and developers.",
+        "url": "https://www.framer.com",
+        "categories": ["website", "design", "development"]
+    },
+    {
+        "name": "10Web",
+        "description": "10Web is an AI-powered platform that provides automated WordPress hosting and website creation. It offers tools for building, optimizing, and managing WordPress sites, making it an all-in-one solution for web developers and businesses.",
+        "url": "https://www.10web.io",
+        "categories": ["website", "wordpress"]
+    },
+    {
+        "name": "Jasper",
+        "description": "Jasper is an AI-powered writing assistant that helps users create high-quality content quickly. It is designed to assist with copywriting, blog posts, social media content, and more. Jasper offers various templates and customizations to match different writing styles and needs.",
+        "url": "https://www.jasper.ai",
+        "categories": ["writing", "copywriting"]
+    },
+    {
+        "name": "Rytr",
+        "description": "Rytr is an AI writing assistant that enables users to create content quickly and efficiently. With support for multiple languages and a wide range of content types, Rytr helps with everything from blog posts to social media updates, saving time and effort.",
+        "url": "https://rytr.me",
+        "categories": ["writing", "content creation"]
+    },
+    {
+        "name": "Textblaze",
+        "description": "Textblaze is a powerful AI tool that allows users to create and manage text snippets. It is particularly useful for automating repetitive writing tasks and increasing productivity, providing customizable templates and shortcuts for efficient text generation.",
+        "url": "https://blaze.today",
+        "categories": ["writing", "automation"]
+    },
+    {
+        "name": "Sudowrite",
+        "description": "Sudowrite is an AI writing assistant focused on creative writing. It helps writers generate ideas, overcome writer's block, and improve their writing through suggestions and feedback. Sudowrite is ideal for novelists, screenwriters, and other creative writers.",
+        "url": "https://www.sudowrite.com",
+        "categories": ["writing", "creative writing"]
+    },
+    {
+        "name": "Writesonic",
+        "description": "Writesonic is an AI-driven writing platform that offers tools for generating content, such as blog posts, ad copy, and product descriptions. It is designed to help businesses and marketers create engaging content quickly and effectively.",
+        "url": "https://writesonic.com",
+        "categories": ["writing", "marketing"]
+    },
+    {
+        "name": "Tldv",
+        "description": "Tldv is a meeting management tool that uses AI to record, transcribe, and summarize meetings. It is designed to make meetings more efficient by providing quick and accurate summaries, enabling team members to stay informed without needing to attend every meeting.",
+        "url": "https://www.tldv.io",
+        "categories": ["meetings", "productivity"]
+    },
+    {
+        "name": "Krisp",
+        "description": "Krisp is an AI-powered noise-cancellation tool that removes background noise from calls in real-time. It is ideal for remote workers and teams who need clear audio during virtual meetings, ensuring professional communication without interruptions.",
+        "url": "https://krisp.ai",
+        "categories": ["meetings", "noise cancellation"]
+    },
+    {
+        "name": "Otter",
+        "description": "Otter is an AI-based transcription service that converts speech into text in real-time. It is useful for recording meetings, interviews, and lectures, offering features like live captions, searchable notes, and collaboration tools.",
+        "url": "https://otter.ai",
+        "categories": ["meetings", "transcription"]
+    },
+    {
+        "name": "Avoma",
+        "description": "Avoma is an AI-powered meeting assistant that records, transcribes, and analyzes meetings. It helps teams improve communication by providing detailed insights and action items, making meetings more productive and aligned with business goals.",
+        "url": "https://www.avoma.com",
+        "categories": ["meetings", "analytics"]
+    },
+    {
+        "name": "Fireflies",
+        "description": "Fireflies is an AI-driven tool for recording and transcribing meetings. It integrates with popular video conferencing platforms to provide accurate transcription, searchable meeting notes, and collaboration features, making it easier to follow up on action items.",
+        "url": "https://fireflies.ai",
+        "categories": ["meetings", "transcription", "collaboration"]
+    },
+    {
+        "name": "Monica AI",
+        "description": "Monica AI is a chatbot platform designed to enhance customer engagement by providing intelligent and personalized interactions. It integrates with multiple communication channels, enabling businesses to automate customer support, lead generation, and more.",
+        "url": "https://monica.im",
+        "categories": ["chatbot", "customer support"]
+    },
+    {
+        "name": "MaxiAIme",
+        "description": "MaxiAIme is a chatbot tool that leverages AI to create interactive and responsive chat experiences. It helps businesses build AI-driven conversational agents that can assist with customer inquiries, provide information, and improve user engagement.",
+        "url": "https://maxiai.me",
+        "categories": ["chatbot", "customer engagement"]
+    },
+    {
+        "name": "Poe",
+        "description": "Poe is an advanced AI chatbot that allows users to explore and interact with various AI models, including natural language processing (NLP) tools. Poe is designed to facilitate conversations, answer questions, and provide a platform for users to engage with AI in innovative ways.",
+        "url": "https://poe.com",
+        "categories": ["chatbot", "AI interaction"]
+    },
+    {
+        "name": "Copilot",
+        "description": "Copilot is an AI-powered assistant designed to help users navigate complex tasks, whether in coding, writing, or other professional areas. It leverages advanced machine learning to provide real-time assistance, making it a valuable tool for developers, writers, and other professionals.",
+        "url": "https://lnkd.in/dARMqzTK",
+        "categories": ["chatbot", "productivity"]
+    },
+    {
+        "name": "Liner",
+        "description": "Liner is an AI-powered tool that helps users highlight, save, and organize important information across the web. It integrates with various platforms to provide personalized search results, making it easier for users to find and manage the content that matters most.",
+        "url": "https://getliner.com",
+        "categories": ["chatbot", "content management"]
+    },
+    {
+        "name": "AdCopy",
+        "description": "AdCopy is an AI tool designed to create high-converting ad copy for marketing campaigns. It uses machine learning to generate personalized and targeted text, helping businesses increase engagement and drive more sales through optimized advertising content.",
+        "url": "https://adcopy.ai",
+        "categories": ["marketing", "advertising"]
+    },
+    {
+        "name": "Predis AI",
+        "description": "Predis AI is a marketing tool that uses AI to predict and enhance the effectiveness of social media content. It offers features like content creation, analytics, and optimization, enabling businesses to boost their social media presence and engagement.",
+        "url": "https://predis.ai",
+        "categories": ["marketing", "social media"]
+    },
+    {
+        "name": "Howler AI",
+        "description": "Howler AI is an AI-driven marketing platform that helps businesses create and manage personalized email campaigns. It uses data analytics to target the right audience and optimize campaign performance, driving better engagement and conversion rates.",
+        "url": "https://howlerai.com",
+        "categories": ["marketing", "email marketing"]
+    },
+    {
+        "name": "Bardeen AI",
+        "description": "Bardeen AI automates repetitive marketing tasks, enabling teams to focus on more strategic work. It integrates with various tools and platforms to streamline workflows, reduce manual efforts, and enhance productivity in marketing operations.",
+        "url": "https://www.bardeen.ai",
+        "categories": ["marketing", "automation"]
+    },
+    {
+        "name": "AdCreative",
+        "description": "AdCreative is an AI-powered platform that generates high-quality ad creatives for businesses. It helps marketers create visually appealing and effective advertisements, optimized for various platforms, thereby improving ad performance and ROI.",
+        "url": "https://www.adcreative.ai",
+        "categories": ["marketing", "advertising"]
+    },
+    {
+        "name": "FluentlyAI",
+        "description": "FluentlyAI is a powerful AI tool that converts spoken language into written text with high accuracy. It is ideal for transcription services, assisting in creating text documents from audio recordings or live speech.",
+        "url": "https://fluently.ai",
+        "categories": ["voice to text", "transcription"]
+    },
+    {
+        "name": "Descript",
+        "description": "Descript is an all-in-one audio and video editing tool that also offers voice-to-text transcription. It is widely used for podcasting, video production, and transcription, making the editing process seamless and efficient.",
+        "url": "https://www.descript.com",
+        "categories": ["voice to text", "audio editing"]
+    },
+    {
+        "name": "Rev AI",
+        "description": "Rev AI provides advanced speech recognition and transcription services. It is designed to convert speech into text for a variety of use cases, including subtitles, transcription services, and voice-enabled applications.",
+        "url": "https://www.rev.ai",
+        "categories": ["voice to text", "transcription"]
+    },
+    {
+        "name": "Clipto",
+        "description": "Clipto is a versatile tool that enables users to capture, organize, and share their thoughts across devices. It includes a feature for converting voice notes into text, making it easy to transcribe and organize ideas.",
+        "url": "https://clipto.pro",
+        "categories": ["voice to text", "note-taking"]
+    },
+    {
+        "name": "TextCortex",
+        "description": "TextCortex is an AI-driven platform focused on content creation, including voice-to-text capabilities. It helps users generate, organize, and edit content more efficiently, particularly for those in need of transcription services.",
+        "url": "https://textcortex.com",
+        "categories": ["voice to text", "content creation"]
+    },
+    {
+        "name": "Udio",
+        "description": "Udio is an advanced AI tool that converts text into realistic speech. It offers a wide range of voices and languages, making it ideal for creating audiobooks, podcasts, and other audio content from text.",
+        "url": "https://www.udio.ai",
+        "categories": ["text to voice", "audio production"]
+    },
+    {
+        "name": "Suno AI",
+        "description": "Suno AI specializes in converting text into high-quality voice outputs. It is designed to help creators, educators, and marketers generate professional-grade audio content quickly and easily.",
+        "url": "https://www.suno.ai",
+        "categories": ["text to voice", "content creation"]
+    },
+    {
+        "name": "Deepgram",
+        "description": "Deepgram provides AI-powered speech recognition and text-to-voice services, offering robust tools for converting text into natural-sounding speech. It's used in applications ranging from voice assistants to automated customer service.",
+        "url": "https://deepgram.com",
+        "categories": ["text to voice", "speech recognition"]
+    },
+    {
+        "name": "Speechify",
+        "description": "Speechify is a popular text-to-speech tool that converts written content into spoken words. It's ideal for those who prefer listening to text rather than reading, with applications in education, content consumption, and accessibility.",
+        "url": "https://speechify.com",
+        "categories": ["text to voice", "accessibility"]
+    },
+    {
+        "name": "ElevenLabs",
+        "description": "ElevenLabs offers advanced text-to-speech services with a focus on delivering highly realistic and expressive voice outputs. It is ideal for creating dynamic audio content for various uses, including media, education, and entertainment.",
+        "url": "https://elevenlabs.io",
+        "categories": ["text to voice", "audio production"]
+    },
+    {
+        "name": "Galileo AI",
+        "description": "Galileo AI is a design tool that leverages AI to create stunning UI/UX designs efficiently. It helps designers generate wireframes, prototypes, and complete interfaces quickly, saving time and enhancing creativity.",
+        "url": "https://www.galileoai.app",
+        "categories": ["UI/UX", "design"]
+    },
+    {
+        "name": "Khroma",
+        "description": "Khroma is an AI-powered color tool that helps designers and creatives discover and create color palettes for UI/UX projects. It uses machine learning to suggest color combinations that work harmoniously.",
+        "url": "https://www.khroma.co",
+        "categories": ["UI/UX", "color palettes"]
+    },
+    {
+        "name": "Uizard",
+        "description": "Uizard is a rapid prototyping tool that turns hand-drawn sketches into digital wireframes. It leverages AI to accelerate the UI/UX design process, making it accessible for designers and non-designers alike.",
+        "url": "https://uizard.io",
+        "categories": ["UI/UX", "prototyping"]
+    },
+    {
+        "name": "Visily",
+        "description": "Visily is a user-friendly UI design tool that offers AI-powered features to simplify the design process. It is perfect for creating wireframes and mockups, making UI/UX design more accessible to everyone.",
+        "url": "https://www.visily.ai",
+        "categories": ["UI/UX", "design"]
+    },
+    {
+        "name": "VisualEyes",
+        "description": "VisualEyes uses AI to analyze UI/UX designs and provide feedback on user attention and visual hierarchy. It helps designers optimize their interfaces for better user experience and engagement.",
+        "url": "https://lnkd.in/d-UTDrtb",
+        "categories": ["UI/UX", "analytics"]
+    },
+    {
+        "name": "Hubble AI",
+        "description": "Hubble AI is a generative AI tool that specializes in turning raw video and audio footage into professional-grade content. With features that streamline the production process, Hubble AI is ideal for content creators looking to produce high-quality videos efficiently.",
+        "url": "https://hubble.ai",
+        "categories": ["video editing", "audio editing"]
+    },
+    {
+        "name": "Koala",
+        "description": "Koala is an AI-powered content generation tool specifically designed to create high-conversion content for SEO and marketing purposes. Koala leverages advanced AI models to generate blogs, product descriptions, and more.",
+        "url": "https://koala.sh",
+        "categories": ["content generation", "SEO"]
+    },
+    {
+        "name": "Marmof",
+        "description": "Marmof is an AI writing tool that helps users create content quickly and effectively. It is designed to generate text for various purposes, including marketing, social media, and blogs, making it a versatile tool for content creators.",
+        "url": "https://marmof.com",
+        "categories": ["writing", "content creation"]
+    },
+    {
+        "name": "AI Smartcut",
+        "description": "AI Smartcut is a tool that uses AI to edit video content automatically. It is designed to make video editing faster and more efficient by automating the process of cutting, trimming, and arranging video clips.",
+        "url": "https://aismartcut.com",
+        "categories": ["video editing", "automation"]
+    },
+    {
+        "name": "Maverick",
+        "description": "Maverick is an AI-driven customer engagement platform that helps businesses connect with their customers through personalized video messages. Maverick automates the creation of these messages, making it easier for companies to maintain a personal touch at scale.",
+        "url": "https://www.trymaverick.com",
+        "categories": ["customer engagement", "video marketing"]
     }
 ]
