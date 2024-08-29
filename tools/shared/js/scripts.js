@@ -27,6 +27,18 @@ function selectAndCopy(element) {
     document.execCommand("copy");
 }
 
+// Testar esta nova função obtida com o ChatGPT, pois o execCommand('copy') está deprecated
+function selectAndCopy(element) {
+    element.select();
+    navigator.clipboard.writeText(element.value)
+        .then(() => {
+        console.log('Copied to clipboard');
+        })
+        .catch((error) => {
+        console.error('Failed to copy to clipboard:', error);
+        });
+}
+
 // Word count
 function wordCount(idElement, maxLength = 100000) {
     var maxLength = maxLength;
