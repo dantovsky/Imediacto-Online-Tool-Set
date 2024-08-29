@@ -8,26 +8,25 @@
 > https://www.thegpttimes.com/ - TheGptTimes Escreva uma noticia com 3 tweets.  
 > https://www.sitekick.ai/ - Crie Landpages com IA dizendo como você quer via texto.  
 > https://humanpal.io/ - Crie Avatares com aparência humana única  
+> https://invideo.io/ - Crie vídeos online.  
+> https://pictory.ai/ - extraindo automaticamente 'pepitas de ouro' escondidas nas profundezas de suas gravações de Zoom, Teams e Webinar.  
+> https://www.perplexity.ai/ - O Perplexity Ask é alimentado por grandes modelos de linguagem (API OpenAI) e mecanismos de pesquisa, traz resultados de pesquisa.  
+> https://www.synthesia.io/ - Crie um apresentador virtual que narra seu texto pra você. | Crie vídeos a partir de texto simples em minutos  
+> https://contentbot.ai/ - Escreva conteúdos para artigos, anúncios, produtos etc..  
+> https://lexica.art/ - The Stable Diffusion search engine, crie imagens com base em texto.  
+> https://civitai.com/ - Custom AI art models  
+> https://www.copy.ai/ - Escreva suas copys para blogs, descrições, produtos, anúncios.  
+> https://infinitycopy.ai/ - Gere textos e imagens com inteligência Artificial.  
+> https://brandmark.io/ - designs de cartões de visita, gráficos de mídia social, ícones de aplicativos, cabeçalhos de cartas e muito mais  
+> https://www.brandcrowd.com/ - Crie um belo logotipo em segundos.  
+> https://www.gliacloud.com/ - Simplesmente converte seu texto em vídeo.  
+> https://www.veed.io/ - Edição de vídeos usando IA.  
+> https://voicely.net/ - Transforme texto em voz com IA.  
+> https://speechtext.ai/ - Transforme seus textos em Áudio.  
 
 
 # Lista para analisar e criar formato JSON
 
-> https://contentbot.ai/ - Escreva conteúdos para artigos, anúncios, produtos etc..  
-> https://lexica.art/ - The Stable Diffusion search engine, crie imagens com base em texto.  
-> https://civitai.com/ - Custom AI art models  
-> https://www.synthesia.io/ - Crie um apresentador virtual que narra seu texto pra você.  
-> https://www.perplexity.ai/ - O Perplexity Ask é alimentado por grandes modelos de linguagem (API OpenAI) e mecanismos de pesquisa, traz resultados de pesquisa.  
-> https://www.copy.ai/ - Escreva suas copys para blogs, descrições, produtos, anúncios.  
-> https://infinitycopy.ai/ - Gere textos e imagens com inteligência Artificial.  
-> https://www.synthesia.io/ - Crie vídeos a partir de texto simples em minutos  
-> https://brandmark.io/ - designs de cartões de visita, gráficos de mídia social, ícones de aplicativos, cabeçalhos de cartas e muito mais  
-> https://lnkd.in/dbxQa5M6 - Crie um belo logotipo em segundos.  
-> https://lnkd.in/dz7-5kki - Simplesmente converte seu texto em vídeo.  
-> https://pictory.ai/ - extraindo automaticamente 'pepitas de ouro' escondidas nas profundezas de suas gravações de Zoom, Teams e Webinar.  
-> https://www.veed.io/ - Edição de vídeos usando IA.  
-> https://voicely.net/ - Transforme texto em voz com IA.  
-> https://invideo.io/ - Crie vídeos online.  
-> https://speechtext.ai/ - Transforme seus textos em Áudio.  
 
 Para identificar as melhores ferramentas de IA:  
 https://www.futuretools.io/ 

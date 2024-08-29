@@ -312,6 +312,216 @@
         "categories": ["UI/UX", "analytics"]
     },
     {
+        "name": "Dzine",
+        "description": "Dzine is an AI-driven platform that helps designers and creatives to generate custom designs, graphics, and visual content effortlessly. It offers a wide range of design tools powered by AI to enhance creativity and efficiency.",
+        "url": "https://dzine.ai",
+        "categories": ["image", "design"]
+    },
+    {
+        "name": "Freepik",
+        "description": "Freepik is a popular online resource for high-quality images, graphics, and illustrations. It provides a vast collection of free and premium assets that can be used for various creative projects, from web design to marketing materials.",
+        "url": "https://www.freepik.com",
+        "categories": ["image", "resource"]
+    },
+    {
+        "name": "Phygital+",
+        "description": "Phygital+ combines the physical and digital worlds to create interactive experiences. It uses AI to generate augmented reality (AR) content and immersive visuals, bridging the gap between real-world objects and digital media.",
+        "url": "https://phygital.plus",
+        "categories": ["image", "augmented reality"]
+    },
+    {
+        "name": "DALL·E",
+        "description": "DALL·E, developed by OpenAI, is a revolutionary AI model that generates images from textual descriptions. It enables users to create highly detailed and imaginative visuals by simply typing what they want to see.",
+        "url": "https://lnkd.in/dB3QNuNE",
+        "categories": ["image", "text to image"]
+    },
+    {
+        "name": "Bing Create",
+        "description": "Bing Create is a tool that allows users to generate images using AI, similar to DALL·E. It integrates with the Bing search engine to help users find or create visual content tailored to their needs.",
+        "url": "https://lnkd.in/db8A2c_n",
+        "categories": ["image", "text to image"]
+    },
+    {
+        "name": "Pictory",
+        "description": "Pictory is an AI-powered video creation platform that transforms text content into engaging videos. It's perfect for marketers, content creators, and businesses looking to produce professional videos with minimal effort.",
+        "url": "https://pictory.ai",
+        "categories": ["video", "content creation"]
+    },
+    {
+        "name": "HeyGen",
+        "description": "HeyGen offers an AI-driven solution for creating personalized video content. It's used to generate videos that speak directly to individual customers, making it a valuable tool for personalized marketing and communication.",
+        "url": "https://www.heygen.com",
+        "categories": ["video", "personalization"]
+    },
+    {
+        "name": "NullfaceAI",
+        "description": "NullfaceAI is a platform that uses AI to generate videos with synthetic faces and voices. It is designed for creating realistic avatars and virtual humans for use in video content and interactive experiences.",
+        "url": "https://nullface.ai",
+        "categories": ["video", "virtual human"]
+    },
+    {
+        "name": "Invideo AI",
+        "description": "Invideo AI is a video creation tool that helps users create high-quality videos quickly and easily. It provides templates, AI-generated suggestions, and editing tools to streamline the video production process.",
+        "url": "https://invideo.io",
+        "categories": ["video", "content creation"]
+    },
+    {
+        "name": "Synthesia",
+        "description": "Synthesia is a leading platform for creating AI-generated videos using digital avatars. It allows users to create engaging video content without the need for cameras, actors, or studios.",
+        "url": "https://www.synthesia.io",
+        "categories": ["video", "virtual human"]
+    },
+    {
+        "name": "Looka",
+        "description": "Looka is an AI-powered logo and brand identity design tool. It helps users create professional logos, business cards, and other branding materials quickly and easily.",
+        "url": "https://looka.com",
+        "categories": ["design", "branding"]
+    },
+    {
+        "name": "Clipdrop",
+        "description": "Clipdrop is an AI tool that allows users to capture, edit, and enhance images and designs. It provides features like background removal, upscaling, and more, making it a versatile tool for designers and content creators.",
+        "url": "https://clipdrop.co",
+        "categories": ["design", "image editing"]
+    },
+    {
+        "name": "Autodraw",
+        "description": "Autodraw is an AI-driven drawing tool that helps users create professional-looking sketches and designs. It's a free, web-based tool that makes it easy for anyone to draw, regardless of their artistic skills.",
+        "url": "https://www.autodraw.com",
+        "categories": ["design", "drawing"]
+    },
+    {
+        "name": "Vance AI",
+        "description": "Vance AI offers a suite of AI-powered tools for enhancing and editing images. It includes features like image upscaling, denoising, and sharpening, making it ideal for photographers, designers, and marketers.",
+        "url": "https://vanceai.com",
+        "categories": ["design", "image editing"]
+    },
+    {
+        "name": "Designs AI",
+        "description": "Designs AI is an all-in-one platform for creating logos, videos, banners, and mockups using AI. It's designed to help users create professional-quality designs in minutes, with a focus on accessibility and ease of use.",
+        "url": "https://designs.ai",
+        "categories": ["design", "content creation"]
+    },
+    {
+        "name": "BeautifulAI",
+        "description": "BeautifulAI is a smart presentation software that helps users create stunning presentations with the help of AI. It offers a wide range of templates and design tools that automatically adjust to ensure a cohesive and professional look.",
+        "url": "https://www.beautiful.ai",
+        "categories": ["presentation"]
+    },
+    {
+        "name": "Slidebean",
+        "description": "Slidebean is an AI-powered platform that simplifies the process of creating presentations. It offers customizable templates, AI design recommendations, and a user-friendly interface to create visually appealing slides.",
+        "url": "https://slidebean.com",
+        "categories": ["presentation"]
+    },
+    {
+        "name": "Pitch",
+        "description": "Pitch is a collaborative presentation software that combines design, collaboration, and analytics into one platform. It allows teams to create, share, and analyze presentations, with tools that streamline the workflow.",
+        "url": "https://pitch.com",
+        "categories": ["presentation", "collaboration"]
+    },
+    {
+        "name": "Gamma",
+        "description": "Gamma is an AI-powered tool for creating dynamic presentations. It offers advanced features like interactive elements, real-time data integration, and AI-based design suggestions to create engaging and impactful presentations.",
+        "url": "https://gamma.app",
+        "categories": ["presentation", "data visualization"]
+    },
+    {
+        "name": "Tome",
+        "description": "Tome is an AI-driven presentation tool designed to help users create compelling narratives and visual stories. It offers easy-to-use design tools, AI-generated content suggestions, and templates to craft impactful presentations.",
+        "url": "https://tome.app",
+        "categories": ["presentation", "storytelling"]
+    },
+    {
+        "name": "Phrasee",
+        "description": "Phrasee is an AI-powered marketing tool that generates optimized email subject lines, social media posts, and ad copy. It uses machine learning to create content that resonates with the target audience and drives engagement.",
+        "url": "https://phrasee.co",
+        "categories": ["automation", "marketing"]
+    },
+    {
+        "name": "Outreach",
+        "description": "Outreach is a sales engagement platform that uses AI to help teams automate and optimize their sales processes. It offers features like email sequencing, analytics, and CRM integration to improve efficiency and effectiveness.",
+        "url": "https://www.outreach.io",
+        "categories": ["automation", "sales"]
+    },
+    {
+        "name": "ClickUp",
+        "description": "ClickUp is an all-in-one productivity platform that offers task management, project tracking, and automation features. It helps teams streamline their workflows, automate repetitive tasks, and improve overall productivity.",
+        "url": "https://clickup.com",
+        "categories": ["automation", "productivity"]
+    },
+    {
+        "name": "Drift",
+        "description": "Drift is a conversational marketing platform that uses AI to engage website visitors in real-time. It automates customer interactions, captures leads, and integrates with other marketing tools to enhance customer engagement.",
+        "url": "https://www.drift.com",
+        "categories": ["automation", "customer engagement"]
+    },
+    {
+        "name": "Emplifi",
+        "description": "Emplifi is an AI-powered customer experience platform that automates social media management, customer support, and content creation. It helps businesses improve their customer interactions across various channels.",
+        "url": "https://emplifi.io",
+        "categories": ["automation", "customer experience"]
+    },
+    {
+        "name": "Katteb",
+        "description": "Katteb is an AI-driven content generation platform designed for bloggers and content creators. It helps users generate high-quality, SEO-friendly articles quickly, making it easier to maintain an active blog.",
+        "url": "https://katteb.com",
+        "categories": ["blogging", "content creation"]
+    },
+    {
+        "name": "Rewording",
+        "description": "Rewording is an AI-powered tool that helps writers improve their content by suggesting rephrasing, grammar corrections, and style enhancements. It’s designed to make writing more engaging and error-free.",
+        "url": "https://www.rewording.io",
+        "categories": ["blogging", "writing assistant"]
+    },
+    {
+        "name": "Elephas",
+        "description": "Elephas is an AI writing assistant that integrates with various writing platforms to help users create better content. It offers real-time suggestions, grammar checks, and content improvement tips.",
+        "url": "https://www.elephas.app",
+        "categories": ["blogging", "writing assistant"]
+    },
+    {
+        "name": "Junia AI",
+        "description": "Junia AI is a content creation tool that helps bloggers generate high-quality articles with the help of AI. It offers topic suggestions, SEO optimization, and content structuring to improve blog performance.",
+        "url": "https://junia.ai",
+        "categories": ["blogging", "content creation"]
+    },
+    {
+        "name": "Journalist AI",
+        "description": "Journalist AI is an AI-powered platform that helps writers and journalists create articles, reports, and other written content. It assists with research, content generation, and editing to streamline the writing process.",
+        "url": "https://journalistai.com",
+        "categories": ["blogging", "journalism"]
+    },
+    {
+        "name": "GPTZero",
+        "description": "GPTZero is an AI tool designed to detect AI-generated content. It helps educators, journalists, and content creators identify text written by AI models like GPT, ensuring authenticity and originality.",
+        "url": "https://gptzero.me",
+        "categories": ["AI detector", "plagiarism detection"]
+    },
+    {
+        "name": "Wordtune",
+        "description": "Wordtune is an AI-powered writing assistant that helps users improve their writing by suggesting alternative phrasings, grammar corrections, and stylistic changes. It’s designed to make writing clearer and more compelling.",
+        "url": "https://www.wordtune.com",
+        "categories": ["AI detector", "writing assistant"]
+    },
+    {
+        "name": "Copyleaks",
+        "description": "Copyleaks is an AI-based plagiarism detection tool that scans content for originality. It’s used by educators, businesses, and content creators to ensure that their work is free from plagiarism.",
+        "url": "https://copyleaks.com",
+        "categories": ["AI detector", "plagiarism detection"]
+    },
+    {
+        "name": "BypassGPT",
+        "description": "BypassGPT is a tool that helps users detect and bypass AI-generated content filters. It’s designed for content creators who want to ensure that their work is seen by as many people as possible without being filtered by AI.",
+        "url": "https://bypassgpt.chat",
+        "categories": ["AI detector", "content filtering"]
+    },
+    {
+        "name": "Grammarly",
+        "description": "Grammarly is a popular AI writing assistant that helps users improve their writing by providing real-time grammar, spelling, and style suggestions. It’s widely used by writers, students, and professionals to enhance their writing.",
+        "url": "https://www.grammarly.com",
+        "categories": ["AI detector", "writing assistant"]
+    },
+    {
         "name": "Hubble AI",
         "description": "Hubble AI is a generative AI tool that specializes in turning raw video and audio footage into professional-grade content. With features that streamline the production process, Hubble AI is ideal for content creators looking to produce high-quality videos efficiently.",
         "url": "https://hubble.ai",
@@ -340,5 +550,71 @@
         "description": "Maverick is an AI-driven customer engagement platform that helps businesses connect with their customers through personalized video messages. Maverick automates the creation of these messages, making it easier for companies to maintain a personal touch at scale.",
         "url": "https://www.trymaverick.com",
         "categories": ["customer engagement", "video marketing"]
+    },
+    {
+        "name": "ContentBot",
+        "description": "ContentBot é uma plataforma de criação de conteúdo baseada em IA que ajuda a gerar textos para artigos, anúncios, descrições de produtos e muito mais. A ferramenta oferece uma maneira eficiente de criar conteúdo de alta qualidade em pouco tempo.",
+        "url": "https://contentbot.ai/",
+        "categories": ["copywriting", "content creation"]
+    },
+    {
+        "name": "Lexica",
+        "description": "Lexica é um motor de busca baseado em Stable Diffusion, permitindo aos usuários criar imagens a partir de descrições de texto. É uma ferramenta poderosa para designers e criadores de conteúdo que buscam inspiração visual.",
+        "url": "https://lexica.art/",
+        "categories": ["image generation", "AI art"]
+    },
+    {
+        "name": "Civitai",
+        "description": "Civitai é uma plataforma que oferece modelos de arte customizados criados por IA. Os usuários podem explorar, compartilhar e baixar modelos personalizados para gerar arte única e de alta qualidade.",
+        "url": "https://civitai.com/",
+        "categories": ["AI art", "custom models"]
+    },
+    {
+        "name": "Copy.ai",
+        "description": "Copy.ai é uma ferramenta de copywriting baseada em IA que gera textos para blogs, descrições de produtos, anúncios e muito mais. Ela ajuda empresas e criadores de conteúdo a produzir textos envolventes de forma rápida e eficiente.",
+        "url": "https://www.copy.ai/",
+        "categories": ["copywriting", "content creation"]
+    },
+    {
+        "name": "InfinityCopy AI",
+        "description": "InfinityCopy AI é uma ferramenta versátil que utiliza inteligência artificial para gerar tanto textos quanto imagens. É ideal para criadores de conteúdo que precisam de uma solução tudo-em-um para suas necessidades criativas.",
+        "url": "https://infinitycopy.ai/",
+        "categories": ["copywriting", "image generation", "content creation"]
+    },
+    {
+        "name": "Brandmark",
+        "description": "Brandmark é uma ferramenta de design que permite criar gráficos, cartões de visita, ícones de aplicativos, cabeçalhos de cartas e muito mais. É alimentada por IA e facilita o design para profissionais e amadores.",
+        "url": "https://brandmark.io/",
+        "categories": ["design", "branding", "graphic design"]
+    },
+    {
+        "name": "BrandCrowd",
+        "description": "BrandCrowd é uma plataforma que permite criar logotipos de forma rápida e fácil. Em segundos, você pode gerar um logotipo bonito e personalizável para a sua marca ou negócio.",
+        "url": "https://www.brandcrowd.com/",
+        "categories": ["logo design", "branding", "graphic design"]
+    },
+    {
+        "name": "GliaCloud",
+        "description": "GliaCloud é uma ferramenta que converte texto em vídeo de forma automática. É ideal para criadores de conteúdo que desejam transformar artigos ou posts em vídeos dinâmicos e envolventes.",
+        "url": "https://www.gliacloud.com/",
+        "categories": ["video creation", "content automation"]
+    },
+    {
+        "name": "Veed",
+        "description": "Veed é uma plataforma de edição de vídeos que utiliza inteligência artificial para facilitar o processo de criação e edição de vídeos. É ideal para criadores de conteúdo que buscam uma solução completa de edição.",
+        "url": "https://www.veed.io/",
+        "categories": ["video editing", "AI video"]
+    },
+    {
+        "name": "Voicely",
+        "description": "Voicely é uma ferramenta de conversão de texto para voz que utiliza inteligência artificial para transformar textos em narrações de alta qualidade. É ideal para criadores de conteúdo que precisam adicionar narrações aos seus vídeos ou podcasts.",
+        "url": "https://voicely.net/",
+        "categories": ["text-to-speech", "voiceover"]
+    },
+    {
+        "name": "SpeechText AI",
+        "description": "SpeechText AI é uma ferramenta que transforma textos em áudio com o uso de inteligência artificial. É usada para criar narrações, podcasts, e-books em áudio e muito mais.",
+        "url": "https://speechtext.ai/",
+        "categories": ["text-to-speech", "audio creation"]
     }
 ]
