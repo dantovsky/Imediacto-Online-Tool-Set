@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dante Marinho">
+    <title>Bulk Image Resizer and Compressor ~ Free Online Batch Image Resizer</title>
+    <link rel="stylesheet" href="../shared/css/boot.min.css">
+    <link rel="stylesheet" href="../shared/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+    <!-- no <head>, antes do UPNG.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/upng-js/2.1.0/UPNG.min.js"></script>
+
+
+
+    <!-- CSS only -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+    <!-- App working fine! Dev in 03/10/2020 -->
+    <style>
+        p {
+            margin: 0;
+        }
+
+        #list-files {
+            padding: 8px;
+            overflow-y: auto;
+            max-height: 80px;
+            background-color: #cacaca;
+            display: none;
+        }
+
+        #list-files p {
+            margin: 0;
+        }
+
+        .display-block {
+            display: block !important;
+        }
+
+        #num-items {
+            display: none;
+        }
+
+        #message-error {
+            display: none;
+            background-color: #ff00001a;
+            padding: 8px;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: 8px 50%;
+            background-size: 28px;
+            padding-left: 40px;
+        }
+
+        /* From CSV to JSON Converter */
+
+        .boot #file {
+            display: none;
+        }
+
+        .boot #holder:hover {
+            background-color: rgb(248, 248, 248);
+        }
+
+        .boot label.input-drag-drop {
+            width: 100%;
+            border: 2px solid #8c52ff !important;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            transition: all .5s ease;
+            padding: 1px;
+            border-radius: 4px;
+        }
+
+        .boot .file-name {
+            padding: 7px 10px;
+            color: #4d5866;
+        }
+
+        .boot .text-browse {
+            background-color: #8c52ff;
+            color: #fff;
+            padding: 7px 18px;
+            border-radius: 4px;
+        }
+
+        .boot .input-hover {
+            background-color: rgb(145, 224, 147);
+        }
+
+        .boot .input-drop {
+            background-color: rgb(145, 224, 147);
+        }
+
+        .boot .input-error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb !important;
+        }
+
+        .boot .display-flex-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .boot .display-flex-row .textarea {
+            width: 48.5%;
+        }
+
+        .boot .icon-apply {
+            width: 1.5%;
+            padding-top: 15px;
+            /* background-color: lightpink; */
+        }
+
+        .boot .icon-apply i {
+            font-size: larger;
+            cursor: pointer;
+            /* background-color: lightseagreen; */
+            width: 100%;
+            text-align: center;
+        }
+
+        .boot .icon-apply i:first-child {
+            color: #8c52ff;
+            margin-bottom: 10px;
+        }
+
+        .boot .icon-apply i:last-child {
+            color: #8b8b8b;
+        }
+
+        .boot .div-btn {
+            cursor: pointer;
+            color: #8c52ff;
+        }
+
+        /* --- Drag & Drop Visual melhorado --- */
+        .boot label.input-drag-drop {
+            border: 2px dashed #8c52ff !important;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .boot label.input-drag-drop.input-drop {
+            background-color: #e8f7e8 !important;
+            border-color: #4caf50 !important;
+        }
+
+        /* --- Progress bar --- */
+        #progress-container {
+            margin: 1rem 0;
+        }
+
+        #progress-bar {
+            /* Remove estilos nativos para podermos personalizar */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            background-color: #e0e0e0;
+            /* fundo suave */
+            overflow: hidden;
+        }
+
+        /* Chrome, Edge e Safari */
+        progress#progress-bar::-webkit-progress-bar {
+            background-color: #e0e0e0;
+            /* cor de fundo leve */
+        }
+
+        progress#progress-bar::-webkit-progress-value {
+            background-color: #8c52ff;
+            /* teu lilás */
+        }
+
+        /* Firefox */
+        progress#progress-bar::-moz-progress-bar {
+            background-color: #8c52ff;
+        }
+
+        #progress-text {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media screen and (max-width: 980px) {
+            .boot .display-flex-col-980-down {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .boot .display-flex-row .textarea {
+                width: 100%;
+            }
+
+            .boot .icon-apply {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 680px) {
+            .boot .display-flex-col-680-down {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+            }
+
+            .boot .hidden-680-down {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="boot">
+    <div class="box-container">
+        <h1>Bulk Image Resizer and Compressor</h1>
+        <div class="boots">
+            <h2>Free Online Batch Image Resizer and Compressor</h2>
+            <p>This application allows you to resize and compress a single image or multiple images in a batch mode,
+                preserving the
+                aspect ratio of the images. It's very useful if you want to reduce a photo to a smaller size.</p>
+
+            <div class="row">
+                <div class="col-12">
+                    <h3>Select your images (.jpg, .png)</h3>
+                    <div class="custom-file mb-2">
+                        <input type="file" class="custom-file-input" id="file" accept="image/jpeg,image/png" multiple>
+                        <label id="holder" class="input-drag-drop" for="file">
+                            <div id="file-name" class="file-name text-truncate">
+                                Drag & Drop your images here
+                            </div>
+                            <div class="text-browse"><i class="fa fa-search"></i>
+                                <span class="hidden-680-down">Browse</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2">
+                    <h3>Type the new width</h3>
+                    <div class="form-group">
+                        <input id="new-width" class="form-control mb-2 mr-sm-2" type="number" placeholder="New width"
+                            min="10" max="8000">
+                        <!-- <div id="error-msg-new-width" class="invalid-feedback" style="margin-top: -19px;"></div> -->
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2">
+                    <h3>Image quality (<span id="quality-selected">92</span>%)</h3>
+                    <div class="form-group">
+                        <!-- class="form-control-range" -->
+                        <input type="range" id="quality" class="custom-range mt-3" min="0" max="100" value="92">
+                        <!-- <input type="range" class="custom-range" min="0" max="100" id="quality" value="92"> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p id="num-items"></p>
+                    <div id="list-files" class="mb-3"></div>
+
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="zip-output">
+                        <label class="custom-control-label" for="zip-output">Output images in a zip file</label>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-12">
+                    <div class="form-check mb-2">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="zip-output">
+                            <label class="custom-control-label" for="zip-output">Wrap the words in quotes</label>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-12 mb-3">
+                <!-- <button class="btn btn-success" onclick="compress(event);" disabled>Resize images</button> -->
+                <button class="btn btn-success mb-2" onclick="compress(event);" disabled
+                    aria-label="Button to convert CSV to JSON">
+                    <i class="fa fa-chevron-right"></i>
+                    Resize images
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="message-error"></div>
+            </div>
+        </div>
+
+        <hr />
+
+        <h3>For what or for whom is this app useful?</h3>
+        <p>The Bulk Image Resizer is useful for photographer, designers or SEO experts. One of the jobs of SEO
+            optimization is to reduce and compress the size of the images. This app will help you to reduce the size
+            in
+            pixels and choose a level quality to compress it.</p>
+        <p>
+            Alternatively, you can resize to a new dimension and maintain 92% of the quality compression (standard
+            compression used when resizing) and then use another tool to reduce the size in weight (kB or MB) of the
+            images, such as <a href="https://tinypng.com/" target="_blank">tinypng.com</a>.</p>
+        <p>The main benefits of this online tool are:
+        <ul>
+            <li>Avoid installing a tool on your machine.</li>
+            <li>Apply the batch resizer (not just one image at a time).</li>
+            <li>Get lighter images for a more performing website.</li>
+        </ul>
+        </p>
+    </div>
+
+    <script>
+        // referências
+        const holder = document.getElementById('holder');
+        const fileInput = document.getElementById('file');
+        const btn = document.querySelector('button.btn-success');
+
+        // injeta a barra de progresso logo abaixo do botão
+        const progContainer = document.createElement('div');
+        progContainer.id = 'progress-container';
+        progContainer.style.display = 'none';
+        progContainer.innerHTML = `
+            <progress id="progress-bar" value="0" max="0"></progress>
+            <p id="progress-text">0/0</p>
+        `;
+        btn.parentNode.insertBefore(progContainer, btn.nextSibling);
+
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+
+        // Previna comportamento padrão nos eventos de drag
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evt => {
+            holder.addEventListener(evt, e => {
+                e.preventDefault(); e.stopPropagation();
+            });
+        });
+
+        // Destaca ao arrastar por cima
+        ['dragenter', 'dragover'].forEach(evt => {
+            holder.addEventListener(evt, () => holder.classList.add('input-drop'));
+        });
+
+        // Remove destaque
+        ['dragleave', 'drop'].forEach(evt => {
+            holder.addEventListener(evt, () => holder.classList.remove('input-drop'));
+        });
+
+        // Trata o drop – popula o input e dispara change
+        holder.addEventListener('drop', e => {
+            if (!e.dataTransfer.files.length) return;
+            const dt = new DataTransfer();
+            Array.from(e.dataTransfer.files).forEach(f => dt.items.add(f));
+            fileInput.files = dt.files;
+            fileInput.dispatchEvent(new Event('change'));
+        });
+
+        // Placeholder e mensagem de erro
+        const newWidth = document.getElementById('new-width');
+        newWidth.setAttribute('placeholder', `Min ${newWidth.min} e max ${newWidth.max}`);
+        document.getElementById('message-error').innerText =
+            `Type a valid width (min ${newWidth.min} e max ${newWidth.max}).`;
+        if (localStorage.bulkImageResizerWidth)
+            newWidth.value = localStorage.bulkImageResizerWidth;
+
+        // Atualiza label da qualidade
+        ['mousemove', 'change'].forEach(evt =>
+            document.getElementById('quality').addEventListener(evt, e =>
+                document.getElementById('quality-selected').innerText = e.target.value
+            )
+        );
+
+        // Mostra lista de ficheiros e ativa botão
+        fileInput.addEventListener('change', e => {
+            const listFiles = document.getElementById('list-files');
+            const numItems = document.getElementById('num-items');
+            const files = e.target.files;
+            let totalSize = 0;
+            listFiles.innerHTML = '';
+            if (files.length) {
+                btn.disabled = false;
+                listFiles.classList.add('display-block');
+                Array.from(files).forEach(f => {
+                    const p = document.createElement('p');
+                    p.innerText = f.name;
+                    listFiles.appendChild(p);
+                    totalSize += f.size;
+                });
+                numItems.classList.add('display-block');
+                numItems.innerHTML =
+                    `There ${files.length === 1 ? 'is' : 'are'} <strong>${files.length}</strong>` +
+                    ` image${files.length === 1 ? '' : 's'} to resize, ` +
+                    `total <strong>${(totalSize / 1000).toFixed(2)} kB</strong>.`;
+            } else {
+                btn.disabled = true;
+                numItems.classList.remove('display-block');
+                listFiles.classList.remove('display-block');
+            }
+            // esconde progress se voltar a escolher
+            progContainer.style.display = 'none';
+        });
+
+        // Função principal
+        function compress() {
+            const width = Number(newWidth.value);
+            const min = Number(newWidth.min);
+            const max = Number(newWidth.max);
+            const files = Array.from(fileInput.files);
+            const quality = Number(document.getElementById('quality').value);
+            const toZip = document.getElementById('zip-output').checked;
+
+            if (width < min || width > max) {
+                const msg = document.getElementById('message-error');
+                msg.classList.add('display-block');
+                setTimeout(() => msg.classList.remove('display-block'), 5000);
+                return;
+            }
+
+            // preenche progress bar
+            progressBar.max = files.length;
+            progressBar.value = 0;
+            progressText.innerText = `0/${files.length}`;
+            progContainer.style.display = 'block';
+
+            // instância Zip se necessário
+            const zip = toZip ? new JSZip() : null;
+
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = ev => {
+                    const img = new Image();
+                    img.src = ev.target.result;
+                    img.onload = () => {
+                        // desenha canvas
+                        const canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = width * (img.height / img.width);
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                        // função interna para tratar blob comum
+                        const handleBlob = blob => {
+                            if (toZip) {
+                                zip.file(file.name, blob);
+                            } else {
+                                const link = document.createElement('a');
+                                link.href = URL.createObjectURL(blob);
+                                link.download = file.name;
+                                document.body.appendChild(link);
+                                link.click();
+                                link.remove();
+                                URL.revokeObjectURL(link.href);
+                            }
+
+                            // actualiza progresso
+                            progressBar.value++;
+                            progressText.innerText = `${progressBar.value}/${files.length}`;
+
+                            // se terminou e é zip, gera e faz download
+                            if (progressBar.value === files.length && toZip) {
+                                zip.generateAsync({ type: 'blob' }).then(zipBlob => {
+                                    const zipLink = document.createElement('a');
+                                    zipLink.href = URL.createObjectURL(zipBlob);
+                                    zipLink.download = 'crompressed-images.zip';
+                                    document.body.appendChild(zipLink);
+                                    zipLink.click();
+                                    zipLink.remove();
+                                    URL.revokeObjectURL(zipLink.href);
+                                    setTimeout(() => progContainer.style.display = 'none', 2000);
+                                });
+                            }
+                            else if (progressBar.value === files.length) {
+                                // esconde progress após 2s (sem zip)
+                                setTimeout(() => progContainer.style.display = 'none', 2000);
+                            }
+                        };
+
+                        // branch PNG: usa UPNG para quantizar
+                        if (file.type === 'image/png') {
+                            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            const buf = imgData.data.buffer;
+                            const maxColors = Math.max(2, Math.round(quality * 2.56));
+                            const pngBuf = UPNG.encode([buf], canvas.width, canvas.height, maxColors);
+                            const blob = new Blob([pngBuf], { type: 'image/png' });
+                            handleBlob(blob);
+                        }
+                        // branch outros formatos (JPEG, WebP…)
+                        else {
+                            canvas.toBlob(blob => {
+                                handleBlob(blob);
+                            }, file.type, quality / 100);
+                        }
+
+                        // guarda largura
+                        localStorage.bulkImageResizerWidth = width;
+                    };
+                };
+            });
+        }
+
+        // O “click” no label continua a disparar a caixa de seleção normalmente,
+        // porque o atributo for="file" está no holder/label.
+
+        // Reference links
+        // ttps://zocada.com/compress-resize-images-javascript-browser/
+        // ttps://stackoverflow.com/questions/7460272/getting-image-dimensions-using-javascript-file-api
+        // ttps://stackoverflow.com/questions/40902437/cant-use-foreach-with-filelist
+        // https://stackoverflow.com/questions/43839238/how-to-get-the-size-of-an-image-in-img-html-attribute
+        // https://stackoverflow.com/questions/15754281/what-is-the-default-quality-for-html5-canvas-todataurl
+        // https://stackoverflow.com/questions/14672746/how-to-compress-an-image-via-javascript-in-the-browser
+        // https://www.w3schools.com/js/js_htmldom_eventlistener.asp
+        // Drag and Drop by ChatGPT
+    </script>
+</body>
+
+</html>
