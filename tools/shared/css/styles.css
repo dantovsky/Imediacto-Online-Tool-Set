@@ -33,6 +33,14 @@ p {
     margin-bottom: 0 !important;
 }
 
+.boot .strong {
+    font-weight: 600 !important;
+}
+
+.boot .font-topic {
+    font-size: 1.2rem !important;
+}
+
 .boot h3, .boot .h3 {
   font-size: 1.45rem;
 }
@@ -381,6 +389,19 @@ span.ex {
 .boot .div-btn {
   cursor: pointer;
   color: #8c52ff;
+}
+
+.boot button.soft {
+  color: #8c52ff;
+  border: none;
+  background-color: #8c52ff0d;
+  text-transform: none;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+button.soft:focus {
+  /* outline: none; */
+  box-shadow: none;
 }
 
 .space-between {

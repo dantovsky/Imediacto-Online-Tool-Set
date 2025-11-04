@@ -6,7 +6,7 @@ function copyToClipboard(idElement = "output", checkId = 'check') {
 
     if (typeElement === 'textarea') {
         selectAndCopy(element)
-    } else if (typeElement === 'div') {
+    } else if (typeElement === 'div' || typeElement === 'span') {
         const newTextarea = document.createElement('textarea')
         newTextarea.value = document.getElementById(idElement).innerText
         document.body.appendChild(newTextarea)

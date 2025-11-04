@@ -1,76 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="../shared/css/boot.min.css">
-    <link rel="stylesheet" href="../shared/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Compare Two Lists - Free List Comparison Tool</title>
-    <style>
-        .boot pre {
-            height: 250px;
-            box-shadow: 5px 5px 12px gray;
-            padding: 12px;
-        }
-
-        .boot pre span.help-text {
-            color: #999;
-        }
-
-        .boot #faqAccordion .card-header a {
-        font-weight: 500;
-        text-decoration: none;
-        transition: color 0.2s ease;
-        }
-        .boot #faqAccordion .card-header a:hover {
-        color: #007bff;
-        }
-        .boot #faqAccordion .card-body {
-        background: #fafafa;
-        }
-
-        /*  FAQ  */
-        .faq-list details {
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        .faq-list summary {
-            background-color: #f7f7f7;
-            padding: 0.75rem 1rem;
-            cursor: pointer;
-            font-weight: 500;
-        }
-        .faq-list summary:hover {
-            background-color: #eee;
-        }
-        .faq-content {
-            padding: 0.75rem 1rem;
-            background-color: #fff;
-        }
-    </style>
-</head>
-
-<body class="boot">
-    <div class="container">
-        <h1>Compare Two Lists ~ Free List Comparison Tool</h1>
+<div class="boot">
         <p>This <strong>list comparison tool</strong> allows you to <strong>compare two lists</strong> (arrays) to be able you analyze the <strong>difference between the two lists</strong>.
             The program receives lists of the type string or number and after starting the comparison it is possible to sort the results.</p>
 
-        <!-- Results -->
-        <div class="row">
-            <div class="col-12 mt-2 mb-2">
-                <h2>Inputs</h2>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col-md-6 col-12 col-sm-12 mb-3">
-                <p class="strong font-topic">Input data structure</p>
+                <h2>Input data structure</h2>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="sep1" name="items-separation" value="lines" class="custom-control-input"
                         checked>
@@ -86,7 +20,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-12 col-sm-12 mb-3">
-                <p class="strong font-topic">Input data type</p>
+                <h2>Input data type</h2>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="string" name="data-type" value="string" class="custom-control-input"
                         checked>
@@ -101,22 +35,21 @@
         <div class="row">
             <div class="col-12 mb-3 hide-on-xs">
                 <div class="div-btn mr-1 mr-2" title="Switch view">
-                    <i class="fa fa-list" onclick="toggleLines()"> <span>Toggle layout view</span></i>
+                    <i class="fa fa-list" onclick="toggleLines()"> <span>Switch view</span></i>
                 </div>
             </div>
             <div class="col-sm-6 mb-3">
-                <p class="strong font-topic">List A</p>
+                <h2>List A</h2>
                 <textarea id="input-a" name="input-a" cols="30" rows="10" placeholder="Insert items for list A"></textarea>
             </div>
             <div class="col-sm-6 mb-3">
-
-                <p class="strong font-topic">List B</p>
+                <h2>List B</h2>
                 <textarea id="input-b" name="input-a" cols="30" rows="10" placeholder="Insert items for list B"></textarea>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12 mb-3">
-                <p class="strong font-topic">Handle data as</p>
+                <h2>Handle data as...</h2>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="set" name="set-or-list" value="set" class="custom-control-input" checked>
                     <label class="custom-control-label" for="set">As a set (no repeated elements)</label>
@@ -127,7 +60,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 mb-3">
-                <p class="strong font-topic">Output data separetad by</p>
+                <h2>Output data separetad...</h2>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="output1" name="items-separation-output" value="lines"
                         class="custom-control-input" checked>
@@ -149,148 +82,106 @@
             <div class="col-sm-12">
                 <div class="flex space-between mt-2">
                     <button onclick="applyDiffImproved()" class="btn btn-success mr-2">
-                        <i class="fa fa-chevron-right"></i> Compare lists
+                        <i class="fa fa-chevron-right"></i> Apply diff
                     </button>
                     <div class="flex">
-                        <!-- TODO :: aplicar button.soft em todos os divs que fazem o papel de botão -->
-                        <button class="soft mr-1" onclick="sortAllItems(false)" title="Sort all items asc" aria-label="Sort all items desc">
+                        <div class="div-btn mr-1" onclick="sortAllItems(false)" title="Sort all items asc" area-label="Sort items">
                             <i class="fa fa-sort-amount-asc"> <span class="hide-on-xs">Sort all asc</span></i>
-                        </button>
-                        <button class="soft mr-1" onclick="sortAllItems(true)" title="Sort all items asc" aria-label="Sort all items asc">
+                        </div>
+                        <div class="div-btn mr-1" onclick="sortAllItems(true)" title="Sort all items asc" area-label="Sort items">
                             <i class="fa fa-sort-amount-desc"> <span class="hide-on-xs">Sort all desc</span></i>
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Results -->
         <div class="row">
-            <div class="col-12">
-                <h2>Results</h2>
-            </div>
-        </div>
-        
-        <div class="row">
-            
-            <!-- Only in A -->
             <div class="col-sm-6 mt-3">
-                <div class="flex mb-2">
-                    <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-a-minus-b.png" class="img-set" alt="Set: A minus B">
-                    <p class="strong font-topic" title="A minus B">Only in list A</p>
-                </div>
-                <pre title="A minus B"><span id="adiffb"><span class="help-text">A diff B</span></span></pre>
+               <h2 title="A minus B">A diff B</h2>
+                <pre title="A minus B"><div id="adiffb"><span class="help-text">Values in A only</span></div></pre>
                 <div class="flex">
-                    <button class="soft mr-1" onclick="sortItems('adiffb')" title="Sort items asc" aria-label="Sort items">
+                    <div class="div-btn mr-1" onclick="sortItems('adiffb')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="sortItems('adiffb', true)" title="Sort items desc" aria-label="Sort items">
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('adiffb', true)" title="Sort items desc" area-label="Sort items">
                         <i class="fa fa-sort-amount-desc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="copyToClipboard('adiffb', 'check1')" title="Copy output to clipboard" aria-label="Copy the output A minus B to clipboard">
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('adiffb', 'check1')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
                         <i class="fa fa-copy"></i>&nbsp;
-                    </button>
+                    </div>
                     <div id="check1" class="check none"></div>
                 </div>
             </div>
-            
-            <!-- Only in B -->
             <div class="col-sm-6 mt-3">
-                <div class="flex mb-2">
-                    <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-b-minus-a.png" class="img-set" alt="Set: B minus A">
-                    <p class="strong font-topic" title="B minus A">Only in list B</p>
-                </div>
-                <pre title="B minus A"><span id="bdiffa"><span class="help-text">B diff A</span></span></pre>
+                <h2 title="B minus A">B diff A</h2>
+                <pre title="B minus A"><div id="bdiffa"><span class="help-text">Values in B only</span></div></pre>
                 <div class="flex">
-                    <button class="soft mr-1" onclick="sortItems('bdiffa')" title="Sort items asc" aria-label="Sort items">
+                    <div class="div-btn mr-1" onclick="sortItems('bdiffa')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="sortItems('bdiffa', true)" title="Sort items desc" aria-label="Sort items">
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('bdiffa', true)" title="Sort items desc" area-label="Sort items">
                         <i class="fa fa-sort-amount-desc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="copyToClipboard('bdiffa', 'check2')" title="Copy output to clipboard" aria-label="Copy the output B minus A to clipboard">
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('bdiffa', 'check2')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
                         <i class="fa fa-copy"></i>&nbsp;
-                    </button>
+                    </div>
                     <div id="check2" class="check none"></div>
                 </div>
             </div>
-            
-            <!-- A intersection B -->
             <div class="col-sm-6 mt-3">
-                <div class="flex mb-2">
-                    <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-intersection.png" class="img-set" alt="Set: A intersection B">
-                    <p class="strong font-topic" title="A intersection B">Common items (A &cap; B)</p>
-                </div>
-                <pre title="A intersection B"><span id="ainterb"><span class="help-text">Intersection ​​between A and B</span></span></pre>
+                <h2 title="A intersection B">A &cap; B</h2>
+                <pre title="A intersection B"><div id="ainterb"><span class="help-text">Intersection of values ​​between A and B</span></div></pre>
                 <div class="flex">
-                    <button class="soft mr-1" onclick="sortItems('ainterb')" title="Sort items asc" aria-label="Sort items">
+                    <div class="div-btn mr-1" onclick="sortItems('ainterb')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="sortItems('ainterb', true)" title="Sort items desc" aria-label="Sort items">
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('ainterb', true)" title="Sort items desc" area-label="Sort items">
                         <i class="fa fa-sort-amount-desc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="copyToClipboard('ainterb', 'check3')" title="Copy output to clipboard" aria-label="Copy the common items to clipboard">
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('ainterb', 'check3')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
                         <i class="fa fa-copy"></i>&nbsp;
-                    </button>
+                    </div>
                     <div id="check3" class="check none"></div>
                 </div>
             </div>
-
-            <!-- A union B -->
             <div class="col-sm-6 mt-3">
-                <div class="flex mb-2">
-                    <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-union.png" class="img-set" alt="Set: A union B">
-                    <p class="strong font-topic" title="A union B">All items (A &cup; B)</p>
-                </div>
-                <pre title="A union B"><span id="aunionb"><span class="help-text">Union of values ​​between A and B</span></span></pre>
+               <h2 title="A union B">A &cup; B</h2>
+                <pre title="A union B"><div id="aunionb"><span class="help-text">Union of values ​​between A and B</span></div></pre>
                 <div class="flex">
-                    <button class="soft mr-1" onclick="sortItems('aunionb')" title="Sort items asc" aria-label="Sort items">
+                    <div class="div-btn mr-1" onclick="sortItems('aunionb')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="sortItems('aunionb', true)" title="Sort items desc" aria-label="Sort items">
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('aunionb', true)" title="Sort items desc" area-label="Sort items">
                         <i class="fa fa-sort-amount-desc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="copyToClipboard('aunionb', 'check4')" title="Copy output to clipboard" aria-label="Copy the union output to clipboard">
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('aunionb', 'check4')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
                         <i class="fa fa-copy"></i>&nbsp;
-                    </button>
+                    </div>
                     <div id="check4" class="check none"></div>
                 </div>
             </div>
-            <!-- Symmetric difference -->
             <div class="col-sm-6 mt-3">
-                <div class="flex mb-2">
-                    <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-symmetric-difference.png" class="img-set" alt="Set: Symmetric diference between A and B">
-                    <p class="strong font-topic" title="Symmetric difference">Exclusive items (A &bigtriangleup; B)</p>
-                </div>
-                <pre title="Symmetric difference"><span id="difference"><span class="help-text">Symmetric difference between A and B</span></span></pre>
+                <h2 title="Symmetric difference">A &bigtriangleup; B</h2>
+                <pre title="Symmetric difference"><div id="difference"><span class="help-text">Symmetric difference between A and B</span></div></pre>
                 <div class="flex">
-                    <button class="soft mr-1" onclick="sortItems('difference')" title="Sort items asc" aria-label="Sort items">
+                    <div class="div-btn mr-1" onclick="sortItems('difference')" title="Sort items asc" area-label="Sort items">
                         <i class="fa fa-sort-amount-asc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="sortItems('difference', true)" title="Sort items desc" aria-label="Sort items">
+                    </div>
+                    <div class="div-btn mr-1" onclick="sortItems('difference', true)" title="Sort items desc" area-label="Sort items">
                         <i class="fa fa-sort-amount-desc"></i>
-                    </button>
-                    <button class="soft mr-1" onclick="copyToClipboard('difference', 'check5')" title="Copy output to clipboard" aria-label="Copy the symetric difference between A and B to clipboard">
+                    </div>
+                    <div class="div-btn mr-1" onclick="copyToClipboard('difference', 'check5')" title="Copy output to clipboard" area-label="Copy the output to clipboard">
                         <i class="fa fa-copy"></i>&nbsp;
-                    </button>
+                    </div>
                     <div id="check5" class="check none"></div>
                 </div>
             </div>
         </div>
         <hr>
-        <section class="tips">
-        <h2>Tips for Better Results</h2>
-            <ul>
-                <li>Paste clean text without extra spaces.</li>
-                <li>Use “set” mode to ignore duplicates.</li>
-                <li>Use “list” mode to include repeated items.</li>
-            </ul>
-        </section>
-        <hr>
         <h2>How does the Compare Two Lists tool work?</h2>
         <p>It will function normally according to the rules of the sets, in Mathematics. However, in this tool, you can also choose the list option, so that it is possible to work with repeated values. The following operations are performed:</p>
 
-        <div class="flex mt-3">
+<div class="flex mt-3">
             <img src="https://www.imediacto.com/wp-content/uploads/2021/02/set-a-minus-b.png" class="img-set" alt="Set: A minus B"><h3 class="mb-0 mt-0 pb-0">A minus B</h3>
         </div>
         <p>Returns the values ​​that are present only in list A.</p>
@@ -315,118 +206,11 @@
         </div>
         <p>The symmetric difference of two sets is the set of elements that are in one of the sets, but not at its intersection.</p>
 
-        <h2>Important note</h2>
+<h2>Important note</h2>
 
         <p>There is no limitation on the maximum number of rows allowed in a list, however, if you put in too large a volume of data, the browser may slow down or even crash for a moment.</p>
         
-        <hr>
-        <!-- FAQ sem JS -->
-        <h2 class="mt-4 mb-3">FAQ about this Comparison List Tool</h2>
-
-        <div class="faq-list">
-            <details>
-                <summary>Can I compare lists with numbers?</summary>
-                <div class="faq-content">
-                    Yes. Just switch the “Data Type” option to <strong>Number</strong> before clicking <em>Compare Lists</em>.
-                </div>
-            </details>
-
-            <details>
-                <summary>What is the maximum list size?</summary>
-                <div class="faq-content">
-                    There is no fixed limit. However, very large lists (thousands of lines) may slow down your browser temporarily.
-                </div>
-            </details>
-
-            <details>
-                <summary>Does this tool store my data?</summary>
-                <div class="faq-content">
-                    No. All processing happens locally in your browser — your data never leaves your device.
-                </div>
-            </details>
-
-            <details>
-                <summary>Can I find duplicate items between two lists?</summary>
-                <div class="faq-content">
-                    Yes. Use the <strong>Common items (A ∩ B)</strong> section to see all items that appear in both lists — these are your duplicates.
-                </div>
-            </details>
-
-            <details>
-                <summary>Is the comparison case sensitive?</summary>
-                <div class="faq-content">
-                    Yes. The comparison is <strong>case sensitive</strong>, meaning “Apple” and “apple” are treated as different items.
-                </div>
-            </details>
-
-            <details>
-                <summary>What is the difference between Union and Symmetric Difference?</summary>
-                <div class="faq-content">
-                    <strong>Union (A ∪ B)</strong> shows all unique items from both lists combined.  
-                    <strong>Symmetric Difference (A △ B)</strong> shows items that appear in either list, but <em>not</em> in both — the unique items from each list.
-                </div>
-            </details>
-        </div>
-
-        <!-- JSON-LD FAQ schema for SEO -->
-        <script type="application/ld+json">
-        {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-                {
-                "@type": "Question",
-                "name": "Can I compare lists with numbers?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Just switch the Data Type option to Number before clicking Compare Lists."
-                }
-                },
-                {
-                "@type": "Question",
-                "name": "What is the maximum list size?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "There is no fixed limit. However, very large lists may slow down your browser temporarily."
-                }
-                },
-                {
-                "@type": "Question",
-                "name": "Does this tool store my data?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No. All processing happens locally in your browser — your data never leaves your device."
-                }
-                },
-                {
-                "@type": "Question",
-                "name": "Can I find duplicate items between two lists?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Use the In Both Lists (A ∩ B) section to see all items that appear in both lists — these are your duplicates."
-                }
-                },
-                {
-                "@type": "Question",
-                "name": "Is the comparison case sensitive?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. The comparison is case sensitive, meaning 'Apple' and 'apple' are considered different items."
-                }
-                },
-                {
-                "@type": "Question",
-                "name": "What is the difference between Union and Symmetric Difference?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Union (A ∪ B) shows all unique items from both lists combined, while Symmetric Difference (A △ B) shows items that appear in either list but not in both."
-                }
-                }
-            ]
-        }
-        </script>
-        
-        <div class="notes">
+<div class="notes">
             <div class="image"></div>
             <div class="message">
                 <p>
@@ -443,7 +227,6 @@
             </div>
         </div>
     </div>
-
     <script>
         let separatorOutput = '\n';
 
@@ -557,14 +340,4 @@
                 sortItems(operation, isDesc)
             })
         }
-
-        // https://www.w3resource.com/javascript-exercises/javascript-array-exercise-23.php
-        // https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
-        // https://www.30secondsofcode.org/blog/s/copy-text-to-clipboard-with-javascript
-        // https://fontawesome.com/v4.7.0/icons/
-
     </script>
-    <script src="../shared/js/scripts.js"></script>
-</body>
-
-</html>
