@@ -70,17 +70,6 @@
 				gap: 0;
 			}
 		}
-
-		.inline-flex {
-			display: flex;
-			gap: 10px;
-			align-items: center;
-			flex-wrap: wrap;
-		}
-
-		.mr-2 {
-			margin-right: 8px;
-		}
 	</style>
 </head>
 
@@ -119,13 +108,12 @@
 							<div class="conversion-result">
 								<span id="pxOutput">0</span> px
 							</div>
-							<div class="inline-flex mt-3">
-								<div class="div-btn mr-2" onclick="copyToClipboard('pxOutput', 'px')"
-									title="Copy REM to PX conversion to clipboard">
+							<div class="inline-flex">
+								<div class="div-btn mr-1" onclick="copyToClipboard('pxOutput', 'checkRemPx')" title="Copy REM to PX conversion to clipboard">
 									<i class="fa fa-copy"></i>
 									Copy
 								</div>
-								<div id="check-rem-px" class="none"></div>
+								<div id="checkRemPx" class="none"></div>
 							</div>
 						</div>
 					</div>
@@ -147,13 +135,12 @@
 							<div class="conversion-result">
 								<span id="remOutput">0</span> rem
 							</div>
-							<div class="inline-flex mt-3">
-								<div class="div-btn mr-2" onclick="copyToClipboard('remOutput', 'rem')"
-									title="Copy PX to REM conversion to clipboard">
+							<div class="inline-flex">
+								<div class="div-btn mr-1" onclick="copyToClipboard('remOutput', 'checkPxRem')" title="Copy PX to REM conversion to clipboard">
 									<i class="fa fa-copy"></i>
 									Copy
 								</div>
-								<div id="check-px-rem" class="none"></div>
+								<div id="checkPxRem" class="none"></div>
 							</div>
 						</div>
 					</div>
@@ -307,27 +294,8 @@ h2 {
 				convertRemToPx();
 				convertPxToRem();
 			}
-
-			function copyToClipboard(elementId, unit) {
-				const element = document.getElementById(elementId);
-				const text = element.textContent + ' ' + unit;
-				const tempInput = document.createElement('textarea');
-				tempInput.value = text;
-				document.body.appendChild(tempInput);
-				tempInput.select();
-				tempInput.setSelectionRange(0, 99999);
-				document.execCommand('copy');
-				document.body.removeChild(tempInput);
-
-				// Show check icon
-				const checkId = elementId === 'pxOutput' ? 'check-rem-px' : 'check-px-rem';
-				const check = document.getElementById(checkId);
-				check.classList.remove('none');
-				setTimeout(() => {
-					check.classList.add('none');
-				}, 3000);
-			}
 		</script>
+		<script src="../shared/js/scripts.js"></script>
 	</div><!-- end box-container -->
 
 </body>
