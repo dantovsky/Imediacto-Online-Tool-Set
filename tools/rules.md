@@ -2,7 +2,13 @@
 
 Este documento define o padrão arquitetural, visual e de código para a criação de novas ferramentas integradas neste ecossistema de online tools. Todas as IAs devem seguir estas regras estritamente.
 
-## 1. Arquitetura de Ficheiros e Estrutura do Código
+## 1. Tecnologias
+
+- JavaScript
+- HTML
+- CSS
+
+## 2. Arquitetura de Ficheiros e Estrutura do Código
 Cada ferramenta fica dentro de uma pasta própria nomeada com o padrão `0XX-nome-da-ferramenta/`. O ficheiro principal deve ser `index.html`.
 Dentro de cada pasta poderá existir um ficheiro "info.txt" com orientações sobre a ferramenta, então é um ficheiro importante caso a ferramenta ainda não tenha sido desenvolvida. Poderá consultar os sites de referência e inspiração para construir a ferramenta.
 
@@ -33,7 +39,7 @@ Ao final, toda aplicação deve estar em um único ficheiro HTML. A única exce�
 </div>
 ```
 
-## 2. Conteúdo e SEO
+## 3. Conteúdo e SEO
 
 Na página de cada ferramenta deve ser insiro algun conteúdo útil e informativo, utilizando palavras chave para otimizar o ranking e reconhecimento da página pelos mecaniscmos de busca.
 
