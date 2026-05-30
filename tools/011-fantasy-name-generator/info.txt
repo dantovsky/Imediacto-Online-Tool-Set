@@ -1,0 +1,60 @@
+# Info base
+
+Título: Fantasy Name Generator
+Objetivo: fornecer um conjunto de categorias para o user selecionar, conforme o seu interesse, e poder gerar nomes de fantasias, como aqueles de filmes e histórias antigas e contos.
+
+# Ideias e sugestões de categorias
+
+As categorias  podem ser escritas no singular, e a seguir é apresentada algumas ideias:
+- Human
+- Angel
+- Aliens
+- Centaurs
+- Demons
+- Dragons
+- Elves
+- Fairies
+- Giants
+- Gnomes
+- Goblins
+- Imps
+- Merfolk
+- Ogres
+- Orks
+- Pixies
+- Sea monsters
+- Trolls
+- Unicorns
+- Vampires
+- Werewolves
+- Witches / Wizards
+- Yeties
+- Zombies
+- Pirate
+- Ship
+- Kingdom
+- Country
+- City
+- Town
+
+# Sugestão de desenvolvimento
+
+As categiruas podem estar listadas numa especie de cards para serem clicadas para seleção múltipla. Exemplo: o user seleciona Dragons, Goblins e Trolls, então ao clicar em "Gerar fantasy names" o sisstema gera aleatoriamente para estes três tipos.
+Poderá selecionar um número de itens que deverá ser gerado para cada categoria (min: 1, max: 100).
+Pode serlecionar o sexo: male, female ou both.
+Ao gerar os nomes, se forem até um total de 20, serão apresentados em cards retangulares, cabendo todo o nome (width = 100% dentro do elemento onde ele está). Caso seja mais de 20, então lista normalmente, mas num estilo em negrito e com um texto maior do que o normal do conteúdo da página.
+Você tem liberdade para adicionar elementos e tudo o que possa enriquecer mais essa aplicação.
+
+Pode ser interessante haver a geração automática de uma categoria assim que o user entra na página.
+Como output, pode dizer: "10 fantasy names were generated for Dragons.". Outro exemplo: se o user selecionar 20 itens para de cada categoria, e tendo selecionado 3 categorias, a frase de output será "60 fantasy names were generated for Dragons, Goblins and Trolls."
+
+# Links para referência e inspiraçãp
+
+- Fantasy Name Generators  
+  https://reedsy.com/resources/character-name-generator/fantasy/
+
+- Name Generator
+  https://www.name-generator.org.uk/fantasy/
+
+- Fantasy Name Generator
+  https://donjon.bin.sh/fantasy/name/
